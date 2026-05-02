@@ -1,0 +1,48 @@
+{
+  "overall": 63,
+  "grade": "D",
+  "categories": {
+    "color_discipline": {
+      "score": 100,
+      "grade": "A",
+      "value": "0 colors",
+      "ideal": "25-40"
+    },
+    "typography": {
+      "score": 40,
+      "grade": "F",
+      "value": "0 families, 0 scales",
+      "ideal": "2-4 families"
+    },
+    "spacing_system": {
+      "score": 60,
+      "grade": "D",
+      "value": "0 tokens",
+      "ideal": "4-8"
+    },
+    "border_radii": {
+      "score": 60,
+      "grade": "D",
+      "value": "0 levels",
+      "ideal": "3-6"
+    },
+    "tokenization": {
+      "score": 40,
+      "grade": "F",
+      "value": "0% high confidence",
+      "ideal": "≥80%"
+    },
+    "lint_compliance": {
+      "score": 70,
+      "grade": "C",
+      "value": "skipped",
+      "ideal": "0E 0W"
+    },
+    "accessibility": {
+      "score": 70,
+      "grade": "C",
+      "value": "0/0 pairs ≥AA",
+      "ideal": "100% AA"
+    }
+  }
+}

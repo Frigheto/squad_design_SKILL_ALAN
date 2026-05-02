@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZENT A.I. — Plataforma de Gestão para Empresas</title>
+    <meta name="description"
+        content="Centralize CRM, marketing, automações e IA em um só lugar. A plataforma completa para empresas de qualquer tamanho organizarem seu fluxo comercial do lead ao fechamento.">
+    <meta name="keywords"
+        content="CRM omnichannel, gestão empresarial, plataforma all-in-one, automação de leads, marketing digital, ZENT IA">
+    <meta name="author" content="ZENT A.I.">
+    <link rel="canonical" href="https://zentia.com.br/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zentia.com.br/">
+    <meta property="og:title" content="ZENT A.I. — Plataforma de Gestão para Empresas">
+    <meta property="og:description"
+        content="Centralize CRM, marketing, automações e IA. Organize sua empresa do lead ao fechamento.">
+    <meta property="og:image" content="https://zentia.com.br/assets/og-image.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="ZENT A.I.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ZENT A.I.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Plataforma de gestão completa para empresas de qualquer setor. CRM, marketing, automações e agentes de IA.",
+        "url": "https://zentia.com.br",
+        "offers": [
+            { "@type": "Offer", "name": "Starter", "price": "197.00", "priceCurrency": "BRL" },
+            { "@type": "Offer", "name": "Básico", "price": "397.00", "priceCurrency": "BRL" },
+            { "@type": "Offer", "name": "Profissional", "price": "697.00", "priceCurrency": "BRL" },
+            { "@type": "Offer", "name": "Premium", "price": "997.00", "priceCurrency": "BRL" }
+        ],
+        "provider": { "@type": "Organization", "name": "ZENT A.I.", "url": "https://zentia.com.br" }
+    }
+    </script>
+
+    <!-- CSS -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="module" crossorigin src="/assets/index-BERWYTLW.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BINBZzTl.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                ZENT <span>A.I.</span>
+            </a>
+            <!-- Navigation -->
+            <nav class="hidden-mobile">
+                <ul class="nav-links flex gap-8">
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#recursos">Como Funciona</a></li>
+                    <li><a href="#precos">Planos</a></li>
+                    <li><a href="#depoimentos">Cases de Sucesso</a></li>
+                </ul>
+            </nav>
+            <!-- Actions -->
+            <div class="header-actions">
+                <div class="user-menu-wrapper" id="user-menu-wrapper" style="display: none;">
+                    <button id="header-user-btn" class="user-menu-trigger btn btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span id="user-menu-name">Usuário</span>
+                    </button>
+                    <div class="user-menu-dropdown" id="user-menu-dropdown">
+                        <a href="members.html" class="user-menu-item">Minha Área</a>
+                        <button id="header-logout-btn" class="user-menu-item user-menu-logout">Sair da Conta</button>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" id="header-login-btn" class="btn btn-ghost opacity-50 cursor-not-allowed"
+                    title="Acesso temporariamente bloqueado">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Entrar
+                </a>
+                <a href="#precos" id="header-plan-btn" class="btn btn-primary btn-sm">Conhecer Planos</a>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle visible-mobile btn btn-ghost" aria-label="Abrir menu" id="menu-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="visible-mobile"
+            style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border-bottom: 1px solid var(--color-border); padding: 1.5rem; box-shadow: var(--shadow-md);">
+            <div class="flex flex-col gap-4">
+                <a href="#solucoes">Soluções</a>
+                <a href="#recursos">Como Funciona</a>
+                <a href="#precos">Planos</a>
+                <a href="#depoimentos">Cases de Sucesso</a>
+                <div style="height: 1px; background: var(--color-border); margin: 0.5rem 0;"></div>
+                <a href="auth.html">Entrar</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-text-center">
+                <div class="hero-badge">CRM + IA + Automação em Um Só Lugar</div>
+                <h1 class="hero-title">Organize seu negócio.<br>Aumente sua receita.</h1>
+                <p class="hero-subtitle">A ZENT A.I. centraliza WhatsApp, Instagram, CRM e um Agente de IA<br>que
+                    responde, qualifica e agenda — 24 horas por dia, 7 dias por semana.<br>Enquanto você dorme, sua
+                    operação comercial continua crescendo.</p>
+                <div class="hero-cta">
+                    <a href="#precos" class="btn btn-primary btn-lg shine-effect">
+                        Quero ver como funciona
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=555121609930&text=Olá%2C+gostaria+de+saber+sobre+os+serviços+de+Inteligência+Artificial."
+                        target="_blank" class="btn btn-outline btn-lg">
+                        Agendar Demonstração
+                    </a>
+                </div>
+
+                <!-- Video Demo Section -->
+                <div class="video-demo-container">
+                    <video width="100%" autoplay muted loop playsinline
+                        style="max-width: 900px; width: 100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); margin-top: 1.5rem;">
+                        <source src="/zentdemo.mp4" type="video/mp4">
+                        Seu navegador não suporta a tag de vídeo.
+                    </video>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <strong>500+</strong>
+                        <span>empresas ativas</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>+37%</strong>
+                        <span>conversão média dos clientes</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>30s</strong>
+                        <span>resposta do Agente de IA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full-Width 3D Carousel at Bottom -->
+            <div class="cards-carousel-wrapper">
+                <div class="container flex justify-between items-center mb-4">
+                    <button class="carousel-nav carousel-prev btn btn-outline btn-sm" aria-label="Anterior">
+                        ←
+                    </button>
+                    <button class="carousel-nav carousel-next btn btn-outline btn-sm" aria-label="Próximo">
+                        →
+                    </button>
+                </div>
+                <div class="cards-stack">
+                    <div class="cards-track">
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600&auto=format&fit=crop"
+                                alt="Suporte 24h">
+                            <div class="card-info">
+                                <h3>Suporte 24h</h3>
+                            </div>
+                        </a>
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=600&auto=format&fit=crop"
+                                alt="Atendimento IA">
+                            <div class="card-info">
+                                <h3>Atendimento IA</h3>
+                            </div>
+                        </a>
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop"
+                                alt="Gestão Centralizada">
+                            <div class="card-info">
+                                <h3>Gestão Centralizada</h3>
+                            </div>
+                        </a>
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1551808525-51a94da548ce?q=80&w=600&auto=format&fit=crop"
+                                alt="Automação 24/7">
+                            <div class="card-info">
+                                <h3>Automação 24/7</h3>
+                            </div>
+                        </a>
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop"
+                                alt="CRM Inteligente">
+                            <div class="card-info">
+                                <h3>CRM Inteligente</h3>
+                            </div>
+                        </a>
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
+                                alt="Dashboard">
+                            <div class="card-info">
+                                <h3>Dashboard</h3>
+                            </div>
+                        </a>
+                        <a href="#solucoes" class="photo-card"><img
+                                src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=600&auto=format&fit=crop"
+                                alt="WhatsApp">
+                            <div class="card-info">
+                                <h3>WhatsApp</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Problem Section -->
+        <section class="problem-section" id="solucoes">
+            <div class="container">
+                <div class="problem-grid">
+                    <div class="problem-header">
+                        <span class="section-tag">POR QUE VOCÊ AINDA PERDE LEADS</span>
+                        <h2 class="section-title">Todo dia, leads entram em contato, não recebem<br>resposta rápida — e
+                            fecham com o concorrente.</h2>
+                        <p class="section-desc">Não é falta de produto bom. Não é falta de preço competitivo.<br>É a
+                            falha no momento mais crítico: o primeiro contato.<br>A velocidade de resposta define quem
+                            fecha — e quem perde.</p>
+                        <a href="#precos" class="btn btn-primary">Ver como a ZENT resolve isso</a>
+                    </div>
+                    <div class="problem-items">
+                        <div class="problem-item">
+                            <div class="problem-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="2" x2="12" y2="22"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <div class="problem-content">
+                                <h4>Resposta lenta = lead perdido</h4>
+                                <p>Estudos mostram que leads contactados em menos de 5 minutos convertem<br>até 9x mais.
+                                    Cada hora sem resposta é dinheiro indo para o concorrente.</p>
+                            </div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="problem-content">
+                                <h4>Gestão manual que não escala</h4>
+                                <p>Planilha, WhatsApp pessoal, post-it, mensagem esquecida.<br>Quando o volume de leads
+                                    cresce, a operação quebra — e você perde<br>controle do que está acontecendo.</p>
+                            </div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 17"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="problem-content">
+                                <h4>Sem dados, sem decisão</h4>
+                                <p>Sem um painel centralizado, você opera no achismo.<br>Quantos leads entraram ontem?
+                                    Quantos foram respondidos?<br>Qual vendedor fechou mais? Sem resposta = sem
+                                    crescimento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">ANTES E DEPOIS</span>
+                    <h2 class="section-title">Como sua operação muda depois da ZENT</h2>
+                    <p class="section-desc">A diferença não é só organização. É velocidade, previsibilidade e
+                        crescimento real.</p>
+                </div>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Atividade</th>
+                                <th class="text-center col-bad">Sem a ZENT</th>
+                                <th class="text-center col-good">Com a ZENT A.I.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Primeiro contato com o lead</td>
+                                <td class="text-center col-bad">Resposta manual horas depois</td>
+                                <td class="text-center col-good"><strong>IA responde em menos de 30 segundos, qualquer
+                                        horário</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Gestão de Leads</td>
+                                <td class="text-center col-bad">Planilhas e WhatsApp pessoal</td>
+                                <td class="text-center col-good"><strong>Pipeline visual centralizado e
+                                        automatizado</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Follow-up</td>
+                                <td class="text-center col-bad">Vendedor esquece, lead esfria</td>
+                                <td class="text-center col-good"><strong>Sequência automática de até 7 dias sem
+                                        intervenção</strong></td>
+                            </tr>
+                            <tr>
+                                <td>CRM</td>
+                                <td class="text-center col-bad">Post-its ou software genérico</td>
+                                <td class="text-center col-good"><strong>Totalmente integrado e omnichannel</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Marketing</td>
+                                <td class="text-center col-bad">Agência desconectada do comercial</td>
+                                <td class="text-center col-good"><strong>Campanhas integradas diretamente ao
+                                        CRM</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Visão do negócio</td>
+                                <td class="text-center col-bad">Achismo e reuniões sem dados</td>
+                                <td class="text-center col-good"><strong>Dashboard em tempo real: leads, conversão e
+                                        receita</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Atendimento fora do horário</td>
+                                <td class="text-center col-bad">Lead perde o interesse e vai embora</td>
+                                <td class="text-center col-good"><strong>Agente de IA agenda, responde e qualifica
+                                        24/7</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="roi-banner">
+                    <p>Seus concorrentes já usam IA para atender mais rápido, converter mais<br>e trabalhar menos.
+                        <strong>A ZENT é a sua virada de jogo.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (Tabs) -->
+        <section id="recursos" class="features-section section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">O QUE A ZENT FAZ PELO SEU NEGÓCIO</span>
+                    <h2 class="section-title">Uma plataforma. Uma operação. Zero retrabalho.</h2>
+                    <p class="section-desc">Da primeira mensagem do lead ao contrato assinado — tudo controlado,
+                        automatizado e mensurável.</p>
+                </div>
+
+                <div style="text-align:center;">
+                    <div class="feature-tabs">
+                        <button class="tab-btn active" data-target="feature-1">Painel e Gestão</button>
+                        <button class="tab-btn" data-target="feature-2">CRM Inteligente</button>
+                        <button class="tab-btn" data-target="feature-3">Marketing e Funis</button>
+                        <button class="tab-btn" data-target="feature-4">IA e Automação</button>
+                    </div>
+                </div>
+
+                <div class="feature-content">
+                    <!-- Feature 1: Gestão -->
+                    <div class="feature-panel active" id="feature-1">
+                        <div class="feature-text">
+                            <h3>Seu negócio em tempo real, na palma da mão</h3>
+                            <p>Pare de tomar decisões no achismo. Com o painel da ZENT, você vê em segundos<br>quantos
+                                leads estão no funil, quanto vai faturar este mês e onde está o gargalo<br>da sua
+                                operação.</p>
+                            <ul class="feature-list">
+                                <li>
+                                    <span class="text-success">✓</span>
+                                    <strong>Pipeline visual</strong>: acompanhe cada lead do primeiro contato ao
+                                    fechamento
+                                </li>
+                                <li>
+                                    <span class="text-success">✓</span>
+                                    <strong>Previsibilidade de receita</strong>: saiba quanto vai faturar antes do mês
+                                    acabar
+                                </li>
+                                <li>
+                                    <span class="text-success">✓</span>
+                                    <strong>KPIs em tempo real</strong>: taxa de conversão, tempo de resposta, origem
+                                    dos leads
+                                </li>
+                            </ul>
+                            <a href="#precos" class="btn btn-primary">Ver o painel em ação</a>
+                        </div>
+                        <div class="feature-image">
+                            <div class="ui-mockup">
+                                <div class="mockup-header">
+                                    <span class="mockup-title">Painel Geral</span>
+                                    <span class="mockup-date">Jan 2026 — Fev 2026</span>
+                                </div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-stat-card">
+                                        <span class="mockup-stat-label">Oportunidades</span>
+                                        <span class="mockup-stat-value">8</span>
+                                        <div
+                                            style="height: 4px; background: var(--color-primary); width: 60%; margin-top: 0.5rem; border-radius: 2px;">
+                                        </div>
+                                    </div>
+                                    <div class="mockup-stat-card"
+                                        style="background: var(--color-primary-light); border-color: var(--color-primary);">
+                                        <span class="mockup-stat-label" style="color: var(--color-primary);">Valor em
+                                            Pipeline</span>
+                                        <span class="mockup-stat-value">R$ 14,09k</span>
+                                        <span class="mockup-stat-change text-success">+100% vs 30 dias</span>
+                                    </div>
+                                    <div class="mockup-stat-card">
+                                        <span class="mockup-stat-label">Taxa de Conversão</span>
+                                        <span class="mockup-stat-value">32%</span>
+                                        <div
+                                            style="height: 4px; background: var(--color-primary); width: 32%; margin-top: 0.5rem; border-radius: 2px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mockup-footer">
+                                    <span class="mockup-title" style="display: block; margin-bottom: 1rem;">Funil de
+                                        Vendas</span>
+                                    <div class="mockup-bars">
+                                        <div class="mockup-bar-item">
+                                            <span class="mockup-bar-label">Novo Lead</span>
+                                            <div class="mockup-bar-track">
+                                                <div class="mockup-bar-fill" style="width: 100%;"></div>
+                                            </div>
+                                            <span style="font-size: 0.625rem; font-weight: 700; width: 40px;">8
+                                                leads</span>
+                                            <span style="font-size: 0.625rem; color: var(--color-text-light);">R$
+                                                14,09k</span>
+                                        </div>
+                                        <div class="mockup-bar-item">
+                                            <span class="mockup-bar-label">Follow Up</span>
+                                            <div class="mockup-bar-track">
+                                                <div class="mockup-bar-fill" style="width: 70%; background: #06b6d4;">
+                                                </div>
+                                            </div>
+                                            <span style="font-size: 0.625rem; font-weight: 700; width: 40px;">6
+                                                leads</span>
+                                            <span style="font-size: 0.625rem; color: var(--color-text-light);">R$
+                                                10,5k</span>
+                                        </div>
+                                        <div class="mockup-bar-item">
+                                            <span class="mockup-bar-label">Call Agendada</span>
+                                            <div class="mockup-bar-track">
+                                                <div class="mockup-bar-fill" style="width: 40%; background: #a855f7;">
+                                                </div>
+                                            </div>
+                                            <span style="font-size: 0.625rem; font-weight: 700; width: 40px;">3
+                                                leads</span>
+                                            <span style="font-size: 0.625rem; color: var(--color-text-light);">R$
+                                                6,59k</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: CRM -->
+                    <div class="feature-panel" id="feature-2">
+                        <div class="feature-text">
+                            <h3>Todos os seus canais. Uma única conversa.</h3>
+                            <p>WhatsApp, Instagram, e-mail e chat do site respondidos no mesmo lugar.<br>Histórico
+                                completo de cada lead. Nenhuma mensagem cai no esquecimento.</p>
+                            <ul class="feature-list">
+                                <li><strong>Omnichannel</strong>: WhatsApp, Instagram, Chat e E-mail unificados</li>
+                                <li><strong>Histórico completo</strong>: veja toda a jornada do lead em um clique</li>
+                                <li><strong>Agenda integrada</strong>: agende reuniões direto pelo CRM com sincronismo
+                                    Google</li>
+                            </ul>
+                            <a href="#precos" class="btn btn-primary">Organizar meu comercial</a>
+                        </div>
+                        <div class="feature-image">
+                            <div class="ui-mockup">
+                                <div class="mockup-header">
+                                    <span class="mockup-title">Contatos</span>
+                                    <span class="mockup-title">Seu Funil</span>
+                                </div>
+                                <div class="kanban-board">
+                                    <div class="kanban-col">
+                                        <span class="kanban-col-title" style="color: var(--color-primary);">Novo Lead
+                                            <span
+                                                style="background: var(--color-primary-light); padding: 2px 6px; border-radius: 10px;">3</span></span>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">Patricia Silva</span>
+                                            <span class="kanban-card-sub">Consultoria</span>
+                                        </div>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">João Ferreira</span>
+                                            <span class="kanban-card-sub">E-commerce</span>
+                                        </div>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">Marina Costa</span>
+                                            <span class="kanban-card-sub">Tecnologia</span>
+                                        </div>
+                                    </div>
+                                    <div class="kanban-col">
+                                        <span class="kanban-col-title" style="color: #06b6d4;">Follow Up <span
+                                                style="background: #e0f2fe; color: #06b6d4; padding: 2px 6px; border-radius: 10px;">2</span></span>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">Ana Rodrigues</span>
+                                            <span class="kanban-card-sub">Varejo</span>
+                                        </div>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">Roberto Santos</span>
+                                            <span class="kanban-card-sub">Serviços</span>
+                                        </div>
+                                    </div>
+                                    <div class="kanban-col">
+                                        <span class="kanban-col-title" style="color: #a855f7;">Call Agendada <span
+                                                style="background: #f3e8ff; color: #a855f7; padding: 2px 6px; border-radius: 10px;">3</span></span>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">Luciana Martins</span>
+                                            <span class="kanban-card-sub">Manufatura</span>
+                                        </div>
+                                        <div class="kanban-card">
+                                            <span class="kanban-card-name">Gustavo Lima</span>
+                                            <span class="kanban-card-sub">Saúde</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Marketing -->
+                    <div class="feature-panel" id="feature-3">
+                        <div class="feature-text">
+                            <h3>Marketing e vendas falando a mesma língua</h3>
+                            <p>Crie páginas de captura, gerencie suas redes sociais e acompanhe a performance<br>das
+                                campanhas — tudo conectado ao seu CRM. O lead que clica no anúncio<br>já entra direto no
+                                seu funil.</p>
+                            <ul class="feature-list">
+                                <li><strong>Landing pages</strong>: criador de páginas de alta conversão sem código</li>
+                                <li><strong>Redes sociais</strong>: planejador e agendador de posts integrado</li>
+                                <li><strong>Rastreabilidade</strong>: veja qual campanha gera mais leads e mais receita
+                                </li>
+                            </ul>
+                            <a href="#precos" class="btn btn-primary">Ver ferramentas de marketing</a>
+                        </div>
+                        <div class="feature-image">
+                            <div class="ui-mockup">
+                                <div class="mockup-header">
+                                    <span class="mockup-title">Dashboard de Campanha</span>
+                                    <span class="mockup-date">Janeiro 2026</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 mb-4">
+                                    <div class="mockup-stat-card text-center">
+                                        <div style="font-size: 1rem;">📊</div>
+                                        <span class="mockup-stat-label">Impressões</span>
+                                        <span class="mockup-stat-value">8.542</span>
+                                    </div>
+                                    <div class="mockup-stat-card text-center">
+                                        <div style="font-size: 1rem;">👆</div>
+                                        <span class="mockup-stat-label">Cliques</span>
+                                        <span class="mockup-stat-value">1.234</span>
+                                    </div>
+                                    <div class="mockup-stat-card text-center">
+                                        <div style="font-size: 1rem;">✓</div>
+                                        <span class="mockup-stat-label">Conversões</span>
+                                        <span class="mockup-stat-value">89</span>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-5 gap-1 items-end" style="height: 60px;">
+                                    <div style="height: 40%; background: var(--color-bg-alt);"></div>
+                                    <div style="height: 70%; background: var(--color-bg-alt);"></div>
+                                    <div style="height: 50%; background: var(--color-bg-alt);"></div>
+                                    <div style="height: 90%; background: var(--color-bg-alt);"></div>
+                                    <div style="height: 65%; background: var(--color-bg-alt);"></div>
+                                </div>
+                                <div class="flex justify-between mt-4">
+                                    <div class="flex items-center gap-2">
+                                        <div style="width: 8px; height: 8px; background: #3b82f6; border-radius: 50%;">
+                                        </div>
+                                        <span style="font-size: 0.625rem;">Google Ads</span>
+                                        <span style="font-size: 0.625rem; font-weight: 700;">68%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div style="width: 8px; height: 8px; background: #f43f5e; border-radius: 50%;">
+                                        </div>
+                                        <span style="font-size: 0.625rem;">Instagram</span>
+                                        <span style="font-size: 0.625rem; font-weight: 700;">32%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4: IA -->
+                    <div class="feature-panel" id="feature-4">
+                        <div class="feature-text">
+                            <h3>Seu melhor SDR trabalha 24 horas — e nunca pede aumento</h3>
+                            <p>O Agente de IA da ZENT recebe o lead, responde em segundos, qualifica,<br>tira dúvidas e
+                                agenda a reunião — tudo automaticamente.<br>Você só fala com quem já está pronto para
+                                comprar.</p>
+                            <ul class="feature-list">
+                                <li><strong>Agente SDR</strong>: primeiro contato automático em menos de 30 segundos
+                                </li>
+                                <li><strong>Follow-up automático</strong>: sequência de até 7 dias para leads que não
+                                    responderam</li>
+                                <li><strong>Fluxos personalizados</strong>: automações por nicho, etapa do funil e
+                                    comportamento do lead</li>
+                            </ul>
+                            <a href="#precos" class="btn btn-primary">Ver automações</a>
+                        </div>
+                        <div class="feature-image">
+                            <div class="ui-automation-demo">
+                                <h4>Fluxo de Automação</h4>
+                                <div class="flex items-center gap-2 mt-4">
+                                    <div class="bg-primary text-white p-2 rounded">Lead</div>
+                                    <span>→</span>
+                                    <div class="bg-success text-white p-2 rounded">IA SDR</div>
+                                    <span>→</span>
+                                    <div class="bg-primary text-white p-2 rounded">CRM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section section bg-alt">
+            <div class="container">
+                <div class="grid grid-cols-2 text-center gap-8">
+                    <div class="stat-item">
+                        <div class="stat-number"
+                            style="font-size: 3rem; font-weight: 800; color: var(--color-primary);">500+</div>
+                        <div class="stat-label">Empresas ativas na plataforma</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number"
+                            style="font-size: 3rem; font-weight: 800; color: var(--color-primary);">30s</div>
+                        <div class="stat-label">Tempo de resposta do Agente de IA</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="depoimentos" class="testimonials-section section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">CASES DE SUCESSO</span>
+                    <h2 class="section-title">Negócios reais. Resultados reais.</h2>
+                    <p class="section-desc">Veja como profissionais de diferentes segmentos transformaram<br>sua
+                        operação comercial com a ZENT A.I.</p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <!-- Depoimento 1: Clínica Estética -->
+                    <div class="card">
+                        <div style="color: var(--color-primary); font-size: 1.25rem; margin-bottom: 1rem;">★★★★★</div>
+                        <p class="mb-4">"Eu tinha leads chegando pelo Instagram e WhatsApp ao mesmo tempo, e eu perdia o
+                            controle. Com a ZENT, tudo chega num só lugar. O que me surpreendeu mesmo foi o agente de
+                            IA: ele responde na hora, explica os procedimentos, já manda o link para agendamento e ainda
+                            qualifica se o lead tem perfil para os meus tratamentos. Em dois meses, minha agenda estava
+                            cheia para 30 dias. Faturei R$ 28.000 em um mês sem contratar nenhum funcionário a mais."
+                        </p>
+                        <strong>Camila Ferreira</strong>
+                        <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+                            Proprietária — Studio CF Estética Avançada<br>Clínica Estética · São Paulo, SP</div>
+                    </div>
+
+                    <!-- Depoimento 2: Advocacia -->
+                    <div class="card">
+                        <div style="color: var(--color-primary); font-size: 1.25rem; margin-bottom: 1rem;">★★★★★</div>
+                        <p class="mb-4">"No escritório de advocacia, o primeiro contato com um potencial cliente é
+                            decisivo. Antes da ZENT, mensagens chegavam fora do horário e só respondíamos no outro dia —
+                            quando o cliente já tinha ido para o concorrente. Hoje, o agente de IA da ZENT recebe o
+                            contato, apresenta o escritório, pergunta sobre o caso e já agenda uma consulta inicial. Uma
+                            dessas consultas agendadas automaticamente resultou em um contrato de R$ 45.000. O ROI da
+                            plataforma se pagou no primeiro mês."</p>
+                        <strong>Dr. Marcelo Augusto Lins</strong>
+                        <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+                            Sócio-Fundador — Lins & Associados Advogados<br>Direito Empresarial · Curitiba, PR</div>
+                    </div>
+
+                    <!-- Depoimento 3: Odontologia -->
+                    <div class="card">
+                        <div style="color: var(--color-primary); font-size: 1.25rem; margin-bottom: 1rem;">★★★★★</div>
+                        <p class="mb-4">"Gerencio um consultório odontológico com três cadeiras e uma equipe enxuta.
+                            Minha maior dor era a remarcação: paciente ligava fora do horário, a secretária não atendia
+                            e o horário ficava vago. Com a ZENT, o próprio agente de IA confirma consultas, recebe
+                            pedidos de remarcação e já oferece um novo horário disponível — sozinho. Reduzi em 60% os
+                            horários ociosos. Isso representou mais de R$ 12.000 de receita recuperada só no primeiro
+                            trimestre."</p>
+                        <strong>Dr. Ricardo Nunes</strong>
+                        <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+                            Cirurgião-Dentista — Clínica Nunes Odontologia<br>Odontologia · Porto Alegre, RS</div>
+                    </div>
+
+                    <!-- Depoimento 4: Contabilidade -->
+                    <div class="card">
+                        <div style="color: var(--color-primary); font-size: 1.25rem; margin-bottom: 1rem;">★★★★★</div>
+                        <p class="mb-4">"No escritório de contabilidade, a captação de clientes sempre foi no boca a
+                            boca. Quando investimos em tráfego pago, os leads começaram a aparecer — mas a equipe não
+                            conseguia dar conta de responder todos. Com a ZENT, implantamos o agente de IA em uma tarde:
+                            ele recebe o lead, explica os serviços, pergunta o porte da empresa e o regime tributário, e
+                            já agenda uma reunião de diagnóstico. Minha equipe só entra em cena quando o lead já está
+                            aquecido. Em 45 dias, fechamos 11 novos contratos recorrentes."</p>
+                        <strong>Patrícia Souza</strong>
+                        <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+                            Sócia-Diretora — Souza Contábil Assessoria<br>Contabilidade Empresarial · Belo Horizonte, MG
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 5: Medicina Estética -->
+                    <div class="card">
+                        <div style="color: var(--color-primary); font-size: 1.25rem; margin-bottom: 1rem;">★★★★★</div>
+                        <p class="mb-4">"Sou médico com consultas particulares e sempre tive dificuldade em transformar
+                            seguidores do Instagram em pacientes. Minha secretária atendia até as 18h, mas os leads
+                            chegavam a qualquer hora. Com a ZENT, o agente passou a responder dúvidas sobre os
+                            procedimentos, confirmar disponibilidade de agenda e colher informações prévias do paciente.
+                            Uma paciente entrou em contato às 23h com uma dúvida sobre um procedimento. O agente
+                            respondeu, ela agendou na hora. Na consulta, fechou um pacote de R$ 8.500. Esse caso sozinho
+                            já justificou o investimento."</p>
+                        <strong>Dr. Thiago Mendonça</strong>
+                        <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.5rem;">Clínico e
+                            Esteticista — Consultório Dr. Mendonça<br>Medicina Estética · Florianópolis, SC</div>
+                    </div>
+
+                    <!-- Depoimento 6: Agência de Marketing -->
+                    <div class="card">
+                        <div style="color: var(--color-primary); font-size: 1.25rem; margin-bottom: 1rem;">★★★★★</div>
+                        <p class="mb-4">"Tenho uma agência de marketing digital com 12 colaboradores. Nosso desafio era
+                            o follow-up B2B: ciclo longo, decisores difíceis de engajar e a equipe não fazia o follow-up
+                            com consistência. Com a ZENT, montamos um fluxo automático de 7 dias para cada lead. O
+                            agente qualificava, enviava o portfólio e agendava uma call com o comercial. Em 60 dias,
+                            nossa taxa de agendamento foi de 8% para 27%. Fechamos 4 contratos de gestão de mídia que
+                            representam R$ 38.000 de MRR adicional."</p>
+                        <strong>Rafael Oliveira</strong>
+                        <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.5rem;">CEO —
+                            Conecta Digital<br>Agência de Marketing · Recife, PE</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="precos" class="pricing-section section bg-alt">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">ESCOLHA SEU PONTO DE PARTIDA</span>
+                    <h2 class="section-title">Comece pequeno. Escale sem limite.</h2>
+                    <p class="section-description">7 dias grátis em qualquer plano. Sem cartão de crédito. Cancele
+                        quando quiser.</p>
+                </div>
+
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="card flex flex-col justify-between">
+                        <div>
+                            <h3 class="mb-2">STARTER</h3>
+                            <div class="mb-4">
+                                <span style="font-size: 2rem; font-weight: 800; color: var(--color-primary);">R$
+                                    197</span>
+                                <span class="text-muted">/mês</span>
+                                <span class="price-subtext">+ Integração mensal de R$ 77</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">Ideal para quem está começando a organizar o atendimento.
+                            </p>
+                            <ul class="feature-list text-sm">
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Omnichannel (integre todos os seus canais de atendimento a um lugar só)
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    CRM com pipeline visual
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Google Agenda integrada
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Dashboard de controle
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Até 500 leads
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    1 usuário BÁSICO
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/555121609930?text=Ol%C3%A1%21%20%F0%9F%91%8B%20Estou%20interessado%20em%20conhecer%20mais%20sobre%20a%20demonstra%C3%A7%C3%A3o%20gra%C3%BActa%20do%20Plano%20Starter.%20Poderia%20me%20enviar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank"
+                            class="btn btn-outline btn-block mt-6">Começar com o Starter</a>
+                    </div>
+
+                    <div class="card flex flex-col justify-between">
+                        <div>
+                            <h3 class="mb-2">BÁSICO</h3>
+                            <div class="mb-4">
+                                <span style="font-size: 2rem; font-weight: 800; color: var(--color-primary);">R$
+                                    397</span>
+                                <span class="text-muted">/mês</span>
+                                <span class="price-subtext">US$ 87</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">Para negócios que já querem atendimento com IA ativa.</p>
+                            <ul class="feature-list text-sm">
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    I.A. para atendimento ao cliente
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Omnichannel (integre todos os seus canais de atendimento a um lugar só)
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    CRM com pipeline visual
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Google Agenda integrada
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Dashboard de controle
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Até 1.000 leads
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    2 usuários
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/555121609930?text=Ol%C3%A1%21%20%F0%9F%91%8B%20Estou%20interessado%20no%20Plano%20B%C3%A1sico.%20Gostaria%20de%20saber%20mais%20sobre%20os%20recursos%20e%20pre%C3%A7os%20dispon%C3%ADveis." target="_blank"
+                            class="btn btn-primary btn-block mt-6">Começar com o Básico</a>
+                    </div>
+
+                    <div class="card flex flex-col justify-between popular">
+                        <div class="badge-popular">Plano mais escolhido</div>
+                        <div>
+                            <h3 class="mb-2">PROFISSIONAL</h3>
+                            <div class="mb-4">
+                                <span style="font-size: 2rem; font-weight: 800; color: var(--color-primary);">R$
+                                    697</span>
+                                <span class="text-muted">/mês</span>
+                                <span class="price-subtext">US$ 139,90</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">Automação avançada e crescimento previsível.</p>
+                            <ul class="feature-list text-sm">
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Agente de IA avançado
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Sistema inteligente de follow-up automático (até 7 dias)
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Disparo automático quando o lead não responde
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    CRM com pipeline visual automatizado
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Google Agenda integrada
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Planejador de redes sociais
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Integrações com Facebook, Instagram e LinkedIn
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    App Gerador de Prompt SDR
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Dashboard de controle
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    Até 3.000 leads
+                                </li>
+                                <li>
+                                    <span class="checkmark-blue">✓</span>
+                                    5 usuários
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/555121609930?text=Ol%C3%A1%21%20%F0%9F%91%8B%20Estou%20interessado%20no%20Plano%20Profissional.%20Poderia%20me%20enviar%20informa%C3%A7%C3%B5es%20sobre%20este%20plano%3F" target="_blank"
+                            class="btn btn-outline btn-block mt-6">Quero o Profissional</a>
+                    </div>
+
+                    <div class="card flex flex-col justify-between">
+                        <div>
+                            <h3 class="mb-2">PREMIUM</h3>
+                            <div class="mb-4">
+                                <span style="font-size: 2rem; font-weight: 800; color: var(--color-primary);">A
+                                    Consultar</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">Estrutura completa para operação comercial escalável.</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <ul class="feature-list text-sm mb-0">
+                                    <li><span class="checkmark-blue">✓</span> Agente de IA avançado</li>
+                                    <li><span class="checkmark-blue">✓</span> CRM com pipeline visual automatizado</li>
+                                    <li><span class="checkmark-blue">✓</span> Google Agenda integrada</li>
+                                    <li><span class="checkmark-blue">✓</span> Dashboard de controle</li>
+                                    <li><span class="checkmark-blue">✓</span> Disparo de mensagens</li>
+                                    <li><span class="checkmark-blue">✓</span> Planejador de redes sociais</li>
+                                    <li><span class="checkmark-blue">✓</span> Integração com Stripe</li>
+                                </ul>
+                                <ul class="feature-list text-sm mb-0">
+                                    <li><span class="checkmark-blue">✓</span> Gerador de Prompt</li>
+                                    <li><span class="checkmark-blue">✓</span> Integrações com Facebook, Instagram,
+                                        LinkedIn, Notion e outras sob demanda</li>
+                                    <li><span class="checkmark-blue">✓</span> App Gerador de Prompt SDR</li>
+                                    <li><span class="checkmark-blue">✓</span> Leads ilimitados</li>
+                                    <li><span class="checkmark-blue">✓</span> 10 usuários</li>
+                                    <li><span class="checkmark-blue">✓</span> Suporte VIP (1 call estratégica por mês)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="https://api.whatsapp.com/send/?phone=555121609930&text=Olá%2C+gostaria+de+saber+mais+sobre+o+Plano+Premium."
+                            target="_blank" class="btn btn-outline btn-block mt-6">Falar com um especialista</a>
+                    </div>
+                </div>
+
+                <!-- Trust Line -->
+                <div
+                    style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+                    <p class="text-muted" style="font-size: 0.875rem;">Sem contrato de fidelidade · Sem taxa de
+                        cancelamento ·<br>Implementação em menos de 1 hora com suporte em português</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="final-cta bg-alt">
+            <div class="container">
+                <div class="grid grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="hero-badge" style="background: #e0f2fe; color: var(--color-primary);">COMECE HOJE,
+                            SEM RISCO</div>
+                        <h2 class="mb-6">Enquanto você lê isso, um lead seu pode estar esperando resposta.</h2>
+                        <p class="section-desc mb-8" style="text-align: left; margin-left: 0;">Em 15 minutos a ZENT está
+                            configurada e seu Agente de IA<br>já está respondendo leads. Fale com a nossa equipe e veja
+                            ao vivo<br>como funciona para o seu segmento.</p>
+                        <ul class="feature-list">
+                            <li><span class="checkmark-blue">✓</span> Demonstração personalizada para o seu segmento
+                            </li>
+                            <li><span class="checkmark-blue">✓</span> Implantação assistida em menos de 1 hora</li>
+                            <li><span class="checkmark-blue">✓</span> 7 dias grátis — sem cartão de crédito</li>
+                        </ul>
+                    </div>
+                    <div class="form-card">
+                        <form id="lead-form" class="flex flex-col gap-6">
+                            <div class="form-group">
+                                <label for="name">Nome completo</label>
+                                <input type="text" id="name" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail profissional</label>
+                                <input type="email" id="email" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp</label>
+                                <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="plan-interest">Plano de interesse</label>
+                                <select id="plan-interest" required>
+                                    <option value="" disabled selected>Selecione um plano</option>
+                                    <option value="starter">Starter</option>
+                                    <option value="basico">Básico</option>
+                                    <option value="profissional">Profissional</option>
+                                    <option value="premium">Premium / Enterprise</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Quero minha demonstração
+                                gratuita</button>
+                            <div id="form-success" style="display:none;" class="text-success text-sm text-center mt-2">
+                                Mensagem enviada com sucesso! Redirecionando...</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mobile App Section -->
+        <section class="mobile-app-section section bg-alt">
+            <div class="container">
+                <div class="grid grid-cols-2 gap-12 items-center">
+                    <!-- Left: App Visual -->
+                    <div class="flex justify-center">
+                        <div class="mobile-phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="app-header">
+                                        <span class="app-time">9:41</span>
+                                    </div>
+                                    <div class="app-content">
+                                        <h3 class="app-title">Painel de Controle</h3>
+                                        <div class="app-stat">
+                                            <span class="app-label">Leads Hoje</span>
+                                            <span class="app-value">12</span>
+                                        </div>
+                                        <div class="app-stat">
+                                            <span class="app-label">Conversões</span>
+                                            <span class="app-value">3</span>
+                                        </div>
+                                        <div class="app-actions">
+                                            <button class="app-btn">Ver Leads</button>
+                                            <button class="app-btn secondary">Analisar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Content -->
+                    <div>
+                        <div class="hero-badge">Aplicativo Mobile</div>
+                        <h2 class="mb-6">Gerencie seu negócio de qualquer lugar</h2>
+                        <p class="section-desc mb-8" style="text-align: left; margin-left: 0;">O aplicativo ZENT A.I.
+                            mobile oferece acesso completo ao painel de controle, gerenciamento de leads e análises em
+                            tempo real. Tome decisões onde quer que esteja.</p>
+
+                        <div class="mobile-features">
+                            <div class="feature-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Painel em Tempo Real</strong> - Acompanhe suas métricas no celular</span>
+                            </div>
+                            <div class="feature-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Gestão de Leads</strong> - Responda leads e feche vendas mobilmente</span>
+                            </div>
+                            <div class="feature-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Notificações Inteligentes</strong> - Receba alertas de novos leads</span>
+                            </div>
+                            <div class="feature-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Integração Omnichannel</strong> - WhatsApp, Email e Chat integrados</span>
+                            </div>
+                            <div class="feature-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Offline Mode</strong> - Continua funcionando mesmo sem internet</span>
+                            </div>
+                        </div>
+
+                        <div class="app-download-buttons mt-8">
+                            <a href="#" class="btn btn-primary">Download iOS</a>
+                            <a href="#" class="btn btn-outline">Download Android</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark section py-12">
+        <div class="container">
+            <!-- Footer Content Grid -->
+            <div class="grid grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="logo text-white mb-4 block">ZENT<span>A.I.</span></a>
+                    <p class="text-white opacity-60 text-sm">CRM + IA + Automação para empresas que querem
+                        crescer<br>sem contratar mais — do lead ao contrato assinado.</p>
+                </div>
+                <div>
+                    <h4 class="text-white mb-4 font-semibold">Produto</h4>
+                    <ul class="flex flex-col gap-2 list-none p-0">
+                        <li><a href="#recursos"
+                                class="text-white opacity-60 text-sm hover:opacity-100 transition">Funcionalidades</a>
+                        </li>
+                        <li><a href="#precos" class="text-white opacity-60 text-sm hover:opacity-100 transition">Como
+                                Funciona</a></li>
+                        <li><a href="#solucoes"
+                                class="text-white opacity-60 text-sm hover:opacity-100 transition">Soluções por
+                                Segmento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white mb-4 font-semibold">Empresa</h4>
+                    <ul class="flex flex-col gap-2 list-none p-0">
+                        <li><a href="#" class="text-white opacity-60 text-sm hover:opacity-100 transition">Sobre nós</a>
+                        </li>
+                        <li><a href="#contato"
+                                class="text-white opacity-60 text-sm hover:opacity-100 transition">Contato</a></li>
+                        <li><a href="#" class="text-white opacity-60 text-sm hover:opacity-100 transition">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white mb-4 font-semibold">Conecte-se</h4>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="#" class="text-white opacity-60 text-sm hover:opacity-100 transition"
+                            title="Instagram">Instagram</a>
+                        <a href="#" class="text-white opacity-60 text-sm hover:opacity-100 transition"
+                            title="LinkedIn">LinkedIn</a>
+                        <a href="#" class="text-white opacity-60 text-sm hover:opacity-100 transition"
+                            title="YouTube">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-slate-800 pt-8 text-center">
+                <p class="text-white opacity-40 text-sm">&copy; 2026 ZENT A.I. Todos os direitos reservados. | <a
+                        href="#" class="hover:opacity-70 transition">Política de Privacidade</a> | <a href="#"
+                        class="hover:opacity-70 transition">Termos de Serviço</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- POPUP SOUTH SUMMIT — ZENT A.I. -->
+<div id="zent-overlay" style="
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; font-family: 'Segoe UI', Arial, sans-serif;">
+
+  <div id="zent-popup" style="
+    background: #fff; border-radius: 16px;
+    width: 100%; max-width: 480px;
+    overflow: hidden; position: relative;
+    opacity: 0; transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;">
+
+    <!-- Header coral -->
+    <div style="background: #FF5966; padding: 28px 32px 24px; position: relative;">
+
+      <button onclick="zentClose()" style="
+        position: absolute; top: 14px; right: 16px;
+        background: rgba(255,255,255,0.2); border: none; color: #fff;
+        width: 28px; height: 28px; border-radius: 50%;
+        cursor: pointer; font-size: 16px;">&#x2715;</button>
+
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+        <div style="background: rgba(255,255,255,0.2); border-radius: 8px; padding: 4px 10px;">
+          <span style="color: #fff; font-size: 11px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;">
+            South Summit Brazil 2026</span>
+        </div>
+        <div style="background: #fff; border-radius: 8px; padding: 4px 10px;">
+          <span style="color: #FF5966; font-size: 11px; font-weight: 800;">30% OFF</span>
+        </div>
+      </div>
+
+      <h2 style="color: #fff; font-size: 21px; font-weight: 800; margin: 0 0 10px; line-height: 1.25;">
+        Participante do South Summit tem<br>
+        <span style="font-size: 26px;">30% de desconto</span> nos planos ZENT A.I.
+      </h2>
+
+      <p style="color: rgba(255,255,255,0.9); font-size: 13px; margin: 0; line-height: 1.55;">
+        Cadastre-se abaixo e garanta seu cupom exclusivo. Nossa equipe entra em
+        contato para ativar o desconto e agendar sua
+        <strong style="color: #fff;">demonstra&#231;&#227;o gratuita</strong>.
+      </p>
+    </div>
+
+    <!-- Formulário -->
+    <div id="zent-form" style="padding: 22px 32px 26px;">
+
+      <div style="background: #FFF5F5; border: 1px solid #FFD6D6; border-radius: 10px;
+        padding: 11px 14px; margin-bottom: 18px; display: flex; gap: 10px;">
+        <span style="font-size: 15px; flex-shrink: 0;">&#127991;</span>
+        <p style="margin: 0; font-size: 12.5px; color: #993C1D; line-height: 1.5;">
+          <strong>Oferta exclusiva para participantes</strong> &#8212;
+          30% OFF em qualquer plano + demonstra&#231;&#227;o gratuita de 30 min
+          com um especialista da ZENT A.I.
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 11px;">
+
+        <div>
+          <label style="font-size: 11.5px; font-weight: 700; color: #555;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            display: block; margin-bottom: 4px;">Nome completo</label>
+          <input id="zent-nome" type="text" placeholder="Seu nome" style="
+            width: 100%; box-sizing: border-box; padding: 10px 14px;
+            border: 1.5px solid #E0E0E0; border-radius: 10px;
+            font-size: 14px; outline: none;"
+            onfocus="this.style.borderColor='#FF5966'"
+            onblur="this.style.borderColor='#E0E0E0'" />
+        </div>
+
+        <div>
+          <label style="font-size: 11.5px; font-weight: 700; color: #555;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            display: block; margin-bottom: 4px;">E-mail profissional</label>
+          <input id="zent-email" type="email" placeholder="seu@email.com" style="
+            width: 100%; box-sizing: border-box; padding: 10px 14px;
+            border: 1.5px solid #E0E0E0; border-radius: 10px;
+            font-size: 14px; outline: none;"
+            onfocus="this.style.borderColor='#FF5966'"
+            onblur="this.style.borderColor='#E0E0E0'" />
+        </div>
+
+        <div>
+          <label style="font-size: 11.5px; font-weight: 700; color: #555;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            display: block; margin-bottom: 4px;">WhatsApp</label>
+          <input id="zent-whats" type="tel" placeholder="(51) 9 9999-9999" style="
+            width: 100%; box-sizing: border-box; padding: 10px 14px;
+            border: 1.5px solid #E0E0E0; border-radius: 10px;
+            font-size: 14px; outline: none;"
+            onfocus="this.style.borderColor='#FF5966'"
+            onblur="this.style.borderColor='#E0E0E0'" />
+        </div>
+
+        <div>
+          <label style="font-size: 11.5px; font-weight: 700; color: #555;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            display: block; margin-bottom: 4px;">Empresa</label>
+          <input id="zent-empresa" type="text" placeholder="Nome da sua empresa" style="
+            width: 100%; box-sizing: border-box; padding: 10px 14px;
+            border: 1.5px solid #E0E0E0; border-radius: 10px;
+            font-size: 14px; outline: none;"
+            onfocus="this.style.borderColor='#FF5966'"
+            onblur="this.style.borderColor='#E0E0E0'" />
+        </div>
+
+      </div>
+
+      <div id="zent-err" style="display: none; color: #D32F2F; font-size: 12.5px; margin-top: 8px;"></div>
+
+      <button onclick="zentSubmit()" id="zent-cta" style="
+        width: 100%; margin-top: 15px; background: #FF5966; color: #fff;
+        border: none; border-radius: 12px; padding: 14px;
+        font-size: 14.5px; font-weight: 700; cursor: pointer;"
+        onmouseover="this.style.background='#e04450'"
+        onmouseout="this.style.background='#FF5966'">
+        Quero meu desconto de 30% &#8594;
+      </button>
+
+      <p style="text-align: center; font-size: 11px; color: #aaa; margin: 9px 0 0;">
+        Sem spam. Cupom enviado pelo WhatsApp ap&#243;s confirma&#231;&#227;o.
+      </p>
+    </div>
+
+    <!-- Tela de sucesso -->
+    <div id="zent-success" style="display: none; padding: 40px 32px; text-align: center;">
+      <div style="width: 60px; height: 60px; background: #FFF0F1; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 16px; font-size: 26px; color: #FF5966;">&#10003;</div>
+      <h3 style="font-size: 20px; font-weight: 800; color: #2C2C2C; margin: 0 0 8px;">
+        Cadastro realizado!</h3>
+      <p style="font-size: 14px; color: #666; line-height: 1.6; margin: 0 0 6px;">
+        Seu cupom de <strong>30% OFF</strong> est&#225; a caminho.</p>
+      <p style="font-size: 13.5px; color: #888; line-height: 1.5; margin: 0 0 24px;">
+        Nossa equipe vai entrar em contato pelo
+        <strong>WhatsApp em at&#233; 24h</strong>
+        para confirmar e agendar sua demonstra&#231;&#227;o.</p>
+      <button onclick="zentClose()" style="
+        background: #2D1B3D; color: #fff; border: none;
+        border-radius: 10px; padding: 12px 28px;
+        font-size: 14px; font-weight: 600; cursor: pointer;">Fechar</button>
+    </div>
+
+  </div>
+</div>
+
+    <!-- Scripts -->
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Close mobile menu on click link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+            });
+        });
+
+        // Lead Form Whatsapp
+        const leadForm = document.getElementById('lead-form');
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+
+            const msg = `Olá! Meu nome é ${name} (${email}). Gostaria de agendar uma demonstração da ZENT A.I. Meu WhatsApp é: ${whatsapp}`;
+            const encodedMsg = encodeURIComponent(msg);
+
+            document.getElementById('form-success').style.display = 'block';
+
+            setTimeout(() => {
+                window.open(`https://api.whatsapp.com/send/?phone=555121609930&text=${encodedMsg}`, '_blank');
+            }, 1000);
+        });
+    </script>
+
+    <!-- POPUP SOUTH SUMMIT — JavaScript -->
+    <script>
+// ── Configuração ─────────────────────────────────────────────────────────────
+const ZENT_ENABLED  = false; // 🔴 DESABILITADO - Mude para 'true' para reativar
+const ZENT_WEBHOOK  = 'https://n8nwebhook.iagestao.site/webhook/southsummit';
+const ZENT_DELAY_MS = 0; // Aparecer imediatamente
+const ZENT_KEY      = 'zent_ss_popup_shown_session'; // Usando sessionStorage
+
+// ── Inicializar popup com delay para garantir DOM pronto ──────────────────
+function initZentPopup() {
+  try {
+    // Verificar se o popup está habilitado
+    if (!ZENT_ENABLED) {
+      console.log('ℹ️ Zent popup: DESABILITADO (ZENT_ENABLED = false)');
+      // Esconder o overlay quando desabilitado
+      var overlay = document.getElementById('zent-overlay');
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+      return;
+    }
+
+    var overlay = document.getElementById('zent-overlay');
+    if (!overlay) {
+      console.warn('🔴 Zent popup: overlay not found');
+      return;
+    }
+    console.log('✅ Zent popup: initialized');
+
+    // Click fora fecha
+    overlay.addEventListener('click', function (e) {
+      if (e.target === this) zentClose();
+    });
+
+    // Exibição automática
+    var flagValue = sessionStorage.getItem(ZENT_KEY);
+    console.log('ℹ️ Zent popup: sessionStorage flag =', flagValue);
+
+    if (!flagValue || flagValue === 'null' || flagValue === '') {
+      setTimeout(function () {
+        var popup = document.getElementById('zent-popup');
+        if (popup) {
+          popup.style.opacity   = '1';
+          popup.style.transform = 'scale(1)';
+          overlay.style.display = 'flex';
+          console.log('✅ Zent popup: shown after', ZENT_DELAY_MS, 'ms');
+        }
+      }, ZENT_DELAY_MS);
+    } else {
+      console.log('ℹ️ Zent popup: already shown (sessionStorage flag set to "' + flagValue + '")');
+      overlay.style.display = 'none';
+    }
+  } catch (e) {
+    console.error('❌ Zent popup init error:', e);
+  }
+}
+
+// Executar quando DOM estiver pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initZentPopup);
+} else {
+  initZentPopup();
+}
+
+// ── Fechar popup ─────────────────────────────────────────────────────────────
+function zentClose() {
+  try {
+    var p = document.getElementById('zent-popup');
+    if (p) {
+      p.style.opacity   = '0';
+      p.style.transform = 'scale(0.95)';
+      setTimeout(function () {
+        var overlay = document.getElementById('zent-overlay');
+        if (overlay) overlay.style.display = 'none';
+      }, 280);
+    }
+    sessionStorage.setItem(ZENT_KEY, '1');
+    console.log('✅ Zent popup: closed');
+  } catch (e) {
+    console.error('❌ Zent close error:', e);
+  }
+}
+
+// ── Validação e envio ────────────────────────────────────────────────────────
+function zentSubmit() {
+  try {
+    var nome    = document.getElementById('zent-nome').value.trim();
+    var email   = document.getElementById('zent-email').value.trim();
+    var whats   = document.getElementById('zent-whats').value.trim();
+    var empresa = document.getElementById('zent-empresa').value.trim();
+    var err     = document.getElementById('zent-err');
+
+    if (!nome || !email || !whats || !empresa) {
+      err.style.display = 'block';
+      err.textContent   = 'Por favor, preencha todos os campos antes de continuar.';
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      err.style.display = 'block';
+      err.textContent   = 'Insira um e-mail válido.';
+      return;
+    }
+    err.style.display = 'none';
+
+    var btn          = document.getElementById('zent-cta');
+    btn.disabled     = true;
+    btn.textContent  = 'Enviando...';
+    btn.style.background = '#ccc';
+
+    var payload = {
+      nome:      nome,
+      email:     email,
+      whatsapp:  whats,
+      empresa:   empresa,
+      origem:    'south-summit-popup',
+      desconto:  '30%',
+      url:       window.location.href,
+      timestamp: new Date().toISOString()
+    };
+
+    console.log('📤 Zent popup: sending payload', payload);
+
+    fetch(ZENT_WEBHOOK, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    })
+    .then(function(response) {
+      console.log('✅ Zent webhook: response', response.status);
+    })
+    .catch(function (e) {
+      console.warn('⚠️ Zent webhook error (non-critical):', e);
+    })
+    .finally(function () {
+      var formEl = document.getElementById('zent-form');
+      var successEl = document.getElementById('zent-success');
+      if (formEl) formEl.style.display    = 'none';
+      if (successEl) successEl.style.display = 'block';
+      sessionStorage.setItem(ZENT_KEY, '1');
+      console.log('✅ Zent popup: success screen shown, closing in 5s');
+      setTimeout(zentClose, 5000);
+    });
+  } catch (e) {
+    console.error('❌ Zent submit error:', e);
+  }
+}
+    </script>
+</body>
+
+</html>

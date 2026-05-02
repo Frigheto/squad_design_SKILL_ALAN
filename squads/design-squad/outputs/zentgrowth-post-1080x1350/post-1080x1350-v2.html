@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zent Growth — Post v2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS zentgrowth.com ── */
+    :root {
+      --c-primary:    #6366f1;
+      --c-secondary:  #8b5cf6;
+      --c-tertiary:   #a855f7;
+      --c-pink:       #ec4899;
+      --c-indigo-d:   #4f46e5;
+      --c-violet:     #7c3aed;
+      --c-white:      #ffffff;
+      --c-text:       #1f2937;
+      --radius-md:    6px;
+      --radius-lg:    8px;
+      --radius-xl:    12px;
+      --radius-full:  9999px;
+      --font:         'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      font-family: var(--font);
+      background: #05050f;
+    }
+
+    /* ════════════════════════════════
+       CANVAS PRINCIPAL
+    ════════════════════════════════ */
+    .canvas {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      background: #07071a;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Mesh gradient base ── */
+    .bg-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(99,102,241,0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 20%,  rgba(139,92,246,0.40) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 60% at 50% 110%, rgba(236,72,153,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at -10% 70%, rgba(79,70,229,0.30) 0%, transparent 55%);
+    }
+
+    /* ── Grid de pontos ── */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* ── Linhas de grade ── */
+    .bg-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+
+    /* ── Blur orbs ── */
+    .orb { position: absolute; border-radius: 50%; pointer-events: none; }
+    .orb-a {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+      top: -200px; left: -150px;
+    }
+    .orb-b {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(236,72,153,0.20) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+    }
+    .orb-c {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%);
+      top: 40%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ── Linha de destaque horizontal ── */
+    .accent-line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--c-primary) 25%,
+        var(--c-pink) 75%,
+        transparent 100%
+      );
+    }
+
+    /* ════════════════════════════════
+       LAYOUT INTERNO
+    ════════════════════════════════ */
+    .inner {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 60px 72px;
+      gap: 0;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-gem {
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-tertiary));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 24px rgba(99,102,241,0.6), 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .logo-gem svg { width: 24px; height: 24px; fill: #fff; }
+
+    .logo-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      font-feature-settings: 'ss01';
+    }
+
+    .logo-name span {
+      background: linear-gradient(90deg, var(--c-primary), var(--c-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-ai {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.4);
+      border-radius: var(--radius-full);
+      padding: 8px 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-dot {
+      width: 7px; height: 7px;
+      background: var(--c-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--c-primary);
+    }
+
+    .badge-ai span {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    /* Tagline pill */
+    .tagline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-full);
+      padding: 10px 22px;
+    }
+
+    .tagline-pill-icon {
+      width: 18px; height: 18px;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-pink));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .tagline-pill-icon svg { width: 10px; height: 10px; fill: #fff; }
+
+    .tagline-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.01em;
+    }
+
+    /* Headline com gradient */
+    .headline-block { display: flex; flex-direction: column; gap: 4px; }
+
+    .headline {
+      font-size: 92px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-feature-settings: 'ss01';
+      color: #fff;
+    }
+
+    .headline .grad {
+      background: linear-gradient(135deg,
+        #fff 0%,
+        rgba(255,255,255,0.85) 30%,
+        var(--c-secondary) 65%,
+        var(--c-pink) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subheadline {
+      margin-top: 28px;
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      max-width: 620px;
+    }
+
+    /* ── DASHBOARD MOCKUP ── */
+    .mockup-wrap {
+      position: relative;
+      margin: 40px 0;
+    }
+
+    /* Glow atrás do mockup */
+    .mockup-glow {
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%,
+        rgba(99,102,241,0.25) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .mockup {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 0 1px rgba(99,102,241,0.2),
+        0 24px 64px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    /* Barra de título do mockup */
+    .mockup-titlebar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .dot-red   { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+    .dot-yellow{ width: 11px; height: 11px; border-radius: 50%; background: #febc2e; }
+    .dot-green { width: 11px; height: 11px; border-radius: 50%; background: #28c840; }
+
+    .mockup-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.01em;
+      margin: 0 12px;
+    }
+
+    /* Dashboard body */
+    .mockup-body {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-value.accent { color: var(--c-primary); }
+    .stat-value.pink   { color: var(--c-pink);    }
+    .stat-value.violet { color: var(--c-secondary); }
+
+    .stat-delta {
+      font-size: 12px;
+      font-weight: 600;
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Mini bar chart */
+    .mini-chart {
+      grid-column: span 3;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chart-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .chart-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--c-primary);
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 50px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+      background: rgba(99,102,241,0.3);
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .bar.active {
+      background: linear-gradient(180deg, var(--c-primary), var(--c-secondary));
+      box-shadow: 0 0 12px rgba(99,102,241,0.5);
+    }
+
+    /* ── FEATURES PILLS ── */
+    .features-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .feat-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-full);
+      padding: 10px 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .feat-pill-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .feat-pill span {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 44px;
+    }
+
+    .cta-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-tertiary));
+      border-radius: var(--radius-full);
+      padding: 20px 52px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      font-feature-settings: 'ss01';
+      border: none;
+      box-shadow:
+        0 0 40px rgba(99,102,241,0.5),
+        0 8px 24px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    /* Brilho interno do botão */
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent);
+      border-radius: var(--radius-full) var(--radius-full) 0 0;
+    }
+
+    .cta-btn svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .social-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .social-handle {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .social-site {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Divisor com gradiente ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.1) 20%,
+        rgba(99,102,241,0.3) 50%,
+        rgba(255,255,255,0.1) 80%,
+        transparent
+      );
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- Camadas de fundo -->
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-lines"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+  <div class="accent-line"></div>
+
+  <!-- Layout principal -->
+  <div class="inner">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo-wrap">
+        <div class="logo-gem">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="logo-name">Zent<span> Growth</span></div>
+      </div>
+      <div class="badge-ai">
+        <div class="badge-dot"></div>
+        <span>ZENT A.I.</span>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+
+      <!-- Tagline pill -->
+      <div class="tagline-pill">
+        <div class="tagline-pill-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="tagline-text">Plataforma de Gestão Inteligente</span>
+      </div>
+
+      <!-- Headline -->
+      <div class="headline-block">
+        <div class="headline"><span class="grad">Organize</span></div>
+        <div class="headline"><span class="grad">seu negócio.</span></div>
+        <p class="subheadline">
+          Gestão com inteligência artificial para empresas que querem crescer de verdade.
+        </p>
+      </div>
+
+      <!-- Dashboard Mockup -->
+      <div class="mockup-wrap">
+        <div class="mockup-glow"></div>
+        <div class="mockup">
+          <div class="mockup-titlebar">
+            <div class="dot-red"></div>
+            <div class="dot-yellow"></div>
+            <div class="dot-green"></div>
+            <div class="mockup-url">app.zentgrowth.com/dashboard</div>
+          </div>
+          <div class="mockup-body">
+            <div class="stat-card">
+              <div class="stat-label">Receita</div>
+              <div class="stat-value accent">R$128k</div>
+              <div class="stat-delta">↑ 24,3%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Clientes</div>
+              <div class="stat-value violet">4.820</div>
+              <div class="stat-delta">↑ 18,7%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">NPS Score</div>
+              <div class="stat-value pink">94</div>
+              <div class="stat-delta">↑ 6pts</div>
+            </div>
+            <div class="mini-chart">
+              <div class="chart-header">
+                <div class="chart-title">Crescimento Mensal</div>
+                <div class="chart-value">+31% este mês</div>
+              </div>
+              <div class="bars">
+                <div class="bar" style="height:30%"></div>
+                <div class="bar" style="height:42%"></div>
+                <div class="bar" style="height:35%"></div>
+                <div class="bar" style="height:58%"></div>
+                <div class="bar" style="height:50%"></div>
+                <div class="bar" style="height:70%"></div>
+                <div class="bar" style="height:62%"></div>
+                <div class="bar" style="height:78%"></div>
+                <div class="bar" style="height:72%"></div>
+                <div class="bar active" style="height:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- Feature pills -->
+      <div class="features-row">
+        <div class="feat-pill">
+          <div class="feat-pill-dot" style="background:var(--c-primary); box-shadow: 0 0 8px var(--c-primary)"></div>
+          <span>IA Preditiva</span>
+        </div>
+        <div class="feat-pill">
+          <div class="feat-pill-dot" style="background:var(--c-secondary); box-shadow: 0 0 8px var(--c-secondary)"></div>
+          <span>Automação Total</span>
+        </div>
+        <div class="feat-pill">
+          <div class="feat-pill-dot" style="background:var(--c-pink); box-shadow: 0 0 8px var(--c-pink)"></div>
+          <span>Relatórios em tempo real</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <button class="cta-btn">
+        Comece Agora
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <div class="social-info">
+        <div class="social-handle">@zentgrowth</div>
+        <div class="social-site">zentgrowth.com</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

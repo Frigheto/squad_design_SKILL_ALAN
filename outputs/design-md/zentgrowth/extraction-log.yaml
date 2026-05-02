@@ -1,0 +1,31 @@
+url: https://www.zentgrowth.com/
+extracted_at: 2026-05-02T21:42:12.453Z
+sources:
+  external_css_files: 1
+  preload_css_files: 0
+  imports_resolved: 0
+  inline_style_blocks: 0
+  inline_style_attrs: 99
+  failed_fetches: 0
+detection:
+  css_vars_total: 38
+  css_vars_primitive: 38
+  css_vars_alias: 0
+  font_faces: 0
+  unique_tokens_in_graph: 40
+tokens:
+  colors: {}
+  typography: {}
+  rounded: {}
+  spacing: {}
+confidence_summary:
+  high: 0
+  medium: 0
+  low: 0
+lint:
+  ran: true
+  exit_code: null
+  errors_count: -1
+  warnings_count: 0
+  stdout_excerpt: ""
+  stderr_excerpt: ""

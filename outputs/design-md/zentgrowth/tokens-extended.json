@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.1",
+  "source": {
+    "run_dir_basename": ".run-20260502-184059"
+  },
+  "components": {
+    "button": {
+      "radius": "var(--radius-full, 9999px)",
+      "padding": ".75rem 1.75rem",
+      "font_weight": "600",
+      "font_size": ".875rem",
+      "cursor": "pointer",
+      "outline": "none",
+      "transition": "all var(--transition, all .3s ease)",
+      "text": "#fff",
+      "states": {
+        "active": {
+          "transform": "scale(.98)"
+        },
+        "disabled": {
+          "opacity": ".5"
+        },
+        "hover": {
+          "bg": "var(--color-primary-dark, #1d4ed8)",
+          "shadow": "var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1))",
+          "text": "var(--color-primary, #2563eb)"
+        }
+      },
+      "variants": {
+        "primary": {
+          "bg": "var(--color-primary, #2563eb)",
+          "text": "#fff",
+          "shadow": "var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05))"
+        },
+        "outline": {
+          "bg": "transparent",
+          "text": "var(--color-text, #0f172a)"
+        },
+        "secondary": {
+          "bg": "var(--color-bg-alt, #f8fafc)",
+          "text": "var(--color-text, #0f172a)"
+        },
+        "ghost": {
+          "bg": "transparent",
+          "text": "var(--color-text, #0f172a)"
+        },
+        "danger": {
+          "bg": "var(--color-danger, #ef4444)",
+          "text": "#fff"
+        },
+        "sm": {
+          "padding": ".5rem 1rem",
+          "font_size": ".75rem"
+        },
+        "lg": {
+          "padding": "1rem 2rem",
+          "font_size": "1rem"
+        },
+        "btn": {
+          "radius": "var(--radius-full, 9999px)",
+          "padding": ".75rem 1.5rem",
+          "font_weight": "600",
+          "cursor": "pointer",
+          "transition": "all .3s",
+          "text": "#fff"
+        }
+      }
+    },
+    "card": {
+      "radius": "var(--radius-lg, 16px)",
+      "padding": "2rem 0",
+      "bg": "var(--color-bg, #ffffff)",
+      "shadow": "var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05))",
+      "transition": "all var(--transition, all .3s ease)",
+      "font_weight": "700",
+      "font_size": ".75rem",
+      "text": "var(--color-text-light, #94a3b8)",
+      "transform": "scale(1.05)",
+      "states": {
+        "hover": {
+          "shadow": "var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1))",
+          "transform": "translateY(-2px)"
+        }
+      },
+      "variants": {
+        "info": {
+          "padding": "1.5rem",
+          "text": "#fff"
+        }
+      }
+    },
+    "input": {
+      "radius": "var(--radius-md, 12px)",
+      "padding": ".75rem 1rem",
+      "font_size": "1rem",
+      "bg": "var(--color-bg, #ffffff)",
+      "text": "var(--color-text, #0f172a)",
+      "transition": "border-color var(--transition, all .3s ease)",
+      "states": {
+        "focus": {
+          "outline": "none",
+          "shadow": "0 0 0 3px var(--color-primary-light, #dbeafe)"
+        }
+      }
+    },
+    "badge": {
+      "radius": "var(--radius-full, 9999px)",
+      "padding": ".25rem .75rem",
+      "font_weight": "700",
+      "font_size": ".75rem",
+      "bg": "var(--color-primary-light, #dbeafe)",
+      "text": "var(--color-primary, #2563eb)",
+      "variants": {
+        "popular": {
+          "radius": "var(--radius-full, 9999px)",
+          "padding": ".25rem 1rem",
+          "font_weight": "800",
+          "font_size": ".75rem",
+          "text": "#fff",
+          "transform": "translate(-50%)"
+        }
+      }
+    },
+    "link": {
+      "text": "var(--color-primary, #2563eb)",
+      "transition": "color var(--transition, all .3s ease)",
+      "opacity": "1",
+      "states": {
+        "hover": {
+          "text": "var(--color-primary-dark, #1d4ed8)"
+        }
+      },
+      "variants": {
+        "links": {
+          "font_weight": "var(--font-weight-medium, 500)",
+          "font_size": ".875rem",
+          "text": "var(--color-text-muted, #64748b)",
+          "transition": "color var(--transition, all .3s ease)"
+        }
+      }
+    },
+    "tab": {
+      "padding": "1.5rem",
+      "font_size": ".875rem"
+    },
+    "alert": {
+      "radius": "var(--radius-md, 12px)",
+      "padding": "2rem"
+    },
+    "label": {
+      "font_weight": "700",
+      "text": "var(--color-text, #0f172a)",
+      "font_size": ".875rem"
+    },
+    "error_text": {
+      "font_size": ".875rem",
+      "text": "var(--color-danger, #ef4444)"
+    }
+  },
+  "shadow": {
+    "xs": "0 20px 60px #0000004d",
+    "sm": "0 20px 60px rgba(0, 0, 0, 0.15)"
+  },
+  "motion": {
+    "duration_fast": "300ms",
+    "duration_base": "300ms",
+    "duration_slow": "300ms",
+    "keyframes_count": 3
+  },
+  "meta": {
+    "style_archetype": "polaris-friendly",
+    "archetype_confidence": 89,
+    "density": "compact",
+    "motion_preference": "smooth"
+  },
+  "gradient": {
+    "primary": "radial-gradient(circle at top right,var(--color-primary-light) 0%,var(--color-bg) 70%)",
+    "secondary": "linear-gradient(transparent,#000c)",
+    "total_unique": 3
+  },
+  "backdrop_blur": {
+    "sm": "10px",
+    "lg": "10px"
+  },
+  "opacity": {
+    "disabled": 0.5,
+    "muted": 0.6,
+    "hover": 0.8
+  },
+  "focus_ring": {
+    "outline": null,
+    "outline_offset": null,
+    "box_shadow": "0 0 0 3px var(--color-primary-light)"
+  },
+  "z_index": {
+    "base": 1,
+    "dropdown": 50,
+    "modal": 999,
+    "toast": 9999,
+    "tooltip": 9999
+  },
+  "container": {
+    "max_width": "1200px"
+  },
+  "themed": {
+    "supportsDark": false,
+    "preferredSelector": null,
+    "preferred": {},
+    "light": {
+      "--color-bg": "#ffffff",
+      "--color-bg-alt": "#f8fafc",
+      "--color-bg-dark": "#0f172a",
+      "--color-text": "#0f172a",
+      "--color-text-muted": "#64748b",
+      "--color-text-light": "#94a3b8",
+      "--color-text-inverse": "#ffffff",
+      "--color-primary": "#2563eb",
+      "--color-primary-dark": "#1d4ed8",
+      "--color-primary-light": "#dbeafe",
+      "--color-border": "#e2e8f0",
+      "--color-border-strong": "#cbd5e1",
+      "--color-success": "#10b981",
+      "--color-warning": "#f59e0b",
+      "--color-danger": "#ef4444",
+      "--font-family": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "--font-weight-normal": "400",
+      "--font-weight-medium": "500",
+      "--font-weight-semibold": "600",
+      "--font-weight-bold": "700",
+      "--font-weight-extrabold": "800",
+      "--space-xs": ".25rem",
+      "--space-sm": ".5rem",
+      "--space-md": "1rem",
+      "--space-lg": "1.5rem",
+      "--space-xl": "2rem",
+      "--space-2xl": "2.5rem",
+      "--space-3xl": "3rem",
+      "--radius-sm": "8px",
+      "--radius-md": "12px",
+      "--radius-lg": "16px",
+      "--radius-xl": "20px",
+      "--radius-full": "9999px",
+      "--shadow-sm": "0 1px 2px 0 rgba(0, 0, 0, .05)",
+      "--shadow-md": "0 4px 6px -1px rgba(0, 0, 0, .1)",
+      "--shadow-lg": "0 10px 15px -3px rgba(0, 0, 0, .1)",
+      "--shadow-xl": "0 20px 25px -5px rgba(0, 0, 0, .1)",
+      "--transition": "all .3s ease"
+    },
+    "dark": {},
+    "defaultMode": "light"
+  },
+  "coverage": {
+    "overall": {
+      "detected": 22,
+      "total": 32,
+      "percent": 68.8
+    },
+    "by_layer": {
+      "L1": {
+        "detected": 0,
+        "total": 5,
+        "percent": 0
+      },
+      "L2": {
+        "detected": 10,
+        "total": 15,
+        "percent": 67
+      },
+      "L3": {
+        "detected": 6,
+        "total": 6,
+        "percent": 100
+      },
+      "L4": {
+        "detected": 3,
+        "total": 3,
+        "percent": 100
+      },
+      "L5": {
+        "detected": 3,
+        "total": 3,
+        "percent": 100
+      }
+    },
+    "detected": [
+      "L2.button",
+      "L2.button.states",
+      "L2.button.variants",
+      "L2.card",
+      "L2.input",
+      "L2.badge",
+      "L2.link",
+      "L2.tab",
+      "L2.alert",
+      "L2.label",
+      "L3.shadow_ladder",
+      "L3.motion_buckets",
+      "L3.gradient",
+      "L3.backdrop_blur",
+      "L3.opacity_scale",
+      "L3.focus_ring",
+      "L4.breakpoints",
+      "L4.z_index",
+      "L4.container_max_width",
+      "L5.style_archetype",
+      "L5.density",
+      "L5.motion_preference"
+    ],
+    "missing": [
+      {
+        "category": "L1.colors_semantic",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.colors_extended",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.typography",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.rounded",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.spacing",
+        "reason": "unknown"
+      },
+      {
+        "category": "L2.nav",
+        "reason": "obfuscated"
+      },
+      {
+        "category": "L2.table",
+        "reason": "not_used_by_site"
+      },
+      {
+        "category": "L2.tooltip",
+        "reason": "not_used_by_site"
+      },
+      {
+        "category": "L2.modal",
+        "reason": "not_used_by_site"
+      },
+      {
+        "category": "L2.avatar",
+        "reason": "marketing_surface"
+      }
+    ],
+    "reason_codes": {
+      "not_used_by_site": "Site does not use this token category. CSS has no relevant declarations.",
+      "flat_design": "Site is intentionally flat. No box-shadow declarations beyond 'none'.",
+      "no_glassmorphism": "Site does not use backdrop-filter. Glass effects absent by design.",
+      "no_form_surface": "Site lacks public forms. Label/help/error tokens are conventionally undefined.",
+      "marketing_surface": "Marketing-only site. Component (tabs/avatar/tooltip) doesn't appear in homepage flow.",
+      "no_variants": "Site uses a single button style. No variant suffix detected (primary/secondary/ghost).",
+      "obfuscated": "Site uses CSS-in-JS / hash-based class names that elude pattern matching.",
+      "extractor_limitation": "Signal exists in CSS but current detector heuristics didn't match.",
+      "theme_mismatch": "Tokens encode the opposite theme of what the site renders by default. Re-extract recommended.",
+      "unknown": "Could not classify — investigate manually."
+    }
+  },
+  "theme": {
+    "default": "light",
+    "confidence": "low",
+    "signals": [
+      "no-signal-fallback"
+    ]
+  }
+}

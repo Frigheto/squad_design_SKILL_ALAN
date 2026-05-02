@@ -1,0 +1,268 @@
+[
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-bg",
+    "value": "#ffffff",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-bg-alt",
+    "value": "#f8fafc",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-bg-dark",
+    "value": "#0f172a",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-text",
+    "value": "#0f172a",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-text-muted",
+    "value": "#64748b",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-text-light",
+    "value": "#94a3b8",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-text-inverse",
+    "value": "#ffffff",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-primary",
+    "value": "#2563eb",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-primary-dark",
+    "value": "#1d4ed8",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-primary-light",
+    "value": "#dbeafe",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-border",
+    "value": "#e2e8f0",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-border-strong",
+    "value": "#cbd5e1",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-success",
+    "value": "#10b981",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-warning",
+    "value": "#f59e0b",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--color-danger",
+    "value": "#ef4444",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--font-family",
+    "value": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--font-weight-normal",
+    "value": "400",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--font-weight-medium",
+    "value": "500",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--font-weight-semibold",
+    "value": "600",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--font-weight-bold",
+    "value": "700",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--font-weight-extrabold",
+    "value": "800",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-xs",
+    "value": ".25rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-sm",
+    "value": ".5rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-md",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-lg",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-xl",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-2xl",
+    "value": "2.5rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--space-3xl",
+    "value": "3rem",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--radius-sm",
+    "value": "8px",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--radius-md",
+    "value": "12px",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--radius-lg",
+    "value": "16px",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--radius-xl",
+    "value": "20px",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--radius-full",
+    "value": "9999px",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--shadow-sm",
+    "value": "0 1px 2px 0 rgba(0, 0, 0, .05)",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--shadow-md",
+    "value": "0 4px 6px -1px rgba(0, 0, 0, .1)",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--shadow-lg",
+    "value": "0 10px 15px -3px rgba(0, 0, 0, .1)",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--shadow-xl",
+    "value": "0 20px 25px -5px rgba(0, 0, 0, .1)",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap\";:r",
+    "name": "--transition",
+    "value": "all .3s ease",
+    "is_alias": false,
+    "line": 1
+  }
+]

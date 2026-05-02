@@ -1,0 +1,38 @@
+[
+  {
+    "value": "var(--shadow-sm)",
+    "count": 6
+  },
+  {
+    "value": "var(--shadow-md)",
+    "count": 4
+  },
+  {
+    "value": "var(--shadow-xl)",
+    "count": 3
+  },
+  {
+    "value": "0 0 0 3px var(--color-primary-light)",
+    "count": 1
+  },
+  {
+    "value": "var(--shadow-lg)",
+    "count": 1
+  },
+  {
+    "value": "var(--shadow-2xl)",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 4px var(--color-primary-light)",
+    "count": 1
+  },
+  {
+    "value": "0 20px 60px #0000004d",
+    "count": 1
+  },
+  {
+    "value": "0 20px 60px rgba(0, 0, 0, 0.15)",
+    "count": 1
+  }
+]

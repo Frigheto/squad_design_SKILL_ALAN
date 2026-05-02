@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Vercel",
+    "kind": "hosting",
+    "evidence": "x-vercel-id header",
+    "confidence": "high"
+  }
+]

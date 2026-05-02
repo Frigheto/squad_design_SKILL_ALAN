@@ -1,0 +1,202 @@
+[
+  {
+    "name": "--color-primary",
+    "declarations": 1,
+    "references": 40
+  },
+  {
+    "name": "--color-text-muted",
+    "declarations": 1,
+    "references": 18
+  },
+  {
+    "name": "--color-bg-alt",
+    "declarations": 1,
+    "references": 16
+  },
+  {
+    "name": "--color-text",
+    "declarations": 1,
+    "references": 15
+  },
+  {
+    "name": "--color-border",
+    "declarations": 1,
+    "references": 14
+  },
+  {
+    "name": "--transition",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--color-text-light",
+    "declarations": 1,
+    "references": 9
+  },
+  {
+    "name": "--color-primary-light",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--radius-lg",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--shadow-sm",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--color-danger",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--radius-full",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--border",
+    "declarations": 0,
+    "references": 5
+  },
+  {
+    "name": "--color-bg",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--color-success",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--font-weight-bold",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--radius-sm",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--radius-md",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--shadow-md",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--font-family",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--font-weight-semibold",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--shadow-xl",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--color-bg-dark",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color-primary-dark",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-extrabold",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color-border-strong",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--font-weight-medium",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--shadow-lg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--shadow-2xl",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-text-inverse",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-warning",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-weight-normal",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-xs",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-sm",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-md",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-lg",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-xl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-2xl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space-3xl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--radius-xl",
+    "declarations": 1,
+    "references": 0
+  }
+]

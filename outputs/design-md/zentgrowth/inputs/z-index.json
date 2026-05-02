@@ -1,0 +1,29 @@
+{
+  "all": [
+    {
+      "value": 1,
+      "count": 1
+    },
+    {
+      "value": 10,
+      "count": 2
+    },
+    {
+      "value": 50,
+      "count": 1
+    },
+    {
+      "value": 999,
+      "count": 2
+    },
+    {
+      "value": 9999,
+      "count": 1
+    }
+  ],
+  "base": 1,
+  "dropdown": 50,
+  "modal": 999,
+  "toast": 9999,
+  "tooltip": 9999
+}

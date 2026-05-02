@@ -1,0 +1,17 @@
+{
+  "value": "1200px",
+  "all": [
+    {
+      "value": "1200px",
+      "count": 3
+    },
+    {
+      "value": "900px",
+      "count": 2
+    },
+    {
+      "value": "1000px",
+      "count": 1
+    }
+  ]
+}

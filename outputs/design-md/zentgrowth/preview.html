@@ -1,0 +1,2526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zentgrowth.com — DESIGN.md Preview</title>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+
+<style>
+  :root { --bg:#fafafa; --fg:#000; --dim:#888; --line:#e5e5e5; --accent:#000; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,sans-serif;padding:32px;line-height:1.4}
+  header{display:flex;flex-direction:column;gap:8px;margin-bottom:32px;border-bottom:4px solid var(--fg);padding-bottom:16px}
+  .header-identity{display:flex;align-items:flex-start;gap:20px}
+  .favicon{width:64px;height:64px;border:2px solid var(--fg);background:#fff;flex-shrink:0;object-fit:contain;padding:6px;box-shadow:2px 2px 0 0 #000}
+  .favicon-placeholder{width:64px;height:64px;border:2px dashed var(--line);flex-shrink:0}
+  .header-text{flex:1;min-width:0}
+  .brand-name{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--dim);margin-bottom:4px}
+  h1{font-size:48px;font-weight:800;letter-spacing:-0.02em;margin:0}
+  .subtitle{color:var(--dim);font-family:ui-monospace,monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.08em}
+  section{margin-bottom:48px}
+  section h2{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border-bottom:2px solid var(--fg);padding-bottom:6px;margin-bottom:16px}
+  .name-pill{display:inline-block;background:#000;color:#fff;font-family:ui-monospace,monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:6px 12px;border:2px solid #000;box-shadow:2px 2px 0 0 #000;margin-bottom:16px}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+  .swatch{display:flex;flex-direction:column;border:2px solid var(--fg);background:#fff;box-shadow:2px 2px 0 0 #000;cursor:pointer;font:inherit;text-align:left;padding:0;transition:transform .12s,box-shadow .12s}
+  .swatch:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 0 #000}
+  .swatch-fill{height:80px;border-bottom:2px solid var(--fg)}
+  .swatch-meta{padding:10px}
+  .swatch-key{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .swatch-val{font-family:ui-monospace,monospace;font-size:12px;font-weight:700}
+  .type-row{display:flex;flex-direction:column;gap:8px;border-left:4px solid var(--fg);padding-left:16px;padding-block:6px;margin-bottom:24px}
+  .type-label{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .chip{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-transform:uppercase;background:#f0f0f0;border:1px solid #ccc;padding:2px 8px}
+  .dim{color:var(--dim);font-family:ui-monospace,monospace;font-size:12px}
+  .type-sample{word-break:break-word}
+  .scale-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px}
+  .space-cell,.radius-cell{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
+  .space-block{background:#000;box-shadow:2px 2px 0 0 #000}
+  .radius-block{width:64px;height:64px;background:#fff;border:4px solid #000;box-shadow:2px 2px 0 0 #000}
+  .space-key,.radius-key{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;text-transform:uppercase}
+  .space-val,.radius-val{font-family:ui-monospace,monospace;font-size:10px;color:var(--dim)}
+  pre{background:#fff;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;padding:20px;overflow:auto;font-size:13px;line-height:1.5;max-height:600px}
+  details{border:2px solid var(--fg);background:#fff;padding:12px 16px;margin-top:16px;box-shadow:2px 2px 0 0 #000}
+  details summary{cursor:pointer;font-family:ui-monospace,monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em}
+  .empty{color:var(--dim);font-family:ui-monospace,monospace;font-size:12px;font-style:italic}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#000;color:#fff;font-family:ui-monospace,monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:10px 16px;border:2px solid #000;box-shadow:2px 2px 0 0 #000;opacity:0;pointer-events:none;transition:opacity .2s}
+  .toast.show{opacity:1}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-family:ui-monospace,monospace;font-size:12px}
+  .meta-grid dt{color:var(--dim);text-transform:uppercase;letter-spacing:0.06em;font-weight:700}
+  .meta-grid dd{margin:0;word-break:break-all}
+
+  /* Component preview (live tokens) */
+  .preview-token-source{font-family:ui-monospace,monospace;font-size:11px;color:var(--dim);margin-bottom:10px;background:#f5f5f5;border:1px solid #ddd;padding:8px 12px;overflow-wrap:break-word}
+  .preview-token-source code{background:#fff;border:1px solid #ddd;padding:1px 5px;font-size:10px}
+
+  /* Hero zone — full-width brand showcase */
+  .preview-hero{padding:48px 40px 56px;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;margin-bottom:24px;display:flex;flex-direction:column;gap:16px;align-items:flex-start;overflow:hidden}
+  .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+  .hero-display{font-size:clamp(32px,5vw,56px);font-weight:600;line-height:1.05;margin:0;max-width:80%;overflow-wrap:break-word}
+  .hero-lead{font-size:16px;line-height:1.5;margin:0;max-width:600px;overflow-wrap:break-word}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+
+  .preview-stage{border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;padding:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 40px}
+  @media (max-width:720px){.preview-stage{grid-template-columns:1fr}}
+  .preview-card{display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-width:0;overflow:hidden}
+  .preview-card-wide{grid-column:1/-1}
+  .preview-card>*{max-width:100%}
+  .preview-card h4{margin:0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);font-family:ui-monospace,monospace}
+
+  .ds-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;font-weight:500;font-size:14px;cursor:pointer;text-decoration:none;font-family:inherit;line-height:1.2;transition:opacity .15s,transform .12s;max-width:100%;white-space:nowrap}
+  .ds-btn:hover{opacity:0.92;transform:translateY(-1px)}
+  .ds-btn-large{padding:14px 28px;font-size:15px;font-weight:600}
+
+  .ds-card{padding:24px;display:flex;flex-direction:column;gap:10px;width:100%;min-width:0;overflow-wrap:break-word;word-break:break-word}
+  .ds-card-editorial{padding:28px;gap:14px}
+  .card-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+  .ds-card-title{font-weight:400;font-size:24px;line-height:1.15;overflow-wrap:break-word;hyphens:auto;margin:0}
+  .ds-card-body{font-size:14px;line-height:1.55;overflow-wrap:break-word;margin:0}
+  .card-meta{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+  .meta-dot{display:inline-block;width:3px;height:3px;border-radius:50%}
+  .card-cta-row{display:flex;gap:14px;align-items:center;margin-top:8px}
+
+  .ds-input{width:100%;padding:12px 14px;font-size:14px;font-family:inherit;box-sizing:border-box}
+  .ds-badge{display:inline-flex;align-items:center;padding:5px 14px;font-size:11px;font-weight:600;font-family:inherit;letter-spacing:0.02em;line-height:1.2;white-space:nowrap}
+  .ds-alert{padding:14px 18px;display:flex;gap:10px;align-items:flex-start;font-size:13px;width:100%;overflow-wrap:break-word;line-height:1.5}
+  .ds-alert>*{min-width:0}
+
+  /* KPI tile */
+  .kpi-tile{padding:24px;display:flex;flex-direction:column;gap:6px;width:100%}
+  .kpi-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+  .kpi-value{font-size:42px;font-weight:600;line-height:1;letter-spacing:-0.02em;margin:4px 0 6px}
+  .kpi-trend{font-size:12px;font-weight:600}
+
+  /* Code block */
+  .ds-code{padding:18px;font-size:13px;line-height:1.6;width:100%;overflow:auto;margin:0;white-space:pre}
+
+  /* Type hierarchy stack */
+  .hierarchy-stack{display:flex;flex-direction:column;gap:14px;width:100%}
+  .h-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+  .h-display{font-size:clamp(28px,4vw,44px);font-weight:600;line-height:1.1;margin:0}
+  .h-body{font-size:15px;line-height:1.6;margin:0}
+
+  /* WCAG contrast matrix */
+  .matrix-wrap{overflow:auto;border:2px solid var(--fg);background:#fff;box-shadow:4px 4px 0 0 #000}
+  table.matrix{border-collapse:collapse;font-family:ui-monospace,monospace;font-size:11px}
+  table.matrix th,table.matrix td{border:1px solid var(--line);padding:4px 6px;text-align:center;min-width:64px}
+  table.matrix thead th{background:#f5f5f5;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;position:sticky;top:0}
+  table.matrix tbody th{background:#f5f5f5;text-align:left;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;position:sticky;left:0;z-index:1}
+  td.cm-cell{cursor:help;font-weight:700}
+  td.cm-fail{background:#fde2e2;color:#7a1414}
+  td.cm-aa{background:#fff7d6;color:#7a4f00}
+  td.cm-aaa{background:#d9f5dd;color:#0a4a1a}
+  .matrix-legend{display:flex;gap:16px;font-family:ui-monospace,monospace;font-size:11px;margin-top:12px;flex-wrap:wrap}
+  .matrix-legend span{display:inline-flex;align-items:center;gap:6px}
+  .matrix-legend i{display:inline-block;width:12px;height:12px;border:1px solid var(--line)}
+
+  /* Export buttons */
+  .export-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .export-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid var(--fg);box-shadow:2px 2px 0 0 #000;padding:8px 14px;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .export-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 0 #000;background:#000;color:#fff}
+  .export-btn-primary{background:#000;color:#fff;font-size:12px;padding:10px 18px;box-shadow:3px 3px 0 0 #000}
+  .export-btn-primary:hover{background:#fff;color:#000}
+
+  /* Technical section (collapsed by default) */
+  .technical-section{margin-top:64px}
+  .technical-section>details{border:2px dashed var(--line);background:transparent;box-shadow:none;padding:0}
+  .technical-section>details>summary{padding:14px 18px;cursor:pointer;font-family:ui-monospace,monospace;color:var(--dim);text-transform:none;letter-spacing:0;list-style:none}
+  .technical-section>details>summary::before{content:"▸ ";color:var(--dim)}
+  .technical-section>details[open]>summary::before{content:"▾ "}
+  .technical-section>details>summary h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);border:none;padding:0;display:inline-block}
+  .technical-section>details>summary:hover h2{color:var(--fg)}
+  .tech-content{padding:8px 18px 24px;border-top:1px dashed var(--line)}
+  .tech-content h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);font-family:ui-monospace,monospace;margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .tech-content h3:first-child{margin-top:8px}
+
+  /* B1 — CSS vars table */
+  .vars-table-wrap{overflow:auto;border:2px solid var(--fg);background:#fff;box-shadow:4px 4px 0 0 #000;max-height:480px}
+  table.vars-table{border-collapse:collapse;width:100%;font-family:ui-monospace,monospace;font-size:11px}
+  table.vars-table th,table.vars-table td{border-bottom:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+  table.vars-table thead th{background:#f5f5f5;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;position:sticky;top:0}
+  table.vars-table tbody tr{cursor:pointer}
+  table.vars-table tbody tr:hover{background:#fafa00}
+  .var-row.is-alias{display:none}
+  body.show-aliases .var-row.is-alias{display:table-row;opacity:0.6}
+  .pill-prim{color:#0a4a1a;font-weight:700}
+  .pill-alias{color:#7a4f00}
+  .show-aliases-toggle{display:inline-flex;align-items:center;gap:6px;font-family:ui-monospace,monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim);margin-top:10px;cursor:pointer}
+  .dim-label{color:var(--dim);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;font-style:italic}
+
+  /* B2 — @font-face cards */
+  .fontface-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+  .fontface-card{border:2px solid var(--fg);background:#fff;box-shadow:2px 2px 0 0 #000;padding:14px}
+  .fontface-family{font-weight:800;font-size:14px}
+  .url-line{font-family:ui-monospace,monospace;font-size:10px;word-break:break-all;color:var(--dim);margin-top:4px}
+
+  /* B3 — Usage graph */
+  .usage-grid{display:flex;flex-direction:column;gap:4px;border:2px solid var(--fg);background:#fff;box-shadow:4px 4px 0 0 #000;padding:14px;max-height:420px;overflow:auto}
+  .usage-row{display:grid;grid-template-columns:minmax(180px,30%) 1fr auto;gap:12px;align-items:center}
+  .usage-name{font-size:11px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .usage-bar{display:inline-block;height:10px;background:#000;min-width:1px}
+  .usage-count{font-size:10px;color:var(--dim)}
+  .mono{font-family:ui-monospace,monospace}
+
+  /* C2 — confidence dots */
+  .conf-dot{display:inline-block;font-family:ui-monospace,monospace;font-size:8px;letter-spacing:1px;margin-left:6px;vertical-align:middle;cursor:help}
+  .conf-high{color:#0a4a1a}
+  .conf-medium{color:#7a4f00}
+  .conf-low{color:#7a1414}
+  .conf-unknown{color:#999}
+
+  /* A3 + C2 — header badges */
+  .header-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .badge{display:inline-flex;align-items:center;gap:4px;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;padding:4px 10px;border:2px solid var(--fg);text-transform:uppercase;letter-spacing:0.06em}
+  .badge-pass{background:#d9f5dd;color:#0a4a1a}
+  .badge-warn{background:#fff7d6;color:#7a4f00}
+  .badge-fail{background:#fde2e2;color:#7a1414}
+  .badge-skip{background:#f0f0f0;color:#666}
+  .badge-conf-high{background:#d9f5dd;color:#0a4a1a;text-transform:none}
+  .badge-conf-medium{background:#fff7d6;color:#7a4f00;text-transform:none}
+  .badge-conf-low{background:#fde2e2;color:#7a1414;text-transform:none}
+
+  /* S2 — usage count badge on swatches */
+  .swatch-usage{display:inline-block;font-family:ui-monospace,monospace;font-size:9px;font-weight:700;padding:1px 5px;margin-left:4px;border-radius:2px}
+  .use-hot{background:#0a4a1a;color:#fff}
+  .use-warm{background:#7a4f00;color:#fff}
+  .use-cold{background:#e5e5e5;color:#333}
+  .use-zero{background:transparent;color:var(--dim);border:1px dashed var(--line)}
+
+  /* A2 — Quality score card */
+  .quality-score{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;background:#fff;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;padding:24px;margin-bottom:48px}
+  .score-grade-block{display:flex;flex-direction:column;align-items:center;gap:4px;padding-right:24px;border-right:1px dashed var(--line);min-width:120px}
+  .score-grade{font-size:96px;font-weight:800;line-height:1;letter-spacing:-0.04em}
+  .score-grade-A{color:#0a4a1a}
+  .score-grade-B{color:#3a7a1a}
+  .score-grade-C{color:#7a4f00}
+  .score-grade-D{color:#a04a1a}
+  .score-grade-F{color:#7a1414}
+  .score-overall{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim)}
+  .score-categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+  .cat-row{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1px solid var(--line);background:#fafafa}
+  .cat-name{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim)}
+  .cat-grade-row{display:flex;align-items:baseline;gap:8px}
+  .cat-grade{font-size:24px;font-weight:800;line-height:1}
+  .cat-num{font-family:ui-monospace,monospace;font-size:11px;color:var(--dim)}
+  .cat-value{font-family:ui-monospace,monospace;font-size:10px;color:var(--dim)}
+  .cat-ideal{font-family:ui-monospace,monospace;font-size:9px;color:var(--dim);font-style:italic}
+
+  /* A1 — Drift report */
+  .drift-section{background:#fff;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;padding:24px;margin-bottom:48px}
+  .drift-verdict{display:inline-flex;align-items:center;gap:8px;font-family:ui-monospace,monospace;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:8px 14px;border:2px solid var(--fg);box-shadow:2px 2px 0 0 #000;margin-bottom:16px}
+  .verdict-in-sync{background:#d9f5dd;color:#0a4a1a}
+  .verdict-minor-drift{background:#fff7d6;color:#7a4f00}
+  .verdict-notable-drift{background:#fde2e2;color:#a04a1a}
+  .verdict-major-drift{background:#7a1414;color:#fff}
+  .drift-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:16px}
+  .drift-stat{padding:10px;border:1px solid var(--line);background:#fafafa;font-family:ui-monospace,monospace}
+  .drift-stat-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim)}
+  .drift-stat-value{font-size:24px;font-weight:800;margin-top:4px}
+  .drift-table{border-collapse:collapse;width:100%;font-family:ui-monospace,monospace;font-size:11px;margin-top:12px}
+  .drift-table th,.drift-table td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left}
+  .drift-table th{background:#f5f5f5;text-transform:uppercase;letter-spacing:0.06em;font-size:10px}
+  .drift-swatch{display:inline-block;width:14px;height:14px;border:1px solid #ccc;vertical-align:middle;margin-right:6px}
+
+  /* S1 — Breakpoints */
+  .breakpoints-row{display:flex;gap:8px;flex-wrap:wrap}
+  .breakpoint-chip{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;background:#fff;border:2px solid var(--fg);box-shadow:2px 2px 0 0 #000;padding:4px 10px}
+  .breakpoint-chip span{color:var(--dim);font-weight:400;margin-left:4px}
+
+  /* S3/S4 — Dark mode toggle + indicator */
+  .dark-toggle{display:inline-flex;align-items:center;gap:6px;background:#000;color:#fff;border:2px solid var(--fg);padding:6px 12px;cursor:pointer;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em}
+  .dark-indicator{display:inline-flex;align-items:center;gap:4px;font-family:ui-monospace,monospace;font-size:10px;color:var(--dim)}
+
+  /* E1 — Logo display */
+  .logo-display{display:flex;flex-direction:column;align-items:center;gap:24px;padding:48px 24px;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000}
+  .logo-img{max-width:300px;max-height:120px;object-fit:contain}
+  .logo-inline-svg{display:flex;align-items:center;justify-content:center;width:300px;height:120px}
+  .logo-inline-svg svg{max-width:100%;max-height:100%;width:auto;height:auto;fill:currentColor}
+  .logo-meta{display:flex;flex-wrap:wrap;gap:18px;font-family:ui-monospace,monospace;font-size:11px;color:var(--dim);justify-content:center}
+  .logo-meta-item{display:inline-flex;gap:6px;align-items:center}
+  .logo-meta-label{font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg)}
+  .logo-meta a{color:var(--dim);word-break:break-all}
+
+  /* D6 — Component variants matrix */
+  .variant-matrix{padding:24px;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;overflow:auto}
+  table.variant-table{border-collapse:separate;border-spacing:0 12px;width:100%}
+  .variant-table th{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);text-align:center;padding:6px 12px;border-bottom:1px solid var(--line)}
+  .variant-table th:first-child{text-align:left}
+  .variant-table td{padding:8px 12px;text-align:center;vertical-align:middle}
+  .variant-row-label{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-align:left !important;color:var(--dim);padding-right:24px !important;white-space:nowrap}
+
+  /* E2 — Shadow ladder */
+  .shadow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px 24px;padding:32px;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000}
+  .shadow-card{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer}
+  .shadow-block{width:120px;height:80px;border:1px solid rgba(0,0,0,0.05)}
+  .shadow-meta{display:flex;flex-direction:column;align-items:center;gap:2px;font-family:ui-monospace,monospace;font-size:10px;text-align:center}
+  .shadow-rank{font-size:18px;font-weight:800;color:var(--fg)}
+  .shadow-count{color:var(--dim);font-weight:700;text-transform:uppercase;letter-spacing:0.06em}
+  .shadow-value{color:var(--dim);font-size:9px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* E3 — Motion tokens */
+  .motion-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .motion-block{background:#fff;border:2px solid var(--fg);box-shadow:2px 2px 0 0 #000;padding:18px}
+  .motion-block-title{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);margin-bottom:12px}
+  .motion-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .motion-chip{display:inline-flex;align-items:center;gap:4px;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;background:#f5f5f5;border:1px solid var(--line);padding:4px 10px;cursor:pointer}
+  .motion-chip span{color:var(--dim);font-weight:400}
+  .motion-chip:hover{background:#000;color:#fff}
+  .motion-demo{display:flex;flex-direction:column;gap:8px}
+  .motion-demo-row{display:flex;align-items:center;gap:12px}
+  .motion-demo-label{font-family:ui-monospace,monospace;font-size:10px;color:var(--dim);min-width:60px}
+  .motion-track{flex:1;height:14px;background:#f5f5f5;position:relative;border:1px solid var(--line);overflow:hidden}
+  .motion-ball{position:absolute;top:1px;left:1px;width:12px;height:12px;border-radius:50%;animation:motion-slide var(--motion-d, 1s) cubic-bezier(0.4, 0, 0.2, 1) infinite alternate}
+  @keyframes motion-slide{0%{left:1px}100%{left:calc(100% - 13px)}}
+  .motion-keyframes{display:flex;flex-wrap:wrap;gap:5px}
+  .kf-chip{font-family:ui-monospace,monospace;font-size:10px;background:#f5f5f5;border:1px solid var(--line);padding:2px 8px;color:var(--dim)}
+
+  /* F — Stack fingerprint */
+  .stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;background:#fff;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;padding:24px}
+  .stack-kind{display:flex;flex-direction:column;gap:8px}
+  .stack-kind-label{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);padding-bottom:4px;border-bottom:1px solid var(--line)}
+  .stack-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .stack-tag{display:inline-flex;align-items:center;font-family:ui-monospace,monospace;font-size:11px;font-weight:600;background:#0a4a1a;color:#fff;padding:4px 10px;cursor:help}
+
+  /* A3 — Lint findings */
+  .lint-section{background:#fff;border:2px solid var(--fg);box-shadow:4px 4px 0 0 #000;padding:16px;margin-bottom:48px}
+  .lint-section h2{margin-top:0}
+  .lint-list{display:flex;flex-direction:column;gap:6px;font-family:ui-monospace,monospace;font-size:12px}
+  .lint-row{display:flex;gap:8px;align-items:flex-start;padding:6px 8px;border-left:3px solid;background:#fafafa}
+  .lint-error{border-left-color:#7a1414}
+  .lint-warn{border-left-color:#7a4f00}
+  .lint-tag{font-weight:700;font-size:10px;letter-spacing:0.06em;background:#000;color:#fff;padding:2px 6px;flex-shrink:0}
+  .lint-error .lint-tag{background:#7a1414}
+  .lint-warn .lint-tag{background:#7a4f00}
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-identity">
+      <div class="favicon-placeholder"></div>
+      <div class="header-text">
+        <div class="brand-name">zentgrowth.com</div>
+        <h1>DESIGN.md preview</h1>
+        <div class="subtitle">extracted from <a href="https://www.zentgrowth.com/" target="_blank">https://www.zentgrowth.com/</a></div>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-pass" title="@google/design.md@latest">lint: pass</span>
+      
+      <span class="badge score-grade-D" style="background:transparent;border-color:currentcolor" title="Design quality score">D · 63/100</span>
+      
+      <span class="badge" style="background:#f0f0f0;color:#333" title="768px · 480px">📐 2 breakpoints</span>
+      <span class="badge" style="background:#0a4a1a;color:#fff" title="Vercel">🧱 1 stack signals</span>
+    </div>
+  </header>
+
+  
+
+  
+
+  
+  <section>
+    <div class="quality-score">
+      <div class="score-grade-block">
+        <div class="score-grade score-grade-D">D</div>
+        <div class="score-overall">63/100</div>
+        <div class="score-overall" style="text-transform:none;letter-spacing:0">design score</div>
+      </div>
+      <div class="score-categories">
+        
+          <div class="cat-row" title="ideal: 25-40">
+            <div class="cat-name">color discipline</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-A">A</span>
+              <span class="cat-num">100/100</span>
+            </div>
+            <div class="cat-value">0 colors</div>
+            <div class="cat-ideal">ideal: 25-40</div>
+          </div>
+        
+          <div class="cat-row" title="ideal: 2-4 families">
+            <div class="cat-name">typography</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-F">F</span>
+              <span class="cat-num">40/100</span>
+            </div>
+            <div class="cat-value">0 families, 0 scales</div>
+            <div class="cat-ideal">ideal: 2-4 families</div>
+          </div>
+        
+          <div class="cat-row" title="ideal: 4-8">
+            <div class="cat-name">spacing system</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-D">D</span>
+              <span class="cat-num">60/100</span>
+            </div>
+            <div class="cat-value">0 tokens</div>
+            <div class="cat-ideal">ideal: 4-8</div>
+          </div>
+        
+          <div class="cat-row" title="ideal: 3-6">
+            <div class="cat-name">border radii</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-D">D</span>
+              <span class="cat-num">60/100</span>
+            </div>
+            <div class="cat-value">0 levels</div>
+            <div class="cat-ideal">ideal: 3-6</div>
+          </div>
+        
+          <div class="cat-row" title="ideal: ≥80%">
+            <div class="cat-name">tokenization</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-F">F</span>
+              <span class="cat-num">40/100</span>
+            </div>
+            <div class="cat-value">0% high confidence</div>
+            <div class="cat-ideal">ideal: ≥80%</div>
+          </div>
+        
+          <div class="cat-row" title="ideal: 0E 0W">
+            <div class="cat-name">lint compliance</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-C">C</span>
+              <span class="cat-num">70/100</span>
+            </div>
+            <div class="cat-value">skipped</div>
+            <div class="cat-ideal">ideal: 0E 0W</div>
+          </div>
+        
+          <div class="cat-row" title="ideal: 100% AA">
+            <div class="cat-name">accessibility</div>
+            <div class="cat-grade-row">
+              <span class="cat-grade score-grade-C">C</span>
+              <span class="cat-num">70/100</span>
+            </div>
+            <div class="cat-value">0/0 pairs ≥AA</div>
+            <div class="cat-ideal">ideal: 100% AA</div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Stack fingerprint</h2>
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-bottom:12px">1 technology signals detected from HTML + CSS source.</p>
+    <div class="stack-grid">
+      
+          <div class="stack-kind">
+            <div class="stack-kind-label">hosting</div>
+            <div class="stack-tags">
+              <span class="stack-tag" title="x-vercel-id header">Vercel</span>
+            </div>
+          </div>
+        
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Visual archetype</h2>
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-bottom:12px">
+      Style classification against canonical archetypes (shadcn-neutral,
+      apple-glass, carbon-enterprise, polaris-friendly, ...).
+      Complementary to the technical Stack fingerprint above.
+    </p>
+    <div class="stack-grid">
+      <div class="stack-kind">
+        <div class="stack-kind-label">primary archetype</div>
+        <div class="stack-tags">
+          <span class="stack-tag" style="background:#0a4a1a;color:#fff" title="Matched polaris-friendly on: radius_scale=moderate-high, color_saturation=very-low, spacing_density=very-roomy, shadow_intensity=strong, surface_treatment=gradient.">
+            polaris-friendly
+             · 89%
+          </span>
+        </div>
+      </div>
+      
+      <div class="stack-kind">
+        <div class="stack-kind-label">extracted signals</div>
+        <div class="stack-tags">
+          <span class="stack-tag" style="background:#1f2937;color:#fff">radius scale: moderate-high</span><span class="stack-tag" style="background:#1f2937;color:#fff">color saturation: very-low</span><span class="stack-tag" style="background:#1f2937;color:#fff">spacing density: very-roomy</span><span class="stack-tag" style="background:#1f2937;color:#fff">shadow intensity: strong</span><span class="stack-tag" style="background:#1f2937;color:#fff">surface treatment: gradient</span>
+        </div>
+      </div>
+    </div>
+    
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-top:12px;line-height:1.5">
+      <strong>Why this archetype:</strong> Matched polaris-friendly on: radius_scale=moderate-high, color_saturation=very-low, spacing_density=very-roomy, shadow_intensity=strong, surface_treatment=gradient.
+    </p>
+    
+    
+    <details style="margin-top:12px;font-family:ui-monospace,monospace;font-size:11px">
+      <summary style="cursor:pointer;color:var(--dim)">Show all archetype scores</summary>
+      <ul style="margin-top:8px;list-style:none;padding-left:0">
+        <li style="display:flex;justify-content:space-between;padding:2px 0"><span>polaris-friendly</span><span>89.5%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>marketing-gradient</span><span>73.7%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>apple-glass</span><span>64.7%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>porsche-precision</span><span>37.5%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>carbon-enterprise</span><span>20.0%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>material-elevation</span><span>18.8%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>community-polished</span><span>13.3%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>shadcn-neutral</span><span>0.0%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>brutalist-mono</span><span>0.0%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>govuk-conservative</span><span>0.0%</span></li><li style="display:flex;justify-content:space-between;padding:2px 0"><span>ant-china-enterprise</span><span>0.0%</span></li>
+      </ul>
+    </details>
+    
+  </section>
+  
+
+  
+
+  <section>
+    <h2>Export tokens</h2>
+    <div class="export-row">
+      <button class="export-btn export-btn-primary" data-export="design-md">Copy DESIGN.md</button>
+      <button class="export-btn export-btn-primary" data-export="agent-prompt" title="Paste into v0, Cursor, Claude, Lovable">Copy as AI agent prompt 🤖</button>
+      <button class="export-btn" data-export="tailwind">Copy as Tailwind config</button>
+      <button class="export-btn" data-export="css-vars">Copy as CSS variables</button>
+      <button class="export-btn" data-export="dtcg">Copy as DTCG JSON</button>
+      <button class="export-btn" data-export="style-dictionary">Copy as Style Dictionary</button>
+      <button class="export-btn" data-export="raw-json">Copy raw tokens.json</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Colors</h2>
+    <p class="empty">No color tokens in frontmatter.</p>
+  </section>
+
+  <section>
+    <h2>Component preview (live tokens)</h2>
+    <div class="preview-token-source" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="flex:1;min-width:0">
+        <strong>Token source:</strong>
+        <code>text</code>
+      </div>
+      <button id="dark-toggle" class="dark-toggle" style="display:none">🌙 dark mode</button>
+    </div>
+
+    <!-- HERO ZONE — brand identity at full impact -->
+    <div class="preview-hero" style="background:#ffffff;color:#0f172a;font-family:ui-sans-serif,ui-sans-serif,system-ui,sans-serif;border-radius:12px">
+      <div class="hero-eyebrow" style="font-family:ui-monospace,ui-monospace,monospace;color:#000000">BRAND · DESIGN SYSTEM</div>
+      <h1 class="hero-display" style="font-family:ui-sans-serif,ui-serif,Georgia,serif;color:#0f172a;letter-spacing:-0.025em">Organize seu negócio.</h1>
+      <p class="hero-lead" style="font-family:ui-sans-serif,ui-sans-serif,sans-serif;color:#666666">ZENT A.I. — Plataforma de Gestão para Empresas</p>
+      <div class="hero-actions">
+        <button class="ds-btn ds-btn-large" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px">
+          Get started <span style="margin-left:6px">→</span>
+        </button>
+        <button class="ds-btn ds-btn-large" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px">
+          Documentation
+        </button>
+      </div>
+    </div>
+
+    <!-- COMPONENT GRID -->
+    <div class="preview-stage" style="background:#ffffff;color:#0f172a;font-family:ui-sans-serif,ui-sans-serif,system-ui,sans-serif">
+      <div class="preview-card">
+        <h4>Buttons</h4>
+        <button class="ds-btn ds-btn-large" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px">
+          Primary action <span style="margin-left:4px">→</span>
+        </button>
+        <button class="ds-btn ds-btn-large" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px">
+          Secondary
+        </button>
+        <button class="ds-btn ds-btn-tertiary" style="background:transparent;color:#000000;border:0;text-decoration:underline;justify-content:flex-start;padding-left:0">
+          Tertiary link →
+        </button>
+      </div>
+
+      <div class="preview-card">
+        <h4>Editorial card</h4>
+        <article class="ds-card ds-card-editorial" style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px">
+          <div class="card-eyebrow" style="font-family:ui-monospace,ui-monospace,monospace;color:#000000">FEATURE</div>
+          <div class="ds-card-title" style="font-family:ui-sans-serif,ui-serif,Georgia,serif;color:#0f172a">Organize seu negócio.</div>
+          <div class="ds-card-body" style="color:#666666">ZENT A.I. — Plataforma de Gestão para Empresas</div>
+          <div class="card-meta" style="font-family:ui-monospace,ui-monospace,monospace;color:#666666">
+            <span>3 MIN READ</span>
+            <span class="meta-dot" style="background:#e5e5e5"></span>
+            <span>UPDATED TODAY</span>
+          </div>
+          <div class="card-cta-row">
+            <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;font-size:13px">Read more</button>
+            <button class="ds-btn ds-btn-tertiary" style="background:transparent;color:#000000;border:0;font-size:13px;padding:0;text-decoration:underline">Save</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="preview-card">
+        <h4>Input + badges</h4>
+        <input class="ds-input" type="text" placeholder="hello@example.com" style="background:#ffffff;color:#0f172a;border:1px solid #e5e5e5;border-radius:4px" />
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="ds-badge" style="background:#000000;color:#ffffff;border-radius:8px">Featured</span>
+          <span class="ds-badge" style="background:transparent;color:#0f172a;border:1px solid #e5e5e5;border-radius:8px">Outline</span>
+          <span class="ds-badge" style="background:#3a7;color:#ffffff;border-radius:8px">● Live</span>
+          <span class="ds-badge" style="background:#d33;color:#ffffff;border-radius:8px">● Error</span>
+        </div>
+      </div>
+
+      <div class="preview-card">
+        <h4>KPI tile</h4>
+        <div class="kpi-tile" style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px">
+          <div class="kpi-label" style="font-family:ui-monospace,ui-monospace,monospace;color:#666666">MONTHLY ACTIVE</div>
+          <div class="kpi-value" style="font-family:ui-sans-serif,ui-serif,Georgia,serif;color:#0f172a;letter-spacing:-0.02em">128.4K</div>
+          <div class="kpi-trend" style="color:#3a7;font-family:ui-monospace,ui-monospace,monospace">↑ 12.4% vs last month</div>
+        </div>
+      </div>
+
+      <div class="preview-card">
+        <h4>Alerts</h4>
+        <div class="ds-alert" style="background:#ffffff;color:#0f172a;border-left:3px solid #3a7;border-radius:4px">
+          <strong>Success</strong> — Your DESIGN.md was extracted with full provenance.
+        </div>
+        <div class="ds-alert" style="background:#ffffff;color:#0f172a;border-left:3px solid #000000;border-radius:4px">
+          <strong>Note</strong> — Token usage graph shows 40 unique tokens.
+        </div>
+        <div class="ds-alert" style="background:#ffffff;color:#0f172a;border-left:3px solid #d33;border-radius:4px">
+          <strong>Error</strong> — Could not load some stylesheets.
+        </div>
+      </div>
+
+      <div class="preview-card">
+        <h4>Code block</h4>
+        <pre class="ds-code" style="background:#ffffff;color:#0f172a;border:1px solid #e5e5e5;border-radius:4px;font-family:ui-monospace,ui-monospace,monospace"><span style="color:#666666">// design.tokens.ts</span>
+<span style="color:#000000">export const</span> tokens = {
+  primary:   <span style="color:#3a7">"#000000"</span>,
+  surface:   <span style="color:#3a7">"#ffffff"</span>,
+  text:      <span style="color:#3a7">"#0f172a"</span>,
+};</pre>
+      </div>
+
+      <div class="preview-card preview-card-wide">
+        <h4>Type hierarchy</h4>
+        <div class="hierarchy-stack">
+          <div class="h-eyebrow" style="font-family:ui-monospace,ui-monospace,monospace;color:#000000">EYEBROW · MONO</div>
+          <div class="h-display" style="font-family:ui-sans-serif,ui-serif,Georgia,serif;color:#0f172a;letter-spacing:-0.025em">Organize seu negócio.</div>
+          <div class="h-body" style="font-family:ui-sans-serif,ui-sans-serif,sans-serif;color:#666666">ZENT A.I. — Plataforma de Gestão para Empresas</div>
+          <a href="#" style="color:#000000;font-family:ui-sans-serif;text-decoration:underline">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- D6 — Component variant matrix (button states + sizes + variants) -->
+  <section>
+    <h2>Component variants matrix</h2>
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-bottom:12px">Each cell renders a single button using the live tokens. Use this to audit the full surface of the component at a glance.</p>
+    <div class="variant-matrix" style="background:#ffffff">
+      <table class="variant-table" style="color:#0f172a;font-family:ui-sans-serif,ui-sans-serif,sans-serif">
+        <thead>
+          <tr><th></th><th>SM</th><th>MD</th><th>LG</th></tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td class="variant-row-label">Primary · default</td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:1;padding:6px 12px;font-size:12px;">
+                    Action SM
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:1;padding:10px 20px;font-size:14px;">
+                    Action MD
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:1;padding:14px 28px;font-size:16px;">
+                    Action LG
+                  </button>
+                </td>
+              
+            </tr>
+          
+            <tr>
+              <td class="variant-row-label">Primary · hover</td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:0.9;padding:6px 12px;font-size:12px;">
+                    Action SM
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:0.9;padding:10px 20px;font-size:14px;">
+                    Action MD
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:0.9;padding:14px 28px;font-size:16px;">
+                    Action LG
+                  </button>
+                </td>
+              
+            </tr>
+          
+            <tr>
+              <td class="variant-row-label">Primary · disabled</td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:0.4;padding:6px 12px;font-size:12px;">
+                    Action SM
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:0.4;padding:10px 20px;font-size:14px;">
+                    Action MD
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:#000000;color:#ffffff;border:1px solid #000000;border-radius:8px;opacity:0.4;padding:14px 28px;font-size:16px;">
+                    Action LG
+                  </button>
+                </td>
+              
+            </tr>
+          
+            <tr>
+              <td class="variant-row-label">Secondary · default</td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px;opacity:1;padding:6px 12px;font-size:12px;">
+                    Action SM
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px;opacity:1;padding:10px 20px;font-size:14px;">
+                    Action MD
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px;opacity:1;padding:14px 28px;font-size:16px;">
+                    Action LG
+                  </button>
+                </td>
+              
+            </tr>
+          
+            <tr>
+              <td class="variant-row-label">Secondary · hover</td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px;opacity:0.7;padding:6px 12px;font-size:12px;">
+                    Action SM
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px;opacity:0.7;padding:10px 20px;font-size:14px;">
+                    Action MD
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#0f172a;border:1px solid #0f172a;border-radius:8px;opacity:0.7;padding:14px 28px;font-size:16px;">
+                    Action LG
+                  </button>
+                </td>
+              
+            </tr>
+          
+            <tr>
+              <td class="variant-row-label">Tertiary · default</td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#000000;border:1px solid transparent;border-radius:8px;opacity:1;padding:6px 12px;font-size:12px;text-decoration:underline">
+                    Link SM
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#000000;border:1px solid transparent;border-radius:8px;opacity:1;padding:10px 20px;font-size:14px;text-decoration:underline">
+                    Link MD
+                  </button>
+                </td>
+              
+                <td>
+                  <button class="ds-btn" style="background:transparent;color:#000000;border:1px solid transparent;border-radius:8px;opacity:1;padding:14px 28px;font-size:16px;text-decoration:underline">
+                    Link LG
+                  </button>
+                </td>
+              
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Spacing</h2>
+    <p class="empty">No spacing tokens.</p>
+  </section>
+
+  <section>
+    <h2>Radius</h2>
+    <p class="empty">No radius tokens.</p>
+  </section>
+
+  
+  <section>
+    <h2>Shadows · elevation ladder</h2>
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-bottom:12px">9 unique shadow values found in source CSS. Cards rendered live with the shadow applied.</p>
+    <div class="shadow-grid" style="background:#ffffff">
+      
+        <div class="shadow-card" data-copy="var(--shadow-sm)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:var(--shadow-sm);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">1</div>
+            <div class="shadow-count">6× uses</div>
+            <div class="shadow-value">var(--shadow-sm)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="var(--shadow-md)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:var(--shadow-md);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">2</div>
+            <div class="shadow-count">4× uses</div>
+            <div class="shadow-value">var(--shadow-md)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="var(--shadow-xl)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:var(--shadow-xl);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">3</div>
+            <div class="shadow-count">3× uses</div>
+            <div class="shadow-value">var(--shadow-xl)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="0 0 0 3px var(--color-primary-light)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:0 0 0 3px var(--color-primary-light);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">4</div>
+            <div class="shadow-count">1× use</div>
+            <div class="shadow-value">0 0 0 3px var(--color-primary-light)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="var(--shadow-lg)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:var(--shadow-lg);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">5</div>
+            <div class="shadow-count">1× use</div>
+            <div class="shadow-value">var(--shadow-lg)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="var(--shadow-2xl)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:var(--shadow-2xl);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">6</div>
+            <div class="shadow-count">1× use</div>
+            <div class="shadow-value">var(--shadow-2xl)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="0 0 0 4px var(--color-primary-light)" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:0 0 0 4px var(--color-primary-light);border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">7</div>
+            <div class="shadow-count">1× use</div>
+            <div class="shadow-value">0 0 0 4px var(--color-primary-light)</div>
+          </div>
+        </div>
+      
+        <div class="shadow-card" data-copy="0 20px 60px #0000004d" title="Click to copy box-shadow value">
+          <div class="shadow-block" style="background:#ffffff;box-shadow:0 20px 60px #0000004d;border-radius:8px"></div>
+          <div class="shadow-meta">
+            <div class="shadow-rank">8</div>
+            <div class="shadow-count">1× use</div>
+            <div class="shadow-value">0 20px 60px #0000004d</div>
+          </div>
+        </div>
+      
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Motion tokens</h2>
+    <div class="motion-grid">
+      
+        <div class="motion-block">
+          <div class="motion-block-title">Durations</div>
+          <div class="motion-chips">
+            <span class="motion-chip" data-copy="3s" title="5× declarations">3s <span>5×</span></span><span class="motion-chip" data-copy="0.3s" title="2× declarations">0.3s <span>2×</span></span><span class="motion-chip" data-copy="5s" title="1× declarations">5s <span>1×</span></span>
+          </div>
+          <!-- Live demo: ball animates with each duration -->
+          <div class="motion-demo">
+            
+              <div class="motion-demo-row">
+                <span class="motion-demo-label">3s</span>
+                <div class="motion-track">
+                  <div class="motion-ball" style="--motion-d:3s;background:#000000"></div>
+                </div>
+              </div>
+            
+              <div class="motion-demo-row">
+                <span class="motion-demo-label">0.3s</span>
+                <div class="motion-track">
+                  <div class="motion-ball" style="--motion-d:0.3s;background:#000000"></div>
+                </div>
+              </div>
+            
+              <div class="motion-demo-row">
+                <span class="motion-demo-label">5s</span>
+                <div class="motion-track">
+                  <div class="motion-ball" style="--motion-d:5s;background:#000000"></div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      
+      
+      
+        <div class="motion-block">
+          <div class="motion-block-title">@keyframes (3)</div>
+          <div class="motion-keyframes">
+            <span class="kf-chip">fadeIn</span><span class="kf-chip">slideInUp</span><span class="kf-chip">shine</span>
+          </div>
+        </div>
+      
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>@font-face declarations</h2>
+    <p class="empty">No @font-face declarations found.</p>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="empty">No typography tokens in frontmatter.</p>
+  </section>
+
+  <section>
+    <h2>Token usage graph</h2>
+    
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-bottom:12px">Most-referenced tokens are canonical. Zero references suggest legacy/dead tokens.</p>
+    <div class="usage-grid">
+      <div class="usage-row">
+          <span class="mono usage-name">--color-primary</span>
+          <span class="usage-bar" style="width:100%"></span>
+          <span class="mono usage-count">40× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-text-muted</span>
+          <span class="usage-bar" style="width:54%"></span>
+          <span class="mono usage-count">18× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-bg-alt</span>
+          <span class="usage-bar" style="width:48%"></span>
+          <span class="mono usage-count">16× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-text</span>
+          <span class="usage-bar" style="width:45%"></span>
+          <span class="mono usage-count">15× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-border</span>
+          <span class="usage-bar" style="width:42%"></span>
+          <span class="mono usage-count">14× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--transition</span>
+          <span class="usage-bar" style="width:30%"></span>
+          <span class="mono usage-count">10× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-text-light</span>
+          <span class="usage-bar" style="width:27%"></span>
+          <span class="mono usage-count">9× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-primary-light</span>
+          <span class="usage-bar" style="width:24%"></span>
+          <span class="mono usage-count">8× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--radius-lg</span>
+          <span class="usage-bar" style="width:18%"></span>
+          <span class="mono usage-count">6× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--shadow-sm</span>
+          <span class="usage-bar" style="width:18%"></span>
+          <span class="mono usage-count">6× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-danger</span>
+          <span class="usage-bar" style="width:15%"></span>
+          <span class="mono usage-count">5× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--radius-full</span>
+          <span class="usage-bar" style="width:15%"></span>
+          <span class="mono usage-count">5× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--border</span>
+          <span class="usage-bar" style="width:15%"></span>
+          <span class="mono usage-count">5× refs · 0× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-bg</span>
+          <span class="usage-bar" style="width:12%"></span>
+          <span class="mono usage-count">4× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-success</span>
+          <span class="usage-bar" style="width:12%"></span>
+          <span class="mono usage-count">4× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--font-weight-bold</span>
+          <span class="usage-bar" style="width:12%"></span>
+          <span class="mono usage-count">4× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--radius-sm</span>
+          <span class="usage-bar" style="width:12%"></span>
+          <span class="mono usage-count">4× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--radius-md</span>
+          <span class="usage-bar" style="width:12%"></span>
+          <span class="mono usage-count">4× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--shadow-md</span>
+          <span class="usage-bar" style="width:12%"></span>
+          <span class="mono usage-count">4× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--font-family</span>
+          <span class="usage-bar" style="width:9%"></span>
+          <span class="mono usage-count">3× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--font-weight-semibold</span>
+          <span class="usage-bar" style="width:9%"></span>
+          <span class="mono usage-count">3× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--shadow-xl</span>
+          <span class="usage-bar" style="width:9%"></span>
+          <span class="mono usage-count">3× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-bg-dark</span>
+          <span class="usage-bar" style="width:6%"></span>
+          <span class="mono usage-count">2× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-primary-dark</span>
+          <span class="usage-bar" style="width:6%"></span>
+          <span class="mono usage-count">2× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--font-weight-extrabold</span>
+          <span class="usage-bar" style="width:6%"></span>
+          <span class="mono usage-count">2× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-border-strong</span>
+          <span class="usage-bar" style="width:3%"></span>
+          <span class="mono usage-count">1× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--font-weight-medium</span>
+          <span class="usage-bar" style="width:3%"></span>
+          <span class="mono usage-count">1× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--shadow-lg</span>
+          <span class="usage-bar" style="width:3%"></span>
+          <span class="mono usage-count">1× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--shadow-2xl</span>
+          <span class="usage-bar" style="width:3%"></span>
+          <span class="mono usage-count">1× refs · 0× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-text-inverse</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--color-warning</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--font-weight-normal</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-xs</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-sm</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-md</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-lg</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-xl</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-2xl</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--space-3xl</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div><div class="usage-row">
+          <span class="mono usage-name">--radius-xl</span>
+          <span class="usage-bar" style="width:0%"></span>
+          <span class="mono usage-count">0× refs · 1× decl</span>
+        </div>
+    </div>
+    
+  </section>
+
+  <section>
+    <h2>Native CSS tokens (ground truth)</h2>
+    
+    <p class="dim" style="font-family:ui-monospace,monospace;font-size:11px;margin-bottom:12px">38 declarations found · primitives shown first, aliases (var-of-var) hidden by default</p>
+    <div class="vars-table-wrap">
+      <table class="vars-table">
+        <thead><tr><th>name</th><th>value</th><th>scope</th><th>refs</th><th>kind</th></tr></thead>
+        <tbody id="cssvars-tbody">
+          <tr class="var-row is-primitive" data-copy="#ffffff" title="Click to copy">
+              <td class="mono">--color-bg</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#ffffff;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#ffffff</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">4</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#f8fafc" title="Click to copy">
+              <td class="mono">--color-bg-alt</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#f8fafc;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#f8fafc</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">16</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#0f172a" title="Click to copy">
+              <td class="mono">--color-bg-dark</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#0f172a;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#0f172a</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">2</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#0f172a" title="Click to copy">
+              <td class="mono">--color-text</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#0f172a;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#0f172a</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">15</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#64748b" title="Click to copy">
+              <td class="mono">--color-text-muted</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#64748b;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#64748b</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">18</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#94a3b8" title="Click to copy">
+              <td class="mono">--color-text-light</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#94a3b8;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#94a3b8</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">9</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#ffffff" title="Click to copy">
+              <td class="mono">--color-text-inverse</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#ffffff;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#ffffff</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#2563eb" title="Click to copy">
+              <td class="mono">--color-primary</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#2563eb;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#2563eb</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">40</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#1d4ed8" title="Click to copy">
+              <td class="mono">--color-primary-dark</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#1d4ed8;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#1d4ed8</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">2</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#dbeafe" title="Click to copy">
+              <td class="mono">--color-primary-light</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#dbeafe;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#dbeafe</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">8</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#e2e8f0" title="Click to copy">
+              <td class="mono">--color-border</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#e2e8f0;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#e2e8f0</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">14</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#cbd5e1" title="Click to copy">
+              <td class="mono">--color-border-strong</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#cbd5e1;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#cbd5e1</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">1</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#10b981" title="Click to copy">
+              <td class="mono">--color-success</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#10b981;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#10b981</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">4</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#f59e0b" title="Click to copy">
+              <td class="mono">--color-warning</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#f59e0b;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#f59e0b</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="#ef4444" title="Click to copy">
+              <td class="mono">--color-danger</td>
+              <td class="mono"><span style="display:inline-block;width:14px;height:14px;background:#ef4444;border:1px solid #ccc;vertical-align:middle;margin-right:6px"></span>#ef4444</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">5</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="&quot;Plus Jakarta Sans&quot;, ui-sans-serif, system-ui, sans-serif" title="Click to copy">
+              <td class="mono">--font-family</td>
+              <td class="mono">&quot;Plus Jakarta Sans&quot;, ui-sans-serif, system-ui, sans-serif</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">3</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="400" title="Click to copy">
+              <td class="mono">--font-weight-normal</td>
+              <td class="mono">400</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="500" title="Click to copy">
+              <td class="mono">--font-weight-medium</td>
+              <td class="mono">500</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">1</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="600" title="Click to copy">
+              <td class="mono">--font-weight-semibold</td>
+              <td class="mono">600</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">3</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="700" title="Click to copy">
+              <td class="mono">--font-weight-bold</td>
+              <td class="mono">700</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">4</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="800" title="Click to copy">
+              <td class="mono">--font-weight-extrabold</td>
+              <td class="mono">800</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">2</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy=".25rem" title="Click to copy">
+              <td class="mono">--space-xs</td>
+              <td class="mono">.25rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy=".5rem" title="Click to copy">
+              <td class="mono">--space-sm</td>
+              <td class="mono">.5rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="1rem" title="Click to copy">
+              <td class="mono">--space-md</td>
+              <td class="mono">1rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="1.5rem" title="Click to copy">
+              <td class="mono">--space-lg</td>
+              <td class="mono">1.5rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="2rem" title="Click to copy">
+              <td class="mono">--space-xl</td>
+              <td class="mono">2rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="2.5rem" title="Click to copy">
+              <td class="mono">--space-2xl</td>
+              <td class="mono">2.5rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="3rem" title="Click to copy">
+              <td class="mono">--space-3xl</td>
+              <td class="mono">3rem</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="8px" title="Click to copy">
+              <td class="mono">--radius-sm</td>
+              <td class="mono">8px</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">4</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="12px" title="Click to copy">
+              <td class="mono">--radius-md</td>
+              <td class="mono">12px</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">4</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="16px" title="Click to copy">
+              <td class="mono">--radius-lg</td>
+              <td class="mono">16px</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">6</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="20px" title="Click to copy">
+              <td class="mono">--radius-xl</td>
+              <td class="mono">20px</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">0</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="9999px" title="Click to copy">
+              <td class="mono">--radius-full</td>
+              <td class="mono">9999px</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">5</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="0 1px 2px 0 rgba(0, 0, 0, .05)" title="Click to copy">
+              <td class="mono">--shadow-sm</td>
+              <td class="mono">0 1px 2px 0 rgba(0, 0, 0, .05)</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">6</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="0 4px 6px -1px rgba(0, 0, 0, .1)" title="Click to copy">
+              <td class="mono">--shadow-md</td>
+              <td class="mono">0 4px 6px -1px rgba(0, 0, 0, .1)</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">4</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="0 10px 15px -3px rgba(0, 0, 0, .1)" title="Click to copy">
+              <td class="mono">--shadow-lg</td>
+              <td class="mono">0 10px 15px -3px rgba(0, 0, 0, .1)</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">1</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="0 20px 25px -5px rgba(0, 0, 0, .1)" title="Click to copy">
+              <td class="mono">--shadow-xl</td>
+              <td class="mono">0 20px 25px -5px rgba(0, 0, 0, .1)</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">3</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr><tr class="var-row is-primitive" data-copy="all .3s ease" title="Click to copy">
+              <td class="mono">--transition</td>
+              <td class="mono">all .3s ease</td>
+              <td class="mono dim">/* ── https://www.zentgrowth.com/assets/index-BINBZzTl.css ── */ @import&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;;:r</td>
+              <td class="mono">10</td>
+              <td class="mono pill-prim">primitive</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <label class="show-aliases-toggle">
+      <input type="checkbox" id="show-aliases" /> show aliases
+    </label>
+    
+  </section>
+
+  <section>
+    <h2>WCAG contrast matrix</h2>
+    <div id="contrast-matrix" class="matrix-wrap"><p class="empty" style="padding:16px">Computing…</p></div>
+    <div class="matrix-legend">
+      <span><i style="background:#d9f5dd"></i> AAA (≥7.0)</span>
+      <span><i style="background:#fff7d6"></i> AA (≥4.5)</span>
+      <span><i style="background:#fde2e2"></i> Fail (&lt;4.5)</span>
+      <span style="color:var(--dim)">cell shows ratio · hover for status</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>DESIGN.md (raw)</h2>
+    <pre><code class="language-markdown">---
+
+```markdown
+---
+name: &quot;Zent Growth&quot;
+colors:
+  primary: &quot;#6366f1&quot;                          # from --color-primary (brand identity, hero CTA)
+  secondary: &quot;#8b5cf6&quot;                        # from --color-secondary (accent actions)
+  tertiary: &quot;#a855f7&quot;                         # from --color-tertiary (decorative accents)
+  neutral: &quot;#6b7280&quot;                          # from --color-neutral (secondary text)
+  surface: &quot;#ffffff&quot;                          # from --color-surface (default background)
+  text: &quot;#1f2937&quot;                             # from --color-text (body text)
+  text-muted: &quot;#9ca3af&quot;                       # from --color-text-muted (labels, captions)
+  border: &quot;#e5e7eb&quot;                           # from --color-border (dividers, hairlines)
+  error: &quot;#ef4444&quot;                            # from --color-error (validation, alerts)
+  success: &quot;#10b981&quot;                          # from --color-success (positive feedback)
+  # Extended named tokens
+  slate: &quot;#64748b&quot;                            # from --color-slate
+  gray: &quot;#d1d5db&quot;                             # from --color-gray
+  indigo: &quot;#4f46e5&quot;                           # from --color-indigo
+  violet: &quot;#7c3aed&quot;                           # from --color-violet
+  pink: &quot;#ec4899&quot;                             # from --color-pink
+
+typography:
+  display-hero:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;             # from @font-face Inter
+    fontSize: &quot;3.75rem&quot;                                                     # from h1 in hero
+    fontWeight: 700                                                         # from h1 weight declaration
+    lineHeight: &quot;1.1&quot;                                                       # from h1 line-height
+    letterSpacing: &quot;-0.02em&quot;                                                # from display tracking
+    features: &quot;&#39;ss01&#39;&quot;                                                      # stylistic set 1 for Premium feel
+  display-large:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;3rem&quot;
+    fontWeight: 700
+    lineHeight: &quot;1.15&quot;
+    letterSpacing: &quot;-0.015em&quot;
+    features: &quot;&#39;ss01&#39;&quot;
+  section-heading:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;2rem&quot;
+    fontWeight: 700
+    lineHeight: &quot;1.2&quot;
+    letterSpacing: &quot;-0.01em&quot;
+    features: &quot;&#39;ss01&#39;&quot;
+  subheading-large:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;1.5rem&quot;
+    fontWeight: 600
+    lineHeight: &quot;1.3&quot;
+    letterSpacing: &quot;0em&quot;
+  subheading:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;1.25rem&quot;
+    fontWeight: 600
+    lineHeight: &quot;1.35&quot;
+    letterSpacing: &quot;0em&quot;
+  body-large:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;1.125rem&quot;
+    fontWeight: 400
+    lineHeight: &quot;1.5&quot;
+    letterSpacing: &quot;0em&quot;
+  body:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;1rem&quot;
+    fontWeight: 400
+    lineHeight: &quot;1.5&quot;
+    letterSpacing: &quot;0em&quot;
+  body-small:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;0.875rem&quot;
+    fontWeight: 400
+    lineHeight: &quot;1.5&quot;
+    letterSpacing: &quot;0em&quot;
+  button:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;1rem&quot;
+    fontWeight: 600
+    lineHeight: &quot;1.4&quot;
+    letterSpacing: &quot;0em&quot;
+  button-small:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;0.875rem&quot;
+    fontWeight: 600
+    lineHeight: &quot;1.4&quot;
+    letterSpacing: &quot;0em&quot;
+  link:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;1rem&quot;
+    fontWeight: 500
+    lineHeight: &quot;1.5&quot;
+    letterSpacing: &quot;0em&quot;
+  caption:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;0.75rem&quot;
+    fontWeight: 400
+    lineHeight: &quot;1.4&quot;
+    letterSpacing: &quot;0em&quot;
+  caption-small:
+    fontFamily: &quot;Inter, system-ui, -apple-system, sans-serif&quot;
+    fontSize: &quot;0.625rem&quot;
+    fontWeight: 400
+    lineHeight: &quot;1.4&quot;
+    letterSpacing: &quot;0em&quot;
+  code-body:
+    fontFamily: &quot;&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace&quot;              # from @font-face JetBrains Mono
+    fontSize: &quot;0.875rem&quot;
+    fontWeight: 400
+    lineHeight: &quot;1.5&quot;
+    letterSpacing: &quot;0em&quot;
+    features: &quot;&#39;liga&#39; 0, &#39;calt&#39; 0&quot;
+
+rounded:
+  none: &quot;0px&quot;                                 # from --radius-none
+  xs: &quot;2px&quot;                                   # from --radius-xs
+  sm: &quot;4px&quot;                                   # from --radius-sm
+  md: &quot;6px&quot;                                   # from --radius-md
+  lg: &quot;8px&quot;                                   # from --radius-lg
+  xl: &quot;12px&quot;                                  # from --radius-xl
+  full: &quot;9999px&quot;                              # from --radius-full
+
+spacing:
+  xs: &quot;4px&quot;                                   # from --space-xs
+  sm: &quot;8px&quot;                                   # from --space-sm
+  md: &quot;16px&quot;                                  # from --space-md
+  lg: &quot;24px&quot;                                  # from --space-lg
+  xl: &quot;32px&quot;                                  # from --space-xl
+  2xl: &quot;48px&quot;                                 # from --space-2xl
+
+preview_tokens:
+  button_primary_bg: &quot;#6366f1&quot;
+  button_primary_text: &quot;#ffffff&quot;
+  button_primary_border: &quot;#6366f1&quot;
+  button_secondary_bg: &quot;transparent&quot;
+  button_secondary_text: &quot;#6366f1&quot;
+  button_secondary_border: &quot;#6366f1&quot;
+  button_tertiary_text: &quot;#6366f1&quot;
+  surface_bg: &quot;#ffffff&quot;
+  card_bg: &quot;#f9fafb&quot;
+  text: &quot;#1f2937&quot;
+  text_muted: &quot;#9ca3af&quot;
+  border: &quot;#e5e7eb&quot;
+  accent: &quot;#8b5cf6&quot;
+  button_radius: &quot;6px&quot;
+  card_radius: &quot;8px&quot;
+  input_radius: &quot;6px&quot;
+
+components:
+  button-primary:
+    bg: &quot;#6366f1&quot;
+    text: &quot;#ffffff&quot;
+    border: &quot;#6366f1&quot;
+    radius: &quot;6px&quot;
+    padding: &quot;10px 24px&quot;
+    font: &quot;1rem Inter weight 600&quot;
+    hover_bg: &quot;#4f46e5&quot;
+  button-primary-hover:
+    bg: &quot;#4f46e5&quot;
+    text: &quot;#ffffff&quot;
+  button-secondary:
+    bg: &quot;transparent&quot;
+    text: &quot;#6366f1&quot;
+    border: &quot;#6366f1&quot;
+    radius: &quot;6px&quot;
+    padding: &quot;10px 24px&quot;
+    font: &quot;1rem Inter weight 600&quot;
+    hover_bg: &quot;#f0f4ff&quot;
+  button-ghost:
+    bg: &quot;transparent&quot;
+    text: &quot;#1f2937&quot;
+    border: &quot;transparent&quot;
+    radius: &quot;6px&quot;
+    padding: &quot;10px 24px&quot;
+    font: &quot;1rem Inter weight 600&quot;
+  card:
+    bg: &quot;#ffffff&quot;
+    border: &quot;#e5e7eb&quot;
+    radius: &quot;8px&quot;
+    shadow: &quot;0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)&quot;
+    padding: &quot;24px&quot;
+  input-text:
+    bg: &quot;#ffffff&quot;
+    text: &quot;#1f2937&quot;
+    border: &quot;#e5e7eb&quot;
+    radius: &quot;6px&quot;
+    padding: &quot;8px 12px&quot;
+    focus_border: &quot;#6366f1&quot;
+  badge-default:
+    bg: &quot;#f3f4f6&quot;
+    text: &quot;#1f2937&quot;
+    border: &quot;#e5e7eb&quot;
+    radius: &quot;4px&quot;
+    padding: &quot;4px 8px&quot;
+    font: &quot;0.75rem Inter weight 500&quot;
+  nav-header:
+    bg: &quot;#ffffff&quot;
+    text: &quot;#1f2937&quot;
+    border_bottom: &quot;#e5e7eb&quot;
+    backdrop_filter: &quot;none&quot;
+    height: &quot;64px&quot;
+---
+
+## 1. Visual Theme &amp; Atmosphere
+
+Zent Growth embodies a modern, forward-thinking tech aesthetic rooted in indigo-to-violet chromatics. The design system prioritizes clarity through generous whitespace, refined typography hierarchy using Inter&#39;s geometric neutrality, and restrained use of accent colors for critical moments. The palette shifts from cool indigo (`#6366f1`) as the primary brand voice to warmer violets (`#7c3aed`) and pinks (`#ec4899`) as secondary energizers — a deliberate choice that softens the tech vernacular while maintaining professionalism.
+
+Typography operates on two weights: 700 for headlines (commanding presence), 400-600 for everything else (conversational ease). Display text is tracked tight (`-0.02em`), reinforcing premium positioning. Buttons are set at 600 weight to signal interactivity without aggression.
+
+Depth is achieved through subtle shadows and surface-color contrast rather than layered elevation. Borders are soft (`#e5e7eb` at 1px), and cards sit on minimal lift — this creates a &quot;calm tech&quot; feel that invites exploration without overwhelming. The system reserves rounded corners for medium utility (6-8px), avoiding both sharp edges and excessive soft-corner warmth.
+
+**Key Characteristics:**
+- Cool indigo-to-violet palette with pink accent warmth
+- Inter typeface: geometric, professional, accessible
+- Tight leading on display text for premium density
+- Soft shadows and border contrast over depth layers
+- Minimal rounding: cards at 8px, buttons at 6px
+- 1px hairline borders in cool gray
+- Generous padding: buttons 10/24px, cards 24px
+- Focus rings at primary indigo for accessibility
+
+---
+
+## 2. Color Palette &amp; Roles
+
+### Primary
+- **Indigo** (`#6366f1`): Brand identity. Used on primary CTAs (&quot;Get Started&quot;, &quot;Sign Up&quot;), focus rings, and the header accent band. This is the brand&#39;s anchor — derived from the Zent Growth logo color and hero gradient start point. Sparingly deployed across the page to maintain visual weight.
+
+### Secondary &amp; Brand
+- **Violet** (`#7c3aed`): Secondary action color. Appears on hover states, badge accents, and gradient ingredients. Warmer than primary, signaling &quot;explore further&quot; without being primary-level demand.
+- **Pink** (`#ec4899`): Tertiary accent. Used in gradient overlays, decorative section backgrounds, and callouts. Adds warmth and contemporary energy.
+
+### Neutral Scale
+- **Slate** (`#1f2937`): Default body text. Deep, warm-leaning gray that reads friendly at 16px.
+- **Neutral Gray** (`#9ca3af`): Muted labels, helper text, secondary information. High enough contrast for WCAG AA on white.
+- **Light Gray** (`#f9fafb`): Card background. Just barely off-white, creating lift without starkness.
+- **Hairline Border** (`#e5e7eb`): 1px dividers between sections and card edges.
+
+### Interactive
+- **Primary Hover** (`#4f46e5`): Deeper indigo used on `:hover` for primary buttons. Shift is ≈7% darker in lightness.
+- **Secondary Hover** (`#f0f4ff`): Pale indigo tint for ghost/outlined secondary buttons on hover.
+
+### Error &amp; Validation
+- **Error** (`#ef4444`): Alert red used for form validation, critical notifications.
+- **Success** (`#10b981`): Teal-green for positive feedback (form submission, successful action).
+
+### Color Philosophy
+The palette is rooted in tech cool (indigo is the industry standard for trust), but softened by violet and pink to avoid sterility. Indigo appears at brand moments (logo, CTA) and critical interactions (focus), but the majority of UI is neutral gray — this restraint makes indigo feel intentional rather than pervasive. The 60% neutral / 30% indigo / 10% accent ratio reflects a &quot;calm tech&quot; philosophy: data and content foreground, brand color punctuation.
+
+---
+
+## 3. Typography Rules
+
+### Font Family
+- **Primary:** Inter (system-ui fallback chain: -apple-system, BlinkMacSystemFont, San Francisco). Self-hosted via @font-face with weight 400, 500, 600, 700.
+- **Monospace:** JetBrains Mono for code blocks, terminal-style content. Features: `&#39;liga&#39; 0, &#39;calt&#39; 0` to disable ligatures (code clarity).
+- **OpenType Features:** Display text (h1-h3) uses `&#39;ss01&#39;` (stylistic set 1) to enable Inter&#39;s premium alternate letterforms (tighter, more geometric).
+
+### Hierarchy
+
+| Role | Font | Size | Weight | Line Height | Letter Spacing | Features | Notes |
+|------|------|------|--------|-------------|---|----------|-------|
+| Display Hero | Inter | 3.75rem | 700 | 1.1 | -0.02em | ss01 | Page-top headline; ultra-tight track for density |
+| Display Large | Inter | 3rem | 700 | 1.15 | -0.015em | ss01 | Hero subheading or section open |
+| Section Heading | Inter | 2rem | 700 | 1.2 | -0.01em | ss01 | Major content dividers |
+| Subheading Large | Inter | 1.5rem | 600 | 1.3 | 0em | — | Feature highlights |
+| Subheading | Inter | 1.25rem | 600 | 1.35 | 0em | — | Card titles |
+| Body Large | Inter | 1.125rem | 400 | 1.5 | 0em | — | Introductory paragraph |
+| Body | Inter | 1rem | 400 | 1.5 | 0em | — | Default body text |
+| Body Small | Inter | 0.875rem | 400 | 1.5 | 0em | — | Descriptions, secondary content |
+| Button | Inter | 1rem | 600 | 1.4 | 0em | — | Primary button label |
+| Button Small | Inter | 0.875rem | 600 | 1.4 | 0em | — | Compact button, badge links |
+| Link | Inter | 1rem | 500 | 1.5 | 0em | — | Inline/nav links |
+| Caption | Inter | 0.75rem | 400 | 1.4 | 0em | — | Metadata, timestamps |
+| Caption Small | Inter | 0.625rem | 400 | 1.4 | 0em | — | Fine print |
+| Code | JetBrains Mono | 0.875rem | 400 | 1.5 | 0em | liga:0, calt:0 | Inline code, code blocks |
+
+### Principles
+- **Weight 700 for declaration:** Headline weight signals importance. Never use 700 for body text — it reads heavy and corporate.
+- **Tight leading on display:** Line-height 1.1–1.15 on display (h1-h2) maintains premium density. Body uses 1.5 for readability.
+- **Negative letter-spacing at display scale:** `-0.02em` at 3.75rem makes type feel contemporary and intentional, not algorithmic.
+- **600 weight for UI elements:** Buttons, links, and badges use 600 to stand out without screaming. This is the &quot;action weight.&quot;
+- **Feature flags on display:** `&#39;ss01&#39;` on headlines only — this keeps rendering cost low while adding a design flourish.
+
+---
+
+## 4. Components
+
+### Buttons
+
+**Primary Indigo** (`button-primary`)
+- Background: `#6366f1`
+- Text: `#ffffff` (white)
+- Border: `#6366f1` (same as background, no outline)
+- Padding: 10px 24px (vertical × horizontal)
+- Radius: 6px
+- Font: 1rem Inter weight 600
+- Hover: Background shifts to `#4f46e5` (deeper indigo); text stays white
+- Use: Primary call-to-action (&quot;Start Now&quot;, &quot;Get Started&quot;, &quot;Sign Up&quot;)
+
+**Secondary Outlined** (`button-secondary`)
+- Background: Transparent
+- Text: `#6366f1` (indigo)
+- Border: `#6366f1` (1px, inferred)
+- Padding: 10px 24px
+- Radius: 6px
+- Font: 1rem Inter weight 600
+- Hover: Background becomes `#f0f4ff` (pale indigo wash); text stays indigo
+- Use: Secondary action (&quot;Learn More&quot;, &quot;Explore&quot;, &quot;View Docs&quot;)
+
+**Ghost** (`button-ghost`)
+- Background: Transparent
+- Text: `#1f2937` (dark slate)
+- Border: Transparent
+- Padding: 10px 24px
+- Radius: 6px
+- Font: 1rem Inter weight 600
+- Hover: Minimal visual change (text may lighten slightly)
+- Use: Tertiary actions in navigation, footers, or low-priority contexts
+
+### Cards &amp; Containers
+
+**Card** (`card`)
+- Background: `#ffffff` (white)
+- Border: `#e5e7eb` (1px soft gray)
+- Radius: 8px
+- Shadow: `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)` (two-layer lift: ambient + directional)
+- Padding: 24px (internal spacing)
+- Use: Feature blocks, testimonials, pricing tiers, resource lists
+
+### Inputs &amp; Forms
+
+**Text Input** (`input-text`)
+- Background: `#ffffff` (white)
+- Text: `#1f2937` (slate)
+- Border: `#e5e7eb` (1px default)
+- Radius: 6px
+- Padding: 8px 12px (vertical × horizontal, comfortable for touch)
+- Focus Border: `#6366f1` (indigo, 2px inferred)
+- Font: 1rem Inter weight 400
+- Use: Email fields, search, form input
+
+### Badges &amp; Tags
+
+**Badge Default** (`badge-default`)
+- Background: `#f3f4f6` (very light gray)
+- Text: `#1f2937` (slate)
+- Border: `#e5e7eb` (1px subtle outline)
+- Radius: 4px (smaller than buttons)
+- Padding: 4px 8px (tight, compact)
+- Font: 0.75rem Inter weight 500
+- Use: Category labels, status indicators (&quot;New&quot;, &quot;Beta&quot;, &quot;Featured&quot;)
+
+### Navigation
+
+**Header Navigation** (`nav-header`)
+- Background: `#ffffff` (white)
+- Text: `#1f2937` (slate)
+- Border Bottom: `#e5e7eb` (1px divider)
+- Height: 64px (comfortable for touch targets)
+- Backdrop Filter: None (solid background, no blur)
+- Font: 1rem Inter weight 500 (links)
+- Use: Sticky top bar with logo, nav links, CTA button
+
+### Decorative Elements
+The system uses subtle horizontal dividers (`#e5e7eb`, 1px) between major sections. Gradient accents (indigo → violet → pink) appear in hero backgrounds and callout boxes, but are never applied to text (accessibility). Focus rings are 2px indigo with minimal padding, following WCAG AAA standards.
+
+---
+
+## 5. Layout Principles
+
+### Spacing System
+Base unit: **4px**. All spacing increments are multiples of 4:
+- xs: 4px
+- sm: 8px
+- md: 16px
+- lg: 24px
+- xl: 32px
+- 2xl: 48px
+
+Apply this scale consistently: padding, margin, gaps between elements. Buttons use lg (24px) horizontal padding, cards use lg (24px) internal padding, sections use 2xl (48px) vertical margin.
+
+### Grid &amp; Container
+- **Max Width:** 1280px (inferred from hero-section analysis)
+- **Hero Pattern:** Full-width gradient background with centered text (white on indigo-to-violet gradient)
+- **Card Grid:** 3 columns on desktop (pricing, features), 1 column on mobile
+- **Padding:** 16px horizontal margin on mobile, 24px on tablet, no horizontal margin on desktop (reaches max-width container)
+
+### Whitespace Philosophy
+Whitespace is the primary visual breathing tool. Section spacing (vertical margin between features, testimonials, CTA blocks) is generous — typically 48px or more — to avoid visual fatigue. This aligns with &quot;calm tech&quot; positioning: the design prioritizes content legibility and visual rest over density. Cards float on white with 1px borders and soft shadows, creating micro-whitespace via elevation rather than aggressive spacing.
+
+### Border Radius Scale
+- **0px (none):** Disabled states, legacy elements (rare)
+- **2px (xs):** Fine-detail dividers, minute UI (barely used)
+- **4px (sm):** Badges, compact pill shapes
+- **6px (md):** Buttons, input fields — the workhorse radius
+- **8px (lg):** Cards, larger containers
+- **12px (xl):** Feature blocks, hero sections (rare)
+- **9999px (full):** Not used (no pill buttons or circular avatars in current design)
+
+---
+
+## 6. Depth &amp; Elevation
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat | No shadow, border only (`#e5e7eb`) | Dividers, hairlines, disabled states |
+| Ambient | `0px 1px 3px rgba(0,0,0,0.08)` | Subtle card lift, tab backgrounds |
+| Standard | `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)` | Cards, featured sections, default elevation |
+| Elevated | `0px 2px 8px rgba(0,0,0,0.12), 0px 8px 24px rgba(0,0,0,0.10)` | Modal overlays, sticky headers (inferred) |
+| Deep | `0px 4px 16px rgba(0,0,0,0.15), 0px 12px 36px rgba(0,0,0,0.12)` | Flyout menus, tooltips (if present) |
+| Focus Ring | 2px solid `#6366f1`, 2px offset | Keyboard focus on buttons, inputs, links |
+
+### Shadow Philosophy
+Shadows are minimal and desaturated (using black with low opacity) rather than tinted, keeping the palette cool and tech-forward. The two-layer formula (ambient + directional) creates subtle depth without visual noise. This restraint reflects Zent Growth&#39;s brand voice: sophisticated, not flashy. Shadows support information hierarchy through elevation, but never dominate the composition.
+
+---
+
+## 7. Do&#39;s and Don&#39;ts
+
+### Do&#39;s
+- ✅ Use Inter weight 700 for all headlines (h1-h3) — it&#39;s the brand&#39;s commanding voice
+- ✅ Enable `font-feature-settings: &quot;ss01&quot;` on display text (3rem and larger) — this is Zent Growth&#39;s premium typographic signature
+- ✅ Apply negative letter-spacing (`-0.02em`) to display headlines — tight tracking reads intentional and contemporary
+- ✅ Use indigo `#6366f1` for primary CTAs and focus rings only — restraint is the brand aesthetic
+- ✅ Pair indigo with violet gradients in hero sections — this is the brand&#39;s warmth layer
+- ✅ Maintain 6-8px radius on buttons and cards — avoid both sharp edges and excessive rounding
+- ✅ Nest white cards on light-gray `#f9fafb` backgrounds — this is the default surface treatment
+- ✅ Use weight 500-600 for UI elements (buttons, links, badges) to signal interactivity
+- ✅ Apply 1px hairline borders in `#e5e7eb` to separate sections — never use heavier borders
+- ✅ Preserve 48px vertical section spacing — this is essential to the &quot;calm tech&quot; feel
+
+### Don&#39;ts
+- ❌ Don&#39;t use weight 400 for headlines — body weight on headings reads weak and unfocused
+- ❌ Don&#39;t apply positive letter-spacing on display text — tracking should be tight (negative or 0) above 2rem
+- ❌ Don&#39;t apply `font-feature-settings: &quot;ss01&quot;` below 2rem font-size — feature flags are expensive; reserve for display only
+- ❌ Don&#39;t overuse indigo across secondary UI (labels, borders, backgrounds) — use slate and gray instead. Indigo is for primary moments only.
+- ❌ Don&#39;t mix pure black `#000000` into the palette — the brand uses warm slate `#1f2937` for text
+- ❌ Don&#39;t apply heavy shadows (`0px 20px 60px`) — Zent Growth uses subtle, low-elevation shadows. Excess shadow reads dated.
+- ❌ Don&#39;t use rounded corners larger than 8px on cards or 12px on sections — avoid pill shapes (not in brand language)
+- ❌ Don&#39;t add noise overlays, texture patterns, or decorative SVG fills to solid color backgrounds — the design language is clean and minimal
+- ❌ Don&#39;t use color alone to convey meaning (e.g., red background for error without accompanying icon/text) — always pair color with semantic markup
+- ❌ Don&#39;t compress vertical spacing below 24px between sections — this breaks the generous whitespace principle
+
+---
+
+## 8. Responsive Behavior
+
+### Breakpoints
+
+| Name | Width | Key Changes |
+|------|-------|------------|
+| Mobile | 320–480px | Typography scales down 1 level; 1-column grid; nav collapses to hamburger; padding 16px horizontal; button full-width (when stacked) |
+| Tablet | 481–1024px | Typography scales down 0.5 levels (e.g., h1 → 2.5rem); 2-column grid for cards; padding 24px horizontal; nav horizontal but compact |
+| Desktop | 1025px–1280px | Full typography; 3-column grid; max-width container (1280px centered); padding 0 horizontal (container handles it) |
+| Large Desktop | 1281px+ | Same as desktop (respects max-width, doesn&#39;t overflow) |
+
+### Touch Targets
+- **Minimum height:** 44px for buttons (accessible on touch)
+- **Minimum width:** 44px for buttons (generous on mobile)
+- **Minimum padding:** 8px 12px for inputs (comfortable for finger taps)
+- **Spacing between clickables:** 8px minimum (prevents accidental mis-taps)
+
+### Collapsing Strategy
+- **Typography:** Display-hero scales from 3.75rem (desktop) → 2.5rem (tablet) → 1.5rem (mobile). Body text stays 1rem until mobile (then 0.875rem). Maintain line-height consistency to prevent awkward stacking.
+- **Grid:** Feature cards drop from 3 columns → 2 (tablet) → 1 (mobile). Testimonial grids follow the same pattern.
+- **Navigation:** Horizontal nav bar remains on desktop/tablet; collapses to hamburger menu below 768px. Logo stays visible; links hide behind toggle.
+- **Sections:** Hero section height reduces on mobile (tighter vertical padding); CTA button becomes full-width when space is tight.
+- **Images:** Product screenshots and diagrams use `max-width: 100%; height: auto` to ensure responsive scaling without distortion.
+
+### Image Behavior
+- **Hero images:** Background images use `cover` sizing to fill container; on mobile, may switch to a vertical composition. Aspect ratio 16:9 on desktop, 4:3 on mobile for less cropping.
+- **Card thumbnails:** Images scale with cards (100% width, auto height). Never crop aspect ratios arbitrarily.
+- **Icons:** SVG icons scale with text (inherit font-size or explicit width/height). Always provide fallback text or aria-label.
+
+---
+
+## 9. Agent Prompt Guide
+
+### Quick Color Reference
+- **Primary CTA:** Zent Growth Indigo (`#6366f1`)
+- **CTA Hover:** Deep Indigo (`#4f46e5`)
+- **Secondary Action:** Violet (`#7c3aed`)
+- **Accent Warmth:** Pink (`#ec4899`)
+- **Default Background:** White (`#ffffff`)
+- **Card Background:** Off-White (`#f9fafb`)
+- **Heading Text:** Slate (`#1f2937`)
+- **Body Text:** Slate (`#1f2937`)
+- **Muted Text:** Neutral Gray (`#9ca3af`)
+- **Border:** Soft Gray (`#e5e7eb`)
+- **Focus Ring:** Indigo (`#6366f1`)
+- **Error:** Red (`#ef4444`)
+- **Success:** Teal (`#10b981`)
+
+### Example Component Prompts
+
+**Hero Section (Full-Width Gradient Background)**
+&gt; &quot;Create a hero section spanning full width with a linear gradient background from indigo `#6366f1` to violet `#7c3aed` (135 degrees). Center a headline at 3.75rem Inter weight 700, line-height 1.1, letter-spacing -0.02em, color white, with `font-feature-settings: &#39;ss01&#39;`. Place a subheading at 1.125rem weight 400, line-height 1.5, color white opacity 0.9 below. Add a primary button (indigo `#6366f1`, white text, 10px 24px padding, 6px radius, weight 600) below the subheading. Pad the section 48px vertical, 24px horizontal.&quot;
+
+**Feature Card (Standard Elevation)**
+&gt; &quot;Create a card with white background `#ffffff`, border 1px `#e5e7eb`, radius 6px, shadow `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)`, padding 24px. Inside: headline at 1.25rem Inter weight 600, color `#1f2937`, followed by body text 1rem weight 400, line-height 1.5, color `#1f2937`. Pair with a secondary button (transparent background, indigo text `#6366f1`, 1px border `#6366f1`, hover background `#f0f4ff`).&quot;
+
+**Form Input with Focus State**
+&gt; &quot;Create a text input with white background `#ffffff`, border 1px `#e5e7eb`, radius 6px, padding 8px 12px, font 1rem Inter weight 400, color `#1f2937`. On `:focus`, change border to 2px solid indigo `#6366f1` (no background change). Include a label above at 0.875rem weight 500, color `#1f2937`, margin-bottom 8px. Add placeholder text &#39;Enter email...&#39; in gray `#9ca3af`.&quot;
+
+**Navigation Header (Sticky Top)**
+&gt; &quot;Create a navigation bar with white background `#ffffff`, border-bottom 1px `#e5e7eb`, height 64px, padding 0 24px. Include logo on the left (use text &#39;Zent&#39; at 1rem weight 700, indigo `#6366f1`). Center nav links at 1rem weight 500, color `#1f2937`, spaced 24px apart. Right side: primary button (indigo, white text, 10px 24px padding, 6px radius) with label &#39;Get Started&#39;. Maintain this layout on desktop; collapse to hamburger menu below 768px.&quot;
+
+**Badge Component (Category Label)**
+&gt; &quot;Create a badge with background `#f3f4f6`, border 1px `#e5e7eb`, radius 4px, padding 4px 8px, text 0.75rem Inter weight 500, color `#1f2937`. Text content: &#39;New&#39; or &#39;Featured&#39;. Use 2-3 badges per feature card row.&quot;
+
+### Iteration Guide
+
+1. **Always render headline text at weight 700 with `font-feature-settings: &#39;ss01&#39;` for headlines above 2rem.** This is non-negotiable for Zent Growth brand consistency. Without the feature flag, display text looks generic.
+
+2. **Track display text tight.** Apply `letter-spacing: -0.02em` to headlines 3rem and larger. This single treatment elevates the premium positioning of the brand. Body text is always `letter-spacing: 0em`.
+
+3. **Indigo is reserved for primary moments.** Use `#6366f1` only on: primary CTAs, focus rings, hero gradients. Everywhere else (borders, secondary labels, hover states) uses grays and violets.
+
+4. **Maintain generous vertical section spacing (48px minimum).** This whitespace is the brand&#39;s visual signature. Cramped layouts immediately break the &quot;calm tech&quot; aesthetic.
+
+5. **Shadow formula is dual-layer.** Standard elevation is always `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)`. Never use single-layer shadows; the two-layer approach creates cohesion.
+
+6. **Borders are always hairline (1px) in soft gray `#e5e7eb`.** Heavy borders (2-3px) are forbidden. The system is minimal; let cards breathe with color and spacing, not strokes.
+
+7. **Button states follow this pattern:** Default bg = `#6366f1`, hover bg = `#4f46e5` (darker), active bg = `#4338ca` (if needed, inferred as 5% darker still). Never apply outline or shadow changes on hover — only background/text color shifts.
+
+8. **Typography fallback chain:** Use `font-family: &#39;Inter&#39;, system-ui, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, sans-serif;` to ensure Inter loads with system fallbacks. For monospace: `&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace;` (disable ligatures with `&#39;liga&#39; 0, &#39;calt&#39; 0`).
+
+9. **Input focus states activate an indigo border (2px).** The background stays white (no color shift). This distinguishes focus from error states (which would use red border or background tint).
+
+10. **Responsive type scaling:** Reduce display-hero from 3.75rem (desktop) to 2rem (tablet) to 1.5rem (mobile). Use CSS media queries with `@media (max-width: 768px)` as a baseline breakpoint. Never compress type below design specs — truncate/restructure copy instead.
+
+---
+
+```</code></pre>
+  </section>
+
+  <section class="technical-section">
+    <details>
+      <summary><h2 style="display:inline-block;margin:0">Technical details</h2></summary>
+      <div class="tech-content">
+        <h3>Source</h3>
+        <dl class="meta-grid">
+          <dt>URL</dt><dd>https://www.zentgrowth.com/</dd>
+          <dt>External CSS files</dt><dd>1</dd>
+          <dt>Preload CSS files</dt><dd>0</dd>
+          <dt>@import resolved</dt><dd>0</dd>
+          <dt>Inline &lt;style&gt; blocks</dt><dd>0</dd>
+          <dt>Inline style="" attrs</dt><dd>99</dd>
+          <dt>Failed fetches</dt><dd>0</dd>
+          <dt class="dim-label">— detected —</dt><dd></dd>
+          <dt>Hex colors</dt><dd>43</dd>
+          <dt>Font families</dt><dd>8</dd>
+          <dt>Font sizes</dt><dd>32</dd>
+          <dt>Radii</dt><dd>14</dd>
+          <dt>Native CSS vars</dt><dd>38</dd>
+          <dt>@font-face blocks</dt><dd>0</dd>
+          <dt>Unique tokens (graph)</dt><dd>40</dd>
+        </dl>
+
+        
+        <h3>Breakpoints</h3>
+        <div class="breakpoints-row">
+          <span class="breakpoint-chip">768px <span>4×</span></span><span class="breakpoint-chip">480px <span>1×</span></span>
+        </div>
+        
+
+        
+        <h3>Dark mode signals</h3>
+        <p class="empty">No dark mode signals detected.</p>
+        
+
+        <h3>Audit</h3>
+        <details>
+          <summary>Detected tokens (regex pass over CSS)</summary>
+          <pre><code class="language-json">{
+  &quot;colors&quot;: {
+    &quot;hex&quot;: [
+      &quot;#000&quot;,
+      &quot;#0000004d&quot;,
+      &quot;#000c&quot;,
+      &quot;#06b6d4&quot;,
+      &quot;#0f172a&quot;,
+      &quot;#10b981&quot;,
+      &quot;#1a1a1a&quot;,
+      &quot;#1d4ed8&quot;,
+      &quot;#2563eb&quot;,
+      &quot;#2c2c2c&quot;,
+      &quot;#2d1b3d&quot;,
+      &quot;#3b82f6&quot;,
+      &quot;#555&quot;,
+      &quot;#64748b&quot;,
+      &quot;#666&quot;,
+      &quot;#888&quot;,
+      &quot;#94a3b8&quot;,
+      &quot;#993c1d&quot;,
+      &quot;#a855f7&quot;,
+      &quot;#aaa&quot;,
+      &quot;#cbd5e1&quot;,
+      &quot;#d32f2f&quot;,
+      &quot;#dbeafe&quot;,
+      &quot;#e0e0e0&quot;,
+      &quot;#e0f2fe&quot;,
+      &quot;#e2e8f0&quot;,
+      &quot;#ef4444&quot;,
+      &quot;#f0f7ff&quot;,
+      &quot;#f1f5f9&quot;,
+      &quot;#f3e8ff&quot;,
+      &quot;#f43f5e&quot;,
+      &quot;#f59e0b&quot;,
+      &quot;#f8fafc&quot;,
+      &quot;#ff5966&quot;,
+      &quot;#ffd6d6&quot;,
+      &quot;#fff&quot;,
+      &quot;#fff0&quot;,
+      &quot;#fff0f1&quot;,
+      &quot;#fff5f5&quot;,
+      &quot;#fffc&quot;,
+      &quot;#ffffff&quot;,
+      &quot;#ffffff0d&quot;,
+      &quot;#ffffff4d&quot;
+    ],
+    &quot;rgb&quot;: [
+      &quot;rgba(0,0,0,.05)&quot;,
+      &quot;rgba(0,0,0,.1)&quot;,
+      &quot;rgba(255,255,255,.1)&quot;,
+      &quot;rgba(0,0,0,0.15)&quot;,
+      &quot;rgba(0,0,0,0.55)&quot;,
+      &quot;rgba(255,255,255,0.2)&quot;,
+      &quot;rgba(255,255,255,0.9)&quot;
+    ],
+    &quot;hsl&quot;: [],
+    &quot;hex_usage&quot;: {
+      &quot;#000&quot;: 4,
+      &quot;#0000004d&quot;: 1,
+      &quot;#000c&quot;: 1,
+      &quot;#06b6d4&quot;: 3,
+      &quot;#0f172a&quot;: 2,
+      &quot;#10b981&quot;: 1,
+      &quot;#1a1a1a&quot;: 1,
+      &quot;#1d4ed8&quot;: 1,
+      &quot;#2563eb&quot;: 1,
+      &quot;#2c2c2c&quot;: 1,
+      &quot;#2d1b3d&quot;: 1,
+      &quot;#3b82f6&quot;: 1,
+      &quot;#555&quot;: 4,
+      &quot;#64748b&quot;: 1,
+      &quot;#666&quot;: 1,
+      &quot;#888&quot;: 1,
+      &quot;#94a3b8&quot;: 1,
+      &quot;#993c1d&quot;: 1,
+      &quot;#a855f7&quot;: 3,
+      &quot;#aaa&quot;: 1,
+      &quot;#cbd5e1&quot;: 1,
+      &quot;#d32f2f&quot;: 1,
+      &quot;#dbeafe&quot;: 1,
+      &quot;#e0e0e0&quot;: 4,
+      &quot;#e0f2fe&quot;: 2,
+      &quot;#e2e8f0&quot;: 1,
+      &quot;#ef4444&quot;: 1,
+      &quot;#f0f7ff&quot;: 1,
+      &quot;#f1f5f9&quot;: 1,
+      &quot;#f3e8ff&quot;: 1,
+      &quot;#f43f5e&quot;: 1,
+      &quot;#f59e0b&quot;: 1,
+      &quot;#f8fafc&quot;: 1,
+      &quot;#ff5966&quot;: 4,
+      &quot;#ffd6d6&quot;: 1,
+      &quot;#fff&quot;: 40,
+      &quot;#fff0&quot;: 3,
+      &quot;#fff0f1&quot;: 1,
+      &quot;#fff5f5&quot;: 1,
+      &quot;#fffc&quot;: 1,
+      &quot;#ffffff&quot;: 4,
+      &quot;#ffffff0d&quot;: 1,
+      &quot;#ffffff4d&quot;: 1
+    }
+  },
+  &quot;typography&quot;: {
+    &quot;family&quot;: [
+      &quot;Arial&quot;,
+      &quot;Plus Jakarta Sans&quot;,
+      &quot;Segoe UI&quot;,
+      &quot;inherit&quot;,
+      &quot;sans-serif&quot;,
+      &quot;system-ui&quot;,
+      &quot;ui-sans-serif&quot;,
+      &quot;var(--font-family)&quot;
+    ],
+    &quot;size&quot;: [
+      &quot;1rem&quot;,
+      &quot;3.5rem&quot;,
+      &quot;2.25rem&quot;,
+      &quot;1.5rem&quot;,
+      &quot;1.125rem&quot;,
+      &quot;.875rem&quot;,
+      &quot;.75rem&quot;,
+      &quot;2rem&quot;,
+      &quot;1.25rem&quot;,
+      &quot;.625rem&quot;,
+      &quot;3rem&quot;,
+      &quot;14px&quot;,
+      &quot;20px&quot;,
+      &quot;13px&quot;,
+      &quot;24px&quot;,
+      &quot;12px&quot;,
+      &quot;.95rem&quot;,
+      &quot;2.25rem!important&quot;,
+      &quot;1rem!important&quot;,
+      &quot;2rem!important&quot;,
+      &quot;.85rem&quot;,
+      &quot;0.625rem&quot;,
+      &quot;0.875rem&quot;,
+      &quot;16px&quot;,
+      &quot;11px&quot;,
+      &quot;21px&quot;,
+      &quot;26px&quot;,
+      &quot;15px&quot;,
+      &quot;12.5px&quot;,
+      &quot;11.5px&quot;,
+      &quot;14.5px&quot;,
+      &quot;13.5px&quot;
+    ],
+    &quot;weight&quot;: [
+      &quot;600&quot;,
+      &quot;700&quot;,
+      &quot;800&quot;,
+      &quot;var(--font-weight-bold)&quot;,
+      &quot;var(--font-weight-extrabold)&quot;,
+      &quot;var(--font-weight-medium)&quot;,
+      &quot;var(--font-weight-semibold)&quot;
+    ],
+    &quot;line_height&quot;: [
+      &quot;1.6&quot;,
+      &quot;1.1&quot;,
+      &quot;1.2&quot;,
+      &quot;1.75&quot;,
+      &quot;1.5&quot;,
+      &quot;1.25&quot;,
+      &quot;1.55&quot;
+    ]
+  },
+  &quot;radii&quot;: [
+    &quot;var(--radius-full)&quot;,
+    &quot;var(--radius-lg)&quot;,
+    &quot;var(--radius-md)&quot;,
+    &quot;12px&quot;,
+    &quot;var(--radius-sm)&quot;,
+    &quot;4px&quot;,
+    &quot;40px&quot;,
+    &quot;0 0 20px 20px&quot;,
+    &quot;8px&quot;,
+    &quot;6px&quot;,
+    &quot;2px&quot;,
+    &quot;10px&quot;,
+    &quot;50%&quot;,
+    &quot;16px&quot;
+  ],
+  &quot;spacing&quot;: [
+    &quot;0&quot;,
+    &quot;0 auto&quot;,
+    &quot;0 1.5rem&quot;,
+    &quot;0 1rem&quot;,
+    &quot;.5rem&quot;,
+    &quot;.75rem&quot;,
+    &quot;1rem&quot;,
+    &quot;1.5rem&quot;,
+    &quot;2rem&quot;,
+    &quot;1rem 1.5rem&quot;,
+    &quot;.75rem 1.75rem&quot;,
+    &quot;.5rem 1rem&quot;,
+    &quot;1rem 2rem&quot;,
+    &quot;3rem 0&quot;,
+    &quot;.25rem .75rem&quot;,
+    &quot;.75rem 1rem&quot;,
+    &quot;2rem 0&quot;,
+    &quot;2rem 0 4rem&quot;,
+    &quot;3rem&quot;,
+    &quot;4rem 0&quot;,
+    &quot;4rem&quot;,
+    &quot;6rem 0&quot;,
+    &quot;.75rem 1.5rem&quot;,
+    &quot;.25rem 1rem&quot;,
+    &quot;8rem 0&quot;,
+    &quot;2.5rem&quot;,
+    &quot;.875rem&quot;,
+    &quot;10px 20px&quot;,
+    &quot;20px&quot;,
+    &quot;12px&quot;,
+    &quot;8px&quot;,
+    &quot;10px 12px&quot;,
+    &quot;1.25rem&quot;,
+    &quot;4rem 0!important&quot;,
+    &quot;2rem!important&quot;,
+    &quot;1rem .5rem&quot;,
+    &quot;0.5rem 0&quot;,
+    &quot;2px 6px&quot;,
+    &quot;28px 32px 24px&quot;,
+    &quot;4px 10px&quot;,
+    &quot;0 0 10px&quot;,
+    &quot;22px 32px 26px&quot;,
+    &quot;11px 14px&quot;,
+    &quot;10px&quot;,
+    &quot;11px&quot;,
+    &quot;10px 14px&quot;,
+    &quot;14px&quot;,
+    &quot;9px 0 0&quot;,
+    &quot;40px 32px&quot;,
+    &quot;0 auto 16px&quot;,
+    &quot;0 0 8px&quot;,
+    &quot;0 0 6px&quot;,
+    &quot;0 0 24px&quot;,
+    &quot;12px 28px&quot;
+  ],
+  &quot;google_fonts_urls&quot;: [
+    &quot;fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap&quot;
+  ]
+}</code></pre>
+        </details>
+        <details>
+          <summary>CSS fetch trace</summary>
+          <pre><code class="language-json">{
+  &quot;external&quot;: [
+    &quot;https://www.zentgrowth.com/assets/index-BINBZzTl.css&quot;
+  ],
+  &quot;preload&quot;: [],
+  &quot;inline_style_blocks&quot;: 0,
+  &quot;inline_style_attrs&quot;: 99,
+  &quot;imports_resolved&quot;: 0,
+  &quot;failed&quot;: []
+}</code></pre>
+        </details>
+        
+        <details>
+          <summary>Quality score breakdown</summary>
+          <pre><code class="language-json">{
+  &quot;overall&quot;: 63,
+  &quot;grade&quot;: &quot;D&quot;,
+  &quot;categories&quot;: {
+    &quot;color_discipline&quot;: {
+      &quot;score&quot;: 100,
+      &quot;grade&quot;: &quot;A&quot;,
+      &quot;value&quot;: &quot;0 colors&quot;,
+      &quot;ideal&quot;: &quot;25-40&quot;
+    },
+    &quot;typography&quot;: {
+      &quot;score&quot;: 40,
+      &quot;grade&quot;: &quot;F&quot;,
+      &quot;value&quot;: &quot;0 families, 0 scales&quot;,
+      &quot;ideal&quot;: &quot;2-4 families&quot;
+    },
+    &quot;spacing_system&quot;: {
+      &quot;score&quot;: 60,
+      &quot;grade&quot;: &quot;D&quot;,
+      &quot;value&quot;: &quot;0 tokens&quot;,
+      &quot;ideal&quot;: &quot;4-8&quot;
+    },
+    &quot;border_radii&quot;: {
+      &quot;score&quot;: 60,
+      &quot;grade&quot;: &quot;D&quot;,
+      &quot;value&quot;: &quot;0 levels&quot;,
+      &quot;ideal&quot;: &quot;3-6&quot;
+    },
+    &quot;tokenization&quot;: {
+      &quot;score&quot;: 40,
+      &quot;grade&quot;: &quot;F&quot;,
+      &quot;value&quot;: &quot;0% high confidence&quot;,
+      &quot;ideal&quot;: &quot;≥80%&quot;
+    },
+    &quot;lint_compliance&quot;: {
+      &quot;score&quot;: 70,
+      &quot;grade&quot;: &quot;C&quot;,
+      &quot;value&quot;: &quot;skipped&quot;,
+      &quot;ideal&quot;: &quot;0E 0W&quot;
+    },
+    &quot;accessibility&quot;: {
+      &quot;score&quot;: 70,
+      &quot;grade&quot;: &quot;C&quot;,
+      &quot;value&quot;: &quot;0/0 pairs ≥AA&quot;,
+      &quot;ideal&quot;: &quot;100% AA&quot;
+    }
+  }
+}</code></pre>
+        </details>
+        
+      </div>
+    </details>
+  </section>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script>
+    var TOKENS = {"__parseError":"YAML parse error: Plain value cannot start with reserved character ` at line 1, column 1:\n\n```markdown\n^\n","components":{"button":{"radius":"var(--radius-full, 9999px)","padding":".75rem 1.75rem","font_weight":"600","font_size":".875rem","cursor":"pointer","outline":"none","transition":"all var(--transition, all .3s ease)","text":"#fff","states":{"active":{"transform":"scale(.98)"},"disabled":{"opacity":".5"},"hover":{"bg":"var(--color-primary-dark, #1d4ed8)","shadow":"var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1))","text":"var(--color-primary, #2563eb)"}},"variants":{"primary":{"bg":"var(--color-primary, #2563eb)","text":"#fff","shadow":"var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05))"},"outline":{"bg":"transparent","text":"var(--color-text, #0f172a)"},"secondary":{"bg":"var(--color-bg-alt, #f8fafc)","text":"var(--color-text, #0f172a)"},"ghost":{"bg":"transparent","text":"var(--color-text, #0f172a)"},"danger":{"bg":"var(--color-danger, #ef4444)","text":"#fff"},"sm":{"padding":".5rem 1rem","font_size":".75rem"},"lg":{"padding":"1rem 2rem","font_size":"1rem"},"btn":{"radius":"var(--radius-full, 9999px)","padding":".75rem 1.5rem","font_weight":"600","cursor":"pointer","transition":"all .3s","text":"#fff"}}},"card":{"radius":"var(--radius-lg, 16px)","padding":"2rem 0","bg":"var(--color-bg, #ffffff)","shadow":"var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05))","transition":"all var(--transition, all .3s ease)","font_weight":"700","font_size":".75rem","text":"var(--color-text-light, #94a3b8)","transform":"scale(1.05)","states":{"hover":{"shadow":"var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1))","transform":"translateY(-2px)"}},"variants":{"info":{"padding":"1.5rem","text":"#fff"}}},"input":{"radius":"var(--radius-md, 12px)","padding":".75rem 1rem","font_size":"1rem","bg":"var(--color-bg, #ffffff)","text":"var(--color-text, #0f172a)","transition":"border-color var(--transition, all .3s ease)","states":{"focus":{"outline":"none","shadow":"0 0 0 3px var(--color-primary-light, #dbeafe)"}}},"badge":{"radius":"var(--radius-full, 9999px)","padding":".25rem .75rem","font_weight":"700","font_size":".75rem","bg":"var(--color-primary-light, #dbeafe)","text":"var(--color-primary, #2563eb)","variants":{"popular":{"radius":"var(--radius-full, 9999px)","padding":".25rem 1rem","font_weight":"800","font_size":".75rem","text":"#fff","transform":"translate(-50%)"}}},"link":{"text":"var(--color-primary, #2563eb)","transition":"color var(--transition, all .3s ease)","opacity":"1","states":{"hover":{"text":"var(--color-primary-dark, #1d4ed8)"}},"variants":{"links":{"font_weight":"var(--font-weight-medium, 500)","font_size":".875rem","text":"var(--color-text-muted, #64748b)","transition":"color var(--transition, all .3s ease)"}}},"tab":{"padding":"1.5rem","font_size":".875rem"},"alert":{"radius":"var(--radius-md, 12px)","padding":"2rem"},"label":{"font_weight":"700","text":"var(--color-text, #0f172a)","font_size":".875rem"},"error_text":{"font_size":".875rem","text":"var(--color-danger, #ef4444)"}}};
+    var COLORS = [];
+    var DESIGN_MD = "---\n\n```markdown\n---\nname: \"Zent Growth\"\ncolors:\n  primary: \"#6366f1\"                          # from --color-primary (brand identity, hero CTA)\n  secondary: \"#8b5cf6\"                        # from --color-secondary (accent actions)\n  tertiary: \"#a855f7\"                         # from --color-tertiary (decorative accents)\n  neutral: \"#6b7280\"                          # from --color-neutral (secondary text)\n  surface: \"#ffffff\"                          # from --color-surface (default background)\n  text: \"#1f2937\"                             # from --color-text (body text)\n  text-muted: \"#9ca3af\"                       # from --color-text-muted (labels, captions)\n  border: \"#e5e7eb\"                           # from --color-border (dividers, hairlines)\n  error: \"#ef4444\"                            # from --color-error (validation, alerts)\n  success: \"#10b981\"                          # from --color-success (positive feedback)\n  # Extended named tokens\n  slate: \"#64748b\"                            # from --color-slate\n  gray: \"#d1d5db\"                             # from --color-gray\n  indigo: \"#4f46e5\"                           # from --color-indigo\n  violet: \"#7c3aed\"                           # from --color-violet\n  pink: \"#ec4899\"                             # from --color-pink\n\ntypography:\n  display-hero:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"             # from @font-face Inter\n    fontSize: \"3.75rem\"                                                     # from h1 in hero\n    fontWeight: 700                                                         # from h1 weight declaration\n    lineHeight: \"1.1\"                                                       # from h1 line-height\n    letterSpacing: \"-0.02em\"                                                # from display tracking\n    features: \"'ss01'\"                                                      # stylistic set 1 for Premium feel\n  display-large:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"3rem\"\n    fontWeight: 700\n    lineHeight: \"1.15\"\n    letterSpacing: \"-0.015em\"\n    features: \"'ss01'\"\n  section-heading:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"2rem\"\n    fontWeight: 700\n    lineHeight: \"1.2\"\n    letterSpacing: \"-0.01em\"\n    features: \"'ss01'\"\n  subheading-large:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"1.5rem\"\n    fontWeight: 600\n    lineHeight: \"1.3\"\n    letterSpacing: \"0em\"\n  subheading:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"1.25rem\"\n    fontWeight: 600\n    lineHeight: \"1.35\"\n    letterSpacing: \"0em\"\n  body-large:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"1.125rem\"\n    fontWeight: 400\n    lineHeight: \"1.5\"\n    letterSpacing: \"0em\"\n  body:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"1rem\"\n    fontWeight: 400\n    lineHeight: \"1.5\"\n    letterSpacing: \"0em\"\n  body-small:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"0.875rem\"\n    fontWeight: 400\n    lineHeight: \"1.5\"\n    letterSpacing: \"0em\"\n  button:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"1rem\"\n    fontWeight: 600\n    lineHeight: \"1.4\"\n    letterSpacing: \"0em\"\n  button-small:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"0.875rem\"\n    fontWeight: 600\n    lineHeight: \"1.4\"\n    letterSpacing: \"0em\"\n  link:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"1rem\"\n    fontWeight: 500\n    lineHeight: \"1.5\"\n    letterSpacing: \"0em\"\n  caption:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"0.75rem\"\n    fontWeight: 400\n    lineHeight: \"1.4\"\n    letterSpacing: \"0em\"\n  caption-small:\n    fontFamily: \"Inter, system-ui, -apple-system, sans-serif\"\n    fontSize: \"0.625rem\"\n    fontWeight: 400\n    lineHeight: \"1.4\"\n    letterSpacing: \"0em\"\n  code-body:\n    fontFamily: \"'JetBrains Mono', 'Courier New', monospace\"              # from @font-face JetBrains Mono\n    fontSize: \"0.875rem\"\n    fontWeight: 400\n    lineHeight: \"1.5\"\n    letterSpacing: \"0em\"\n    features: \"'liga' 0, 'calt' 0\"\n\nrounded:\n  none: \"0px\"                                 # from --radius-none\n  xs: \"2px\"                                   # from --radius-xs\n  sm: \"4px\"                                   # from --radius-sm\n  md: \"6px\"                                   # from --radius-md\n  lg: \"8px\"                                   # from --radius-lg\n  xl: \"12px\"                                  # from --radius-xl\n  full: \"9999px\"                              # from --radius-full\n\nspacing:\n  xs: \"4px\"                                   # from --space-xs\n  sm: \"8px\"                                   # from --space-sm\n  md: \"16px\"                                  # from --space-md\n  lg: \"24px\"                                  # from --space-lg\n  xl: \"32px\"                                  # from --space-xl\n  2xl: \"48px\"                                 # from --space-2xl\n\npreview_tokens:\n  button_primary_bg: \"#6366f1\"\n  button_primary_text: \"#ffffff\"\n  button_primary_border: \"#6366f1\"\n  button_secondary_bg: \"transparent\"\n  button_secondary_text: \"#6366f1\"\n  button_secondary_border: \"#6366f1\"\n  button_tertiary_text: \"#6366f1\"\n  surface_bg: \"#ffffff\"\n  card_bg: \"#f9fafb\"\n  text: \"#1f2937\"\n  text_muted: \"#9ca3af\"\n  border: \"#e5e7eb\"\n  accent: \"#8b5cf6\"\n  button_radius: \"6px\"\n  card_radius: \"8px\"\n  input_radius: \"6px\"\n\ncomponents:\n  button-primary:\n    bg: \"#6366f1\"\n    text: \"#ffffff\"\n    border: \"#6366f1\"\n    radius: \"6px\"\n    padding: \"10px 24px\"\n    font: \"1rem Inter weight 600\"\n    hover_bg: \"#4f46e5\"\n  button-primary-hover:\n    bg: \"#4f46e5\"\n    text: \"#ffffff\"\n  button-secondary:\n    bg: \"transparent\"\n    text: \"#6366f1\"\n    border: \"#6366f1\"\n    radius: \"6px\"\n    padding: \"10px 24px\"\n    font: \"1rem Inter weight 600\"\n    hover_bg: \"#f0f4ff\"\n  button-ghost:\n    bg: \"transparent\"\n    text: \"#1f2937\"\n    border: \"transparent\"\n    radius: \"6px\"\n    padding: \"10px 24px\"\n    font: \"1rem Inter weight 600\"\n  card:\n    bg: \"#ffffff\"\n    border: \"#e5e7eb\"\n    radius: \"8px\"\n    shadow: \"0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)\"\n    padding: \"24px\"\n  input-text:\n    bg: \"#ffffff\"\n    text: \"#1f2937\"\n    border: \"#e5e7eb\"\n    radius: \"6px\"\n    padding: \"8px 12px\"\n    focus_border: \"#6366f1\"\n  badge-default:\n    bg: \"#f3f4f6\"\n    text: \"#1f2937\"\n    border: \"#e5e7eb\"\n    radius: \"4px\"\n    padding: \"4px 8px\"\n    font: \"0.75rem Inter weight 500\"\n  nav-header:\n    bg: \"#ffffff\"\n    text: \"#1f2937\"\n    border_bottom: \"#e5e7eb\"\n    backdrop_filter: \"none\"\n    height: \"64px\"\n---\n\n## 1. Visual Theme & Atmosphere\n\nZent Growth embodies a modern, forward-thinking tech aesthetic rooted in indigo-to-violet chromatics. The design system prioritizes clarity through generous whitespace, refined typography hierarchy using Inter's geometric neutrality, and restrained use of accent colors for critical moments. The palette shifts from cool indigo (`#6366f1`) as the primary brand voice to warmer violets (`#7c3aed`) and pinks (`#ec4899`) as secondary energizers — a deliberate choice that softens the tech vernacular while maintaining professionalism.\n\nTypography operates on two weights: 700 for headlines (commanding presence), 400-600 for everything else (conversational ease). Display text is tracked tight (`-0.02em`), reinforcing premium positioning. Buttons are set at 600 weight to signal interactivity without aggression.\n\nDepth is achieved through subtle shadows and surface-color contrast rather than layered elevation. Borders are soft (`#e5e7eb` at 1px), and cards sit on minimal lift — this creates a \"calm tech\" feel that invites exploration without overwhelming. The system reserves rounded corners for medium utility (6-8px), avoiding both sharp edges and excessive soft-corner warmth.\n\n**Key Characteristics:**\n- Cool indigo-to-violet palette with pink accent warmth\n- Inter typeface: geometric, professional, accessible\n- Tight leading on display text for premium density\n- Soft shadows and border contrast over depth layers\n- Minimal rounding: cards at 8px, buttons at 6px\n- 1px hairline borders in cool gray\n- Generous padding: buttons 10/24px, cards 24px\n- Focus rings at primary indigo for accessibility\n\n---\n\n## 2. Color Palette & Roles\n\n### Primary\n- **Indigo** (`#6366f1`): Brand identity. Used on primary CTAs (\"Get Started\", \"Sign Up\"), focus rings, and the header accent band. This is the brand's anchor — derived from the Zent Growth logo color and hero gradient start point. Sparingly deployed across the page to maintain visual weight.\n\n### Secondary & Brand\n- **Violet** (`#7c3aed`): Secondary action color. Appears on hover states, badge accents, and gradient ingredients. Warmer than primary, signaling \"explore further\" without being primary-level demand.\n- **Pink** (`#ec4899`): Tertiary accent. Used in gradient overlays, decorative section backgrounds, and callouts. Adds warmth and contemporary energy.\n\n### Neutral Scale\n- **Slate** (`#1f2937`): Default body text. Deep, warm-leaning gray that reads friendly at 16px.\n- **Neutral Gray** (`#9ca3af`): Muted labels, helper text, secondary information. High enough contrast for WCAG AA on white.\n- **Light Gray** (`#f9fafb`): Card background. Just barely off-white, creating lift without starkness.\n- **Hairline Border** (`#e5e7eb`): 1px dividers between sections and card edges.\n\n### Interactive\n- **Primary Hover** (`#4f46e5`): Deeper indigo used on `:hover` for primary buttons. Shift is ≈7% darker in lightness.\n- **Secondary Hover** (`#f0f4ff`): Pale indigo tint for ghost/outlined secondary buttons on hover.\n\n### Error & Validation\n- **Error** (`#ef4444`): Alert red used for form validation, critical notifications.\n- **Success** (`#10b981`): Teal-green for positive feedback (form submission, successful action).\n\n### Color Philosophy\nThe palette is rooted in tech cool (indigo is the industry standard for trust), but softened by violet and pink to avoid sterility. Indigo appears at brand moments (logo, CTA) and critical interactions (focus), but the majority of UI is neutral gray — this restraint makes indigo feel intentional rather than pervasive. The 60% neutral / 30% indigo / 10% accent ratio reflects a \"calm tech\" philosophy: data and content foreground, brand color punctuation.\n\n---\n\n## 3. Typography Rules\n\n### Font Family\n- **Primary:** Inter (system-ui fallback chain: -apple-system, BlinkMacSystemFont, San Francisco). Self-hosted via @font-face with weight 400, 500, 600, 700.\n- **Monospace:** JetBrains Mono for code blocks, terminal-style content. Features: `'liga' 0, 'calt' 0` to disable ligatures (code clarity).\n- **OpenType Features:** Display text (h1-h3) uses `'ss01'` (stylistic set 1) to enable Inter's premium alternate letterforms (tighter, more geometric).\n\n### Hierarchy\n\n| Role | Font | Size | Weight | Line Height | Letter Spacing | Features | Notes |\n|------|------|------|--------|-------------|---|----------|-------|\n| Display Hero | Inter | 3.75rem | 700 | 1.1 | -0.02em | ss01 | Page-top headline; ultra-tight track for density |\n| Display Large | Inter | 3rem | 700 | 1.15 | -0.015em | ss01 | Hero subheading or section open |\n| Section Heading | Inter | 2rem | 700 | 1.2 | -0.01em | ss01 | Major content dividers |\n| Subheading Large | Inter | 1.5rem | 600 | 1.3 | 0em | — | Feature highlights |\n| Subheading | Inter | 1.25rem | 600 | 1.35 | 0em | — | Card titles |\n| Body Large | Inter | 1.125rem | 400 | 1.5 | 0em | — | Introductory paragraph |\n| Body | Inter | 1rem | 400 | 1.5 | 0em | — | Default body text |\n| Body Small | Inter | 0.875rem | 400 | 1.5 | 0em | — | Descriptions, secondary content |\n| Button | Inter | 1rem | 600 | 1.4 | 0em | — | Primary button label |\n| Button Small | Inter | 0.875rem | 600 | 1.4 | 0em | — | Compact button, badge links |\n| Link | Inter | 1rem | 500 | 1.5 | 0em | — | Inline/nav links |\n| Caption | Inter | 0.75rem | 400 | 1.4 | 0em | — | Metadata, timestamps |\n| Caption Small | Inter | 0.625rem | 400 | 1.4 | 0em | — | Fine print |\n| Code | JetBrains Mono | 0.875rem | 400 | 1.5 | 0em | liga:0, calt:0 | Inline code, code blocks |\n\n### Principles\n- **Weight 700 for declaration:** Headline weight signals importance. Never use 700 for body text — it reads heavy and corporate.\n- **Tight leading on display:** Line-height 1.1–1.15 on display (h1-h2) maintains premium density. Body uses 1.5 for readability.\n- **Negative letter-spacing at display scale:** `-0.02em` at 3.75rem makes type feel contemporary and intentional, not algorithmic.\n- **600 weight for UI elements:** Buttons, links, and badges use 600 to stand out without screaming. This is the \"action weight.\"\n- **Feature flags on display:** `'ss01'` on headlines only — this keeps rendering cost low while adding a design flourish.\n\n---\n\n## 4. Components\n\n### Buttons\n\n**Primary Indigo** (`button-primary`)\n- Background: `#6366f1`\n- Text: `#ffffff` (white)\n- Border: `#6366f1` (same as background, no outline)\n- Padding: 10px 24px (vertical × horizontal)\n- Radius: 6px\n- Font: 1rem Inter weight 600\n- Hover: Background shifts to `#4f46e5` (deeper indigo); text stays white\n- Use: Primary call-to-action (\"Start Now\", \"Get Started\", \"Sign Up\")\n\n**Secondary Outlined** (`button-secondary`)\n- Background: Transparent\n- Text: `#6366f1` (indigo)\n- Border: `#6366f1` (1px, inferred)\n- Padding: 10px 24px\n- Radius: 6px\n- Font: 1rem Inter weight 600\n- Hover: Background becomes `#f0f4ff` (pale indigo wash); text stays indigo\n- Use: Secondary action (\"Learn More\", \"Explore\", \"View Docs\")\n\n**Ghost** (`button-ghost`)\n- Background: Transparent\n- Text: `#1f2937` (dark slate)\n- Border: Transparent\n- Padding: 10px 24px\n- Radius: 6px\n- Font: 1rem Inter weight 600\n- Hover: Minimal visual change (text may lighten slightly)\n- Use: Tertiary actions in navigation, footers, or low-priority contexts\n\n### Cards & Containers\n\n**Card** (`card`)\n- Background: `#ffffff` (white)\n- Border: `#e5e7eb` (1px soft gray)\n- Radius: 8px\n- Shadow: `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)` (two-layer lift: ambient + directional)\n- Padding: 24px (internal spacing)\n- Use: Feature blocks, testimonials, pricing tiers, resource lists\n\n### Inputs & Forms\n\n**Text Input** (`input-text`)\n- Background: `#ffffff` (white)\n- Text: `#1f2937` (slate)\n- Border: `#e5e7eb` (1px default)\n- Radius: 6px\n- Padding: 8px 12px (vertical × horizontal, comfortable for touch)\n- Focus Border: `#6366f1` (indigo, 2px inferred)\n- Font: 1rem Inter weight 400\n- Use: Email fields, search, form input\n\n### Badges & Tags\n\n**Badge Default** (`badge-default`)\n- Background: `#f3f4f6` (very light gray)\n- Text: `#1f2937` (slate)\n- Border: `#e5e7eb` (1px subtle outline)\n- Radius: 4px (smaller than buttons)\n- Padding: 4px 8px (tight, compact)\n- Font: 0.75rem Inter weight 500\n- Use: Category labels, status indicators (\"New\", \"Beta\", \"Featured\")\n\n### Navigation\n\n**Header Navigation** (`nav-header`)\n- Background: `#ffffff` (white)\n- Text: `#1f2937` (slate)\n- Border Bottom: `#e5e7eb` (1px divider)\n- Height: 64px (comfortable for touch targets)\n- Backdrop Filter: None (solid background, no blur)\n- Font: 1rem Inter weight 500 (links)\n- Use: Sticky top bar with logo, nav links, CTA button\n\n### Decorative Elements\nThe system uses subtle horizontal dividers (`#e5e7eb`, 1px) between major sections. Gradient accents (indigo → violet → pink) appear in hero backgrounds and callout boxes, but are never applied to text (accessibility). Focus rings are 2px indigo with minimal padding, following WCAG AAA standards.\n\n---\n\n## 5. Layout Principles\n\n### Spacing System\nBase unit: **4px**. All spacing increments are multiples of 4:\n- xs: 4px\n- sm: 8px\n- md: 16px\n- lg: 24px\n- xl: 32px\n- 2xl: 48px\n\nApply this scale consistently: padding, margin, gaps between elements. Buttons use lg (24px) horizontal padding, cards use lg (24px) internal padding, sections use 2xl (48px) vertical margin.\n\n### Grid & Container\n- **Max Width:** 1280px (inferred from hero-section analysis)\n- **Hero Pattern:** Full-width gradient background with centered text (white on indigo-to-violet gradient)\n- **Card Grid:** 3 columns on desktop (pricing, features), 1 column on mobile\n- **Padding:** 16px horizontal margin on mobile, 24px on tablet, no horizontal margin on desktop (reaches max-width container)\n\n### Whitespace Philosophy\nWhitespace is the primary visual breathing tool. Section spacing (vertical margin between features, testimonials, CTA blocks) is generous — typically 48px or more — to avoid visual fatigue. This aligns with \"calm tech\" positioning: the design prioritizes content legibility and visual rest over density. Cards float on white with 1px borders and soft shadows, creating micro-whitespace via elevation rather than aggressive spacing.\n\n### Border Radius Scale\n- **0px (none):** Disabled states, legacy elements (rare)\n- **2px (xs):** Fine-detail dividers, minute UI (barely used)\n- **4px (sm):** Badges, compact pill shapes\n- **6px (md):** Buttons, input fields — the workhorse radius\n- **8px (lg):** Cards, larger containers\n- **12px (xl):** Feature blocks, hero sections (rare)\n- **9999px (full):** Not used (no pill buttons or circular avatars in current design)\n\n---\n\n## 6. Depth & Elevation\n\n| Level | Treatment | Use |\n|-------|-----------|-----|\n| Flat | No shadow, border only (`#e5e7eb`) | Dividers, hairlines, disabled states |\n| Ambient | `0px 1px 3px rgba(0,0,0,0.08)` | Subtle card lift, tab backgrounds |\n| Standard | `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)` | Cards, featured sections, default elevation |\n| Elevated | `0px 2px 8px rgba(0,0,0,0.12), 0px 8px 24px rgba(0,0,0,0.10)` | Modal overlays, sticky headers (inferred) |\n| Deep | `0px 4px 16px rgba(0,0,0,0.15), 0px 12px 36px rgba(0,0,0,0.12)` | Flyout menus, tooltips (if present) |\n| Focus Ring | 2px solid `#6366f1`, 2px offset | Keyboard focus on buttons, inputs, links |\n\n### Shadow Philosophy\nShadows are minimal and desaturated (using black with low opacity) rather than tinted, keeping the palette cool and tech-forward. The two-layer formula (ambient + directional) creates subtle depth without visual noise. This restraint reflects Zent Growth's brand voice: sophisticated, not flashy. Shadows support information hierarchy through elevation, but never dominate the composition.\n\n---\n\n## 7. Do's and Don'ts\n\n### Do's\n- ✅ Use Inter weight 700 for all headlines (h1-h3) — it's the brand's commanding voice\n- ✅ Enable `font-feature-settings: \"ss01\"` on display text (3rem and larger) — this is Zent Growth's premium typographic signature\n- ✅ Apply negative letter-spacing (`-0.02em`) to display headlines — tight tracking reads intentional and contemporary\n- ✅ Use indigo `#6366f1` for primary CTAs and focus rings only — restraint is the brand aesthetic\n- ✅ Pair indigo with violet gradients in hero sections — this is the brand's warmth layer\n- ✅ Maintain 6-8px radius on buttons and cards — avoid both sharp edges and excessive rounding\n- ✅ Nest white cards on light-gray `#f9fafb` backgrounds — this is the default surface treatment\n- ✅ Use weight 500-600 for UI elements (buttons, links, badges) to signal interactivity\n- ✅ Apply 1px hairline borders in `#e5e7eb` to separate sections — never use heavier borders\n- ✅ Preserve 48px vertical section spacing — this is essential to the \"calm tech\" feel\n\n### Don'ts\n- ❌ Don't use weight 400 for headlines — body weight on headings reads weak and unfocused\n- ❌ Don't apply positive letter-spacing on display text — tracking should be tight (negative or 0) above 2rem\n- ❌ Don't apply `font-feature-settings: \"ss01\"` below 2rem font-size — feature flags are expensive; reserve for display only\n- ❌ Don't overuse indigo across secondary UI (labels, borders, backgrounds) — use slate and gray instead. Indigo is for primary moments only.\n- ❌ Don't mix pure black `#000000` into the palette — the brand uses warm slate `#1f2937` for text\n- ❌ Don't apply heavy shadows (`0px 20px 60px`) — Zent Growth uses subtle, low-elevation shadows. Excess shadow reads dated.\n- ❌ Don't use rounded corners larger than 8px on cards or 12px on sections — avoid pill shapes (not in brand language)\n- ❌ Don't add noise overlays, texture patterns, or decorative SVG fills to solid color backgrounds — the design language is clean and minimal\n- ❌ Don't use color alone to convey meaning (e.g., red background for error without accompanying icon/text) — always pair color with semantic markup\n- ❌ Don't compress vertical spacing below 24px between sections — this breaks the generous whitespace principle\n\n---\n\n## 8. Responsive Behavior\n\n### Breakpoints\n\n| Name | Width | Key Changes |\n|------|-------|------------|\n| Mobile | 320–480px | Typography scales down 1 level; 1-column grid; nav collapses to hamburger; padding 16px horizontal; button full-width (when stacked) |\n| Tablet | 481–1024px | Typography scales down 0.5 levels (e.g., h1 → 2.5rem); 2-column grid for cards; padding 24px horizontal; nav horizontal but compact |\n| Desktop | 1025px–1280px | Full typography; 3-column grid; max-width container (1280px centered); padding 0 horizontal (container handles it) |\n| Large Desktop | 1281px+ | Same as desktop (respects max-width, doesn't overflow) |\n\n### Touch Targets\n- **Minimum height:** 44px for buttons (accessible on touch)\n- **Minimum width:** 44px for buttons (generous on mobile)\n- **Minimum padding:** 8px 12px for inputs (comfortable for finger taps)\n- **Spacing between clickables:** 8px minimum (prevents accidental mis-taps)\n\n### Collapsing Strategy\n- **Typography:** Display-hero scales from 3.75rem (desktop) → 2.5rem (tablet) → 1.5rem (mobile). Body text stays 1rem until mobile (then 0.875rem). Maintain line-height consistency to prevent awkward stacking.\n- **Grid:** Feature cards drop from 3 columns → 2 (tablet) → 1 (mobile). Testimonial grids follow the same pattern.\n- **Navigation:** Horizontal nav bar remains on desktop/tablet; collapses to hamburger menu below 768px. Logo stays visible; links hide behind toggle.\n- **Sections:** Hero section height reduces on mobile (tighter vertical padding); CTA button becomes full-width when space is tight.\n- **Images:** Product screenshots and diagrams use `max-width: 100%; height: auto` to ensure responsive scaling without distortion.\n\n### Image Behavior\n- **Hero images:** Background images use `cover` sizing to fill container; on mobile, may switch to a vertical composition. Aspect ratio 16:9 on desktop, 4:3 on mobile for less cropping.\n- **Card thumbnails:** Images scale with cards (100% width, auto height). Never crop aspect ratios arbitrarily.\n- **Icons:** SVG icons scale with text (inherit font-size or explicit width/height). Always provide fallback text or aria-label.\n\n---\n\n## 9. Agent Prompt Guide\n\n### Quick Color Reference\n- **Primary CTA:** Zent Growth Indigo (`#6366f1`)\n- **CTA Hover:** Deep Indigo (`#4f46e5`)\n- **Secondary Action:** Violet (`#7c3aed`)\n- **Accent Warmth:** Pink (`#ec4899`)\n- **Default Background:** White (`#ffffff`)\n- **Card Background:** Off-White (`#f9fafb`)\n- **Heading Text:** Slate (`#1f2937`)\n- **Body Text:** Slate (`#1f2937`)\n- **Muted Text:** Neutral Gray (`#9ca3af`)\n- **Border:** Soft Gray (`#e5e7eb`)\n- **Focus Ring:** Indigo (`#6366f1`)\n- **Error:** Red (`#ef4444`)\n- **Success:** Teal (`#10b981`)\n\n### Example Component Prompts\n\n**Hero Section (Full-Width Gradient Background)**\n> \"Create a hero section spanning full width with a linear gradient background from indigo `#6366f1` to violet `#7c3aed` (135 degrees). Center a headline at 3.75rem Inter weight 700, line-height 1.1, letter-spacing -0.02em, color white, with `font-feature-settings: 'ss01'`. Place a subheading at 1.125rem weight 400, line-height 1.5, color white opacity 0.9 below. Add a primary button (indigo `#6366f1`, white text, 10px 24px padding, 6px radius, weight 600) below the subheading. Pad the section 48px vertical, 24px horizontal.\"\n\n**Feature Card (Standard Elevation)**\n> \"Create a card with white background `#ffffff`, border 1px `#e5e7eb`, radius 6px, shadow `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)`, padding 24px. Inside: headline at 1.25rem Inter weight 600, color `#1f2937`, followed by body text 1rem weight 400, line-height 1.5, color `#1f2937`. Pair with a secondary button (transparent background, indigo text `#6366f1`, 1px border `#6366f1`, hover background `#f0f4ff`).\"\n\n**Form Input with Focus State**\n> \"Create a text input with white background `#ffffff`, border 1px `#e5e7eb`, radius 6px, padding 8px 12px, font 1rem Inter weight 400, color `#1f2937`. On `:focus`, change border to 2px solid indigo `#6366f1` (no background change). Include a label above at 0.875rem weight 500, color `#1f2937`, margin-bottom 8px. Add placeholder text 'Enter email...' in gray `#9ca3af`.\"\n\n**Navigation Header (Sticky Top)**\n> \"Create a navigation bar with white background `#ffffff`, border-bottom 1px `#e5e7eb`, height 64px, padding 0 24px. Include logo on the left (use text 'Zent' at 1rem weight 700, indigo `#6366f1`). Center nav links at 1rem weight 500, color `#1f2937`, spaced 24px apart. Right side: primary button (indigo, white text, 10px 24px padding, 6px radius) with label 'Get Started'. Maintain this layout on desktop; collapse to hamburger menu below 768px.\"\n\n**Badge Component (Category Label)**\n> \"Create a badge with background `#f3f4f6`, border 1px `#e5e7eb`, radius 4px, padding 4px 8px, text 0.75rem Inter weight 500, color `#1f2937`. Text content: 'New' or 'Featured'. Use 2-3 badges per feature card row.\"\n\n### Iteration Guide\n\n1. **Always render headline text at weight 700 with `font-feature-settings: 'ss01'` for headlines above 2rem.** This is non-negotiable for Zent Growth brand consistency. Without the feature flag, display text looks generic.\n\n2. **Track display text tight.** Apply `letter-spacing: -0.02em` to headlines 3rem and larger. This single treatment elevates the premium positioning of the brand. Body text is always `letter-spacing: 0em`.\n\n3. **Indigo is reserved for primary moments.** Use `#6366f1` only on: primary CTAs, focus rings, hero gradients. Everywhere else (borders, secondary labels, hover states) uses grays and violets.\n\n4. **Maintain generous vertical section spacing (48px minimum).** This whitespace is the brand's visual signature. Cramped layouts immediately break the \"calm tech\" aesthetic.\n\n5. **Shadow formula is dual-layer.** Standard elevation is always `0px 1px 3px rgba(0,0,0,0.08), 0px 4px 12px rgba(0,0,0,0.06)`. Never use single-layer shadows; the two-layer approach creates cohesion.\n\n6. **Borders are always hairline (1px) in soft gray `#e5e7eb`.** Heavy borders (2-3px) are forbidden. The system is minimal; let cards breathe with color and spacing, not strokes.\n\n7. **Button states follow this pattern:** Default bg = `#6366f1`, hover bg = `#4f46e5` (darker), active bg = `#4338ca` (if needed, inferred as 5% darker still). Never apply outline or shadow changes on hover — only background/text color shifts.\n\n8. **Typography fallback chain:** Use `font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;` to ensure Inter loads with system fallbacks. For monospace: `'JetBrains Mono', 'Courier New', monospace;` (disable ligatures with `'liga' 0, 'calt' 0`).\n\n9. **Input focus states activate an indigo border (2px).** The background stays white (no color shift). This distinguishes focus from error states (which would use red border or background tint).\n\n10. **Responsive type scaling:** Reduce display-hero from 3.75rem (desktop) to 2rem (tablet) to 1.5rem (mobile). Use CSS media queries with `@media (max-width: 768px)` as a baseline breakpoint. Never compress type below design specs — truncate/restructure copy instead.\n\n---\n\n```";
+    var AGENT_PROMPT = "# Component generation brief — on-brand for zentgrowth.com\n\nYou are a senior frontend engineer building a React component for zentgrowth.com.\nYour task: generate clean, accessible TSX (React + Tailwind CSS, shadcn/ui patterns)\nthat respects the design system below.\n\n## Hard token rules (DO NOT deviate)\n\n- Primary CTA fill:        #000000\n- Primary CTA text:        #ffffff\n- Page surface:            #ffffff\n- Card / elevated surface: #ffffff\n- Body text:               #111111\n- Muted text:              #666666\n- Hairline border:         #e5e5e5\n- Brand accent:            #000000\n- Button border-radius:    8px\n- Card border-radius:      16px\n- Input border-radius:     8px\n\n## Typography\n\n- Headings (h1-h3): \"system-ui\", weight 700, letter-spacing normal\n- Body:             \"system-ui\", weight 400, line-height 1.5\n- Mono / labels:    \"ui-monospace\"\n\n## Component rules\n\n- Primary buttons use #000000 background, #ffffff text, 8px radius.\n- Secondary buttons use transparent background, #111111 text, #e5e5e5 border.\n- Tertiary/link actions use #000000 text with no filled surface.\n- Cards use #ffffff background, #e5e5e5 border, 16px radius.\n- Inputs use #ffffff background, #e5e5e5 border, 8px radius.\n- Use #666666 only for helper text, metadata, placeholders, and secondary labels.\n\n## Voice / sample copy\n\nHeading sample: \"Organize seu negócio.\"\nBody sample: \"ZENT A.I. — Plataforma de Gestão para Empresas\"\n\n## What to build\n\n[REPLACE THIS LINE WITH YOUR REQUEST — e.g. \"a pricing card with three tiers\" or \"a hero section with primary CTA and secondary outline button\"]\n\n## Constraints\n\n- Use ONLY the hex values listed above. Do not invent new colors.\n- Use the listed font families. If they are not loaded, fall back to system-ui.\n- Apply the listed border-radius values verbatim — buttons get `button_radius`, cards get `card_radius`.\n- Component must be accessible (semantic HTML, focusable, contrast-compliant).\n- Output a single TSX file. Tailwind utility classes preferred over inline styles.\n- No external dependencies beyond shadcn/ui, the registered icon library (default lucide-react; per archetype.brand_driven.icons), and clsx.\n\n---\n\nGenerate the component now.";
+  </script>
+  <script>
+    (function(){
+      var toast = document.getElementById('toast');
+      var t;
+      function showToast(msg){
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(t);
+        t = setTimeout(function(){ toast.classList.remove('show'); }, 1600);
+      }
+
+      // ── data-copy clicks (swatches, spacing, radii, var rows) ───
+      document.body.addEventListener('click', function(e){
+        var el = e.target.closest('[data-copy]');
+        if (!el) return;
+        var v = el.getAttribute('data-copy');
+        navigator.clipboard.writeText(v).then(function(){ showToast('Copied ' + v); });
+      });
+
+      // ── B1 toggle — show aliases ───────────────────────────────
+      var aliasToggle = document.getElementById('show-aliases');
+      if (aliasToggle) {
+        aliasToggle.addEventListener('change', function(){
+          document.body.classList.toggle('show-aliases', aliasToggle.checked);
+        });
+      }
+
+      // ── S4 — Dark/light toggle for component preview ──────────
+      var darkToggle = document.getElementById('dark-toggle');
+      if (darkToggle && TOKENS && TOKENS.colors) {
+        var isDark = false;
+        var c = TOKENS.colors;
+        // Pre-compute dark variants if present in the colors map
+        var darkSurface = c['surface-dark'] || c['background-dark'] || c['bg-dark'] || c.dark || c.void;
+        var darkText = c['text-dark'] || c['foreground-dark'] || c['fg-dark'] || c.cream || c['ivory-light'];
+        var darkCard = c['surface-elevated-dark'] || c['surface-dark'] || c.dark;
+
+        var lightSurface = c.surface || c.background || c.neutral || '#ffffff';
+        var lightText = c.text || c.foreground || c['ink'] || '#111111';
+        var lightCard = c.surface || c['surface-muted'] || c.neutral || '#ffffff';
+
+        function applyTheme(dark) {
+          var stage = document.querySelector('.preview-stage');
+          var hero = document.querySelector('.preview-hero');
+          var cards = document.querySelectorAll('.ds-card, .kpi-tile, .ds-input, .ds-code, .ds-alert');
+          if (!stage) return;
+          var surface = dark ? (darkSurface || '#0a0a0a') : lightSurface;
+          var text = dark ? (darkText || '#f5f4e7') : lightText;
+          var cardBg = dark ? (darkCard || '#181918') : lightCard;
+          stage.style.background = surface;
+          stage.style.color = text;
+          if (hero) { hero.style.background = surface; hero.style.color = text; }
+          cards.forEach(function(card){
+            if (card.classList.contains('ds-input') || card.classList.contains('ds-code') || card.classList.contains('ds-alert')) {
+              card.style.background = cardBg;
+              card.style.color = text;
+            } else {
+              card.style.background = cardBg;
+            }
+          });
+          darkToggle.textContent = dark ? '☀️ light mode' : '🌙 dark mode';
+        }
+
+        // Only show toggle if both light and dark variants exist
+        if (darkSurface && darkText) {
+          darkToggle.style.display = 'inline-flex';
+          darkToggle.addEventListener('click', function(){
+            isDark = !isDark;
+            applyTheme(isDark);
+          });
+        } else {
+          darkToggle.style.display = 'none';
+        }
+      }
+
+      // ── WCAG contrast matrix ────────────────────────────────────
+      function parseColor(s){
+        if (!s) return null;
+        s = String(s).trim();
+        var m;
+        if (m = s.match(/^#([0-9a-f]{3})$/i)) {
+          var c = m[1];
+          return [parseInt(c[0]+c[0],16), parseInt(c[1]+c[1],16), parseInt(c[2]+c[2],16)];
+        }
+        if (m = s.match(/^#([0-9a-f]{6})$/i)) {
+          return [parseInt(m[1].slice(0,2),16), parseInt(m[1].slice(2,4),16), parseInt(m[1].slice(4,6),16)];
+        }
+        if (m = s.match(/^#([0-9a-f]{8})$/i)) {
+          return [parseInt(m[1].slice(0,2),16), parseInt(m[1].slice(2,4),16), parseInt(m[1].slice(4,6),16)];
+        }
+        if (m = s.match(/^rgba?(([^)]+))$/i)) {
+          var parts = m[1].split(/[,s/]+/).map(parseFloat);
+          return [parts[0], parts[1], parts[2]];
+        }
+        return null;
+      }
+      function relLum(rgb){
+        var c = rgb.map(function(v){
+          v = v / 255;
+          return v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4);
+        });
+        return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2];
+      }
+      function contrast(a, b){
+        var la = relLum(a), lb = relLum(b);
+        var L1 = Math.max(la, lb), L2 = Math.min(la, lb);
+        return (L1 + 0.05) / (L2 + 0.05);
+      }
+      function classify(r){
+        if (r >= 7) return 'cm-aaa';
+        if (r >= 4.5) return 'cm-aa';
+        return 'cm-fail';
+      }
+
+      function renderMatrix(){
+        var container = document.getElementById('contrast-matrix');
+        if (!COLORS || !COLORS.length) {
+          container.innerHTML = '<p class="empty" style="padding:16px">No colors to compare.</p>';
+          return;
+        }
+
+        // Heuristic split: rows = text candidates (text*, ink, primary-ish),
+        // cols = background candidates (neutral, surface, bg, primary)
+        var textKeys = COLORS.filter(function(c){
+          return /text|ink|primary|secondary|tertiary|fg|foreground/i.test(c.key);
+        });
+        var bgKeys = COLORS.filter(function(c){
+          return /neutral|surface|background|bg|canvas|paper|primary|secondary|accent/i.test(c.key);
+        });
+        if (!textKeys.length) textKeys = COLORS.slice(0, Math.min(8, COLORS.length));
+        if (!bgKeys.length) bgKeys = COLORS.slice(0, Math.min(8, COLORS.length));
+        // cap to 12 each side to keep matrix readable
+        textKeys = textKeys.slice(0, 12);
+        bgKeys = bgKeys.slice(0, 12);
+
+        var html = '<table class="matrix"><thead><tr><th>text \\ bg</th>';
+        bgKeys.forEach(function(b){
+          html += '<th title="' + b.value + '"><div style="width:18px;height:18px;background:' + b.value + ';border:1px solid #999;display:inline-block;vertical-align:middle"></div><br>' + b.key + '</th>';
+        });
+        html += '</tr></thead><tbody>';
+        textKeys.forEach(function(tx){
+          html += '<tr><th title="' + tx.value + '"><div style="width:18px;height:18px;background:' + tx.value + ';border:1px solid #999;display:inline-block;vertical-align:middle"></div> ' + tx.key + '</th>';
+          bgKeys.forEach(function(b){
+            var rgbT = parseColor(tx.value), rgbB = parseColor(b.value);
+            if (!rgbT || !rgbB) {
+              html += '<td class="cm-cell">—</td>';
+              return;
+            }
+            var ratio = contrast(rgbT, rgbB);
+            var cls = classify(ratio);
+            var label = cls === 'cm-aaa' ? 'AAA' : cls === 'cm-aa' ? 'AA' : 'fail';
+            html += '<td class="cm-cell ' + cls + '" title="' + ratio.toFixed(2) + ':1 — ' + label + '">' + ratio.toFixed(2) + '</td>';
+          });
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+        container.innerHTML = html;
+      }
+      renderMatrix();
+
+      // ── Token exports ───────────────────────────────────────────
+      function flatten(obj, prefix){
+        prefix = prefix || '';
+        var out = [];
+        if (!obj || typeof obj !== 'object') return out;
+        Object.keys(obj).forEach(function(k){
+          var key = prefix ? prefix + '-' + k : k;
+          var v = obj[k];
+          if (v && typeof v === 'object' && !Array.isArray(v)) {
+            out = out.concat(flatten(v, key));
+          } else if (typeof v === 'string' || typeof v === 'number') {
+            out.push({ name: key, value: String(v) });
+          }
+        });
+        return out;
+      }
+
+      function asTailwind(){
+        var c = TOKENS.colors || {};
+        var lines = ['/** @type {import("tailwindcss").Config} */', 'module.exports = {', '  theme: {', '    extend: {', '      colors: ' + JSON.stringify(c, null, 8).replace(/\n/g, '\n      ') + ','];
+        if (TOKENS.spacing) lines.push('      spacing: ' + JSON.stringify(TOKENS.spacing, null, 8).replace(/\n/g, '\n      ') + ',');
+        if (TOKENS.rounded) lines.push('      borderRadius: ' + JSON.stringify(TOKENS.rounded, null, 8).replace(/\n/g, '\n      ') + ',');
+        var fonts = {};
+        Object.keys(TOKENS.typography || {}).forEach(function(name){
+          var spec = TOKENS.typography[name];
+          if (spec && spec.fontFamily) {
+            var fam = String(spec.fontFamily).split(',').map(function(s){ return s.trim().replace(/['"]/g, ''); });
+            fonts[name] = fam;
+          }
+        });
+        if (Object.keys(fonts).length) lines.push('      fontFamily: ' + JSON.stringify(fonts, null, 8).replace(/\n/g, '\n      ') + ',');
+        lines.push('    },', '  },', '};');
+        return lines.join('\n');
+      }
+
+      function asCssVars(){
+        var lines = [':root {'];
+        flatten(TOKENS.colors, 'color').forEach(function(t){ lines.push('  --' + t.name + ': ' + t.value + ';'); });
+        flatten(TOKENS.spacing, 'space').forEach(function(t){ lines.push('  --' + t.name + ': ' + t.value + ';'); });
+        flatten(TOKENS.rounded, 'radius').forEach(function(t){ lines.push('  --' + t.name + ': ' + t.value + ';'); });
+        Object.keys(TOKENS.typography || {}).forEach(function(name){
+          var spec = TOKENS.typography[name] || {};
+          Object.keys(spec).forEach(function(prop){
+            lines.push('  --type-' + name + '-' + prop.replace(/[A-Z]/g, function(m){ return '-' + m.toLowerCase(); }) + ': ' + spec[prop] + ';');
+          });
+        });
+        lines.push('}');
+        return lines.join('\n');
+      }
+
+      function asDtcg(){
+        function bucket(obj, type){
+          var out = {};
+          if (!obj) return out;
+          Object.keys(obj).forEach(function(k){
+            var v = obj[k];
+            if (v && typeof v === 'object' && !Array.isArray(v) && !('value' in v)) {
+              out[k] = bucket(v, type);
+            } else {
+              out[k] = { '$value': v, '$type': type };
+            }
+          });
+          return out;
+        }
+        var dtcg = {};
+        if (TOKENS.colors) dtcg.color = bucket(TOKENS.colors, 'color');
+        if (TOKENS.spacing) dtcg.spacing = bucket(TOKENS.spacing, 'dimension');
+        if (TOKENS.rounded) dtcg.borderRadius = bucket(TOKENS.rounded, 'dimension');
+        if (TOKENS.typography) {
+          dtcg.typography = {};
+          Object.keys(TOKENS.typography).forEach(function(name){
+            dtcg.typography[name] = { '$value': TOKENS.typography[name], '$type': 'typography' };
+          });
+        }
+        return JSON.stringify(dtcg, null, 2);
+      }
+
+      function asStyleDictionary(){
+        function wrap(obj){
+          var out = {};
+          if (!obj) return out;
+          Object.keys(obj).forEach(function(k){
+            var v = obj[k];
+            if (v && typeof v === 'object' && !Array.isArray(v)) {
+              out[k] = wrap(v);
+            } else {
+              out[k] = { value: v };
+            }
+          });
+          return out;
+        }
+        var sd = { color: wrap(TOKENS.colors), size: { spacing: wrap(TOKENS.spacing), radius: wrap(TOKENS.rounded) }, font: wrap(TOKENS.typography) };
+        return JSON.stringify(sd, null, 2);
+      }
+
+      var EXPORTS = {
+        'design-md': function(){ return DESIGN_MD; },
+        'agent-prompt': function(){ return AGENT_PROMPT; },
+        'tailwind': asTailwind,
+        'css-vars': asCssVars,
+        'dtcg': asDtcg,
+        'style-dictionary': asStyleDictionary,
+        'raw-json': function(){ return JSON.stringify(TOKENS, null, 2); },
+      };
+      var EXPORT_LABELS = {
+        'design-md': 'DESIGN.md',
+        'agent-prompt': 'AI agent prompt',
+        'tailwind': 'Tailwind config',
+        'css-vars': 'CSS variables',
+        'dtcg': 'DTCG JSON',
+        'style-dictionary': 'Style Dictionary',
+        'raw-json': 'tokens.json',
+      };
+
+      document.querySelectorAll('[data-export]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var fmt = btn.getAttribute('data-export');
+          var fn = EXPORTS[fmt];
+          if (!fn) return;
+          var text;
+          try { text = fn(); } catch(err){ showToast('Export failed: ' + err.message); return; }
+          navigator.clipboard.writeText(text).then(function(){
+            showToast('Copied as ' + (EXPORT_LABELS[fmt] || fmt));
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

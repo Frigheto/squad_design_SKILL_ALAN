@@ -1,0 +1,102 @@
+name: design-squad
+version: 2.0.0
+description: "Squad completo de extração, análise e produção criativa de sistemas de design a partir de URLs públicas — da extração ao criativo HTML final"
+author: Synkra AIOS
+license: MIT
+slashPrefix: design
+
+aios:
+  minVersion: "2.1.0"
+  type: squad
+
+components:
+  agents:
+    # Camada analítica
+    - design-extractor.md
+    - design-token-manager.md
+    - design-drift-detector.md
+    - design-quality-reviewer.md
+    # Camada criativa
+    - creative-director.md
+    - visual-designer.md
+    - copy-writer.md
+
+  tasks:
+    # design-extractor
+    - extract-design-system.md
+    - reextract-design-system.md
+    - list-extraction-outputs.md
+
+    # design-token-manager
+    - validate-design-tokens.md
+    - export-design-tokens.md
+    - diff-design-tokens.md
+    - merge-design-tokens.md
+
+    # design-drift-detector
+    - detect-design-drift.md
+    - drift-report-summary.md
+    - drift-history.md
+
+    # design-quality-reviewer
+    - lint-design-md.md
+    - quality-score-report.md
+    - confidence-report.md
+    - approve-design-spec.md
+
+    # creative-director
+    - create-creative-brief.md
+    - plan-creative-campaign.md
+    - review-creative-output.md
+
+    # copy-writer
+    - write-creative-copy.md
+    - write-headline.md
+    - write-cta-variations.md
+    - write-caption.md
+    - write-email-copy.md
+    - adapt-copy-format.md
+
+    # visual-designer
+    - create-banner-html.md
+    - create-post-html.md
+    - create-story-html.md
+    - create-landing-html.md
+    - create-presentation-html.md
+    - create-email-html.md
+    - create-card-html.md
+    - preview-creative.md
+    - export-creative.md
+
+  workflows: []
+  checklists: []
+  templates: []
+  tools: []
+  scripts: []
+
+config:
+  extends: extend
+  coding-standards: config/coding-standards.md
+  tech-stack: config/tech-stack.md
+  source-tree: config/source-tree.md
+
+dependencies:
+  node:
+    - axios
+    - cheerio
+    - turndown
+    - playwright
+  python: []
+  squads: []
+
+tags:
+  - design
+  - design-system
+  - extraction
+  - tokens
+  - ux
+  - creative
+  - html
+  - css
+  - banner
+  - landing-page

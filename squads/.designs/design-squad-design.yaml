@@ -1,0 +1,176 @@
+squad:
+  name: design-squad
+  description: "Squad de extração, análise e gestão de sistemas de design a partir de URLs públicas usando a skill design-md"
+  domain: design-system-extraction
+
+analysis:
+  entities:
+    - URL
+    - DESIGN.md
+    - tokens.json
+    - style-fingerprint
+    - preview.html
+    - drift-report
+    - lint-report
+    - quality-score
+    - extraction-log
+  workflows:
+    - url-to-design-extraction
+    - css-token-detection
+    - design-drift-detection
+    - quality-validation
+    - phase-reuse-management
+  integrations:
+    - claude-cli
+    - openrouter-api
+    - google-design-md-spec
+  stakeholders:
+    - designer
+    - developer
+    - ci-system
+
+recommendations:
+  agents:
+    - id: design-extractor
+      role: "Executa o pipeline completo de extração de design a partir de URLs públicas. Gerencia as 8 fases da skill (fetch → CSS → detect → markdown → LLM → tokens → quality → preview)."
+      commands:
+        - extract
+        - extract-url
+        - reextract
+        - list-outputs
+      confidence: 0.95
+      user_added: false
+      user_modified: false
+
+    - id: design-token-manager
+      role: "Gerencia design tokens extraídos (tokens.json). Valida, organiza, exporta e mantém consistência entre tokens de diferentes extrações. Suporta formato DTCG e integração com ferramentas de design."
+      commands:
+        - validate-tokens
+        - export-tokens
+        - diff-tokens
+        - merge-tokens
+      confidence: 0.88
+      user_added: false
+      user_modified: false
+
+    - id: design-drift-detector
+      role: "Compara sistemas de design ao vivo (URL) contra specs locais (DESIGN.md). Detecta e classifica desvios: in-sync, minor-drift, notable-drift, major-drift. Gera drift-report.json com detalhes das divergências por token."
+      commands:
+        - detect-drift
+        - compare
+        - drift-report
+        - drift-history
+      confidence: 0.91
+      user_added: false
+      user_modified: false
+
+    - id: design-quality-reviewer
+      role: "Valida a qualidade de DESIGN.md gerados contra o padrão Google-spec (@google/design.md). Executa lint, gera quality-score (A-F em 7 categorias), analisa confiança dos tokens por nível (high/medium/low) e emite relatórios de aprovação ou revisão."
+      commands:
+        - review
+        - lint
+        - quality-score
+        - confidence-report
+        - approve
+      confidence: 0.87
+      user_added: false
+      user_modified: false
+
+  tasks:
+    # design-extractor
+    - name: extract-design-system
+      agent: design-extractor
+      entrada: [url, provider, output_dir]
+      saida: [DESIGN.md, tokens.json, preview.html, extraction-log.yaml]
+      confidence: 0.95
+
+    - name: reextract-design-system
+      agent: design-extractor
+      entrada: [url, no_reuse]
+      saida: [DESIGN.md, tokens.json, preview.html]
+      confidence: 0.88
+
+    - name: list-extraction-outputs
+      agent: design-extractor
+      entrada: [slug]
+      saida: [outputs_list, quality_scores, dates]
+      confidence: 0.82
+
+    # design-token-manager
+    - name: validate-design-tokens
+      agent: design-token-manager
+      entrada: [tokens_json_path]
+      saida: [validation_report, invalid_tokens]
+      confidence: 0.90
+
+    - name: export-design-tokens
+      agent: design-token-manager
+      entrada: [tokens_json_path, format]
+      saida: [exported_tokens]
+      confidence: 0.85
+
+    - name: diff-design-tokens
+      agent: design-token-manager
+      entrada: [tokens_a, tokens_b]
+      saida: [diff_report]
+      confidence: 0.83
+
+    - name: merge-design-tokens
+      agent: design-token-manager
+      entrada: [tokens_base, tokens_override, strategy]
+      saida: [tokens_merged, conflict_log]
+      confidence: 0.79
+
+    # design-drift-detector
+    - name: detect-design-drift
+      agent: design-drift-detector
+      entrada: [url, local_design_md]
+      saida: [drift_report, verdict]
+      confidence: 0.93
+
+    - name: drift-report-summary
+      agent: design-drift-detector
+      entrada: [drift_report_path]
+      saida: [readable_report]
+      confidence: 0.86
+
+    - name: drift-history
+      agent: design-drift-detector
+      entrada: [slug, date_range]
+      saida: [drift_history]
+      confidence: 0.78
+
+    # design-quality-reviewer
+    - name: lint-design-md
+      agent: design-quality-reviewer
+      entrada: [design_md_path]
+      saida: [lint_report]
+      confidence: 0.91
+
+    - name: quality-score-report
+      agent: design-quality-reviewer
+      entrada: [design_md_path, extraction_log]
+      saida: [quality_score, visual_summary]
+      confidence: 0.89
+
+    - name: confidence-report
+      agent: design-quality-reviewer
+      entrada: [tokens_json, extraction_log]
+      saida: [confidence_breakdown]
+      confidence: 0.85
+
+    - name: approve-design-spec
+      agent: design-quality-reviewer
+      entrada: [design_md, quality_score, lint_report]
+      saida: [decision, justification]
+      confidence: 0.83
+
+  template: basic
+  config_mode: extend
+
+metadata:
+  created_at: "2026-05-02T00:00:00Z"
+  source_docs:
+    - "./design-md/SKILL.md"
+  user_adjustments: 0
+  overall_confidence: 0.88

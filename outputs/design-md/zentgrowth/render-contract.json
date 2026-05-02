@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "url": "https://www.zentgrowth.com/"
+  },
+  "theme": {
+    "default": "light",
+    "default_mode": "light",
+    "supports_dark": false,
+    "supports_dark_reason": "light-default surface without dark toggle evidence",
+    "declared_default": "light",
+    "confidence": "high",
+    "inferred_from_surface": "light",
+    "surface": "#ffffff",
+    "surface_alt": null,
+    "text": "#111111",
+    "muted": null,
+    "border": "rgba(0,0,0,0.12)",
+    "accent": null
+  },
+  "native_vars": {
+    "supports_dark": false,
+    "has_explicit_dark_scope": false,
+    "preferred_selector": null,
+    "preferred_count": 0,
+    "light": {
+      "--color-bg": "#ffffff",
+      "--color-bg-alt": "#f8fafc",
+      "--color-bg-dark": "#0f172a",
+      "--color-text": "#0f172a",
+      "--color-text-muted": "#64748b",
+      "--color-text-light": "#94a3b8",
+      "--color-text-inverse": "#ffffff",
+      "--color-primary": "#2563eb",
+      "--color-primary-dark": "#1d4ed8",
+      "--color-primary-light": "#dbeafe",
+      "--color-border": "#e2e8f0",
+      "--color-border-strong": "#cbd5e1",
+      "--color-success": "#10b981",
+      "--color-warning": "#f59e0b",
+      "--color-danger": "#ef4444",
+      "--font-family": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "--font-weight-normal": "400",
+      "--font-weight-medium": "500",
+      "--font-weight-semibold": "600",
+      "--font-weight-bold": "700",
+      "--font-weight-extrabold": "800",
+      "--space-xs": ".25rem",
+      "--space-sm": ".5rem",
+      "--space-md": "1rem",
+      "--space-lg": "1.5rem",
+      "--space-xl": "2rem",
+      "--space-2xl": "2.5rem",
+      "--space-3xl": "3rem",
+      "--radius-sm": "8px",
+      "--radius-md": "12px",
+      "--radius-lg": "16px",
+      "--radius-xl": "20px",
+      "--radius-full": "9999px",
+      "--shadow-sm": "0 1px 2px 0 rgba(0, 0, 0, .05)",
+      "--shadow-md": "0 4px 6px -1px rgba(0, 0, 0, .1)",
+      "--shadow-lg": "0 10px 15px -3px rgba(0, 0, 0, .1)",
+      "--shadow-xl": "0 20px 25px -5px rgba(0, 0, 0, .1)",
+      "--transition": "all .3s ease"
+    },
+    "dark": {},
+    "preferred": {}
+  },
+  "components": {
+    "button": {
+      "renderable": false,
+      "base": {
+        "text": "#fff",
+        "border_width": "1px",
+        "radius": "var(--radius-full, 9999px)",
+        "padding": ".75rem 1.75rem",
+        "font_size": ".875rem",
+        "font_weight": "600",
+        "transition": "all var(--transition, all .3s ease)"
+      },
+      "variants": {
+        "primary": {
+          "renderable": false,
+          "missing": [
+            "border_color"
+          ],
+          "text": "#fff",
+          "border_width": "1px",
+          "radius": "var(--radius-full, 9999px)",
+          "padding": ".75rem 1.75rem",
+          "font_size": ".875rem",
+          "font_weight": "600",
+          "transition": "all var(--transition, all .3s ease)",
+          "bg": "var(--color-primary, #2563eb)",
+          "shadow": "var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05))"
+        },
+        "secondary": {
+          "renderable": true,
+          "missing": [],
+          "text": "var(--color-text, #0f172a)",
+          "border_width": "1px",
+          "radius": "var(--radius-full, 9999px)",
+          "padding": ".75rem 1.75rem",
+          "font_size": ".875rem",
+          "font_weight": "600",
+          "transition": "all var(--transition, all .3s ease)",
+          "bg": "var(--color-bg-alt, #f8fafc)",
+          "border_color": "rgba(0,0,0,0.12)"
+        }
+      },
+      "states": {
+        "hover": {
+          "bg": "var(--color-primary-dark, #1d4ed8)",
+          "text": "var(--color-primary, #2563eb)",
+          "shadow": "var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1))"
+        },
+        "active": {
+          "transform": "scale(.98)"
+        },
+        "disabled": {
+          "opacity": ".5"
+        },
+        "focus_visible": {}
+      },
+      "source_confidence": "high"
+    },
+    "card": {
+      "renderable": true,
+      "base": {
+        "bg": "var(--color-bg, #ffffff)",
+        "text": "var(--color-text-light, #94a3b8)",
+        "border_color": "rgba(0,0,0,0.12)",
+        "border_width": "1px",
+        "radius": "var(--radius-lg, 16px)",
+        "padding": "2rem 0",
+        "shadow": "var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05))",
+        "transition": "all var(--transition, all .3s ease)"
+      },
+      "states": {
+        "hover": {
+          "shadow": "var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1))",
+          "transform": "translateY(-2px)"
+        }
+      },
+      "variants": {
+        "info": {
+          "padding": "1.5rem",
+          "text": "#fff"
+        }
+      },
+      "source_confidence": "high"
+    },
+    "input": {
+      "renderable": true,
+      "base": {
+        "bg": "var(--color-bg, #ffffff)",
+        "text": "var(--color-text, #0f172a)",
+        "border_color": "rgba(0,0,0,0.12)",
+        "border_width": "1px",
+        "radius": "var(--radius-md, 12px)",
+        "padding": ".75rem 1rem",
+        "transition": "border-color var(--transition, all .3s ease)"
+      },
+      "states": {
+        "focus": {
+          "outline": "none",
+          "shadow": "0 0 0 3px var(--color-primary-light, #dbeafe)"
+        }
+      },
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "badge": {
+      "renderable": true,
+      "base": {
+        "bg": "var(--color-primary-light, #dbeafe)",
+        "text": "var(--color-primary, #2563eb)",
+        "radius": "var(--radius-full, 9999px)",
+        "padding": ".25rem .75rem",
+        "font_size": ".75rem",
+        "font_weight": "700"
+      },
+      "states": {},
+      "variants": {
+        "popular": {
+          "radius": "var(--radius-full, 9999px)",
+          "padding": ".25rem 1rem",
+          "font_weight": "800",
+          "font_size": ".75rem",
+          "text": "#fff"
+        }
+      },
+      "source_confidence": "medium"
+    },
+    "link": {
+      "renderable": true,
+      "base": {
+        "text": "var(--color-primary, #2563eb)"
+      },
+      "states": {
+        "hover": {
+          "text": "var(--color-primary-dark, #1d4ed8)"
+        }
+      },
+      "variants": {
+        "links": {
+          "font_weight": "var(--font-weight-medium, 500)",
+          "font_size": ".875rem",
+          "text": "var(--color-text-muted, #64748b)",
+          "transition": "color var(--transition, all .3s ease)"
+        }
+      },
+      "source_confidence": "medium"
+    },
+    "tab": {
+      "renderable": true,
+      "base": {
+        "text": "#111111",
+        "padding": "1.5rem",
+        "font_size": ".875rem"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    },
+    "alert": {
+      "renderable": true,
+      "base": {
+        "text": "#111111",
+        "radius": "var(--radius-md, 12px)",
+        "padding": "2rem"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    },
+    "label": {
+      "renderable": true,
+      "base": {
+        "text": "var(--color-text, #0f172a)",
+        "font_size": ".875rem",
+        "font_weight": "700"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    }
+  },
+  "warnings": [
+    {
+      "code": "component_non_flow_transform",
+      "message": "badge variant:popular transform is layout-destructive and was ignored by render cleanup.",
+      "severity": "medium",
+      "component": "badge",
+      "scope": "variant:popular"
+    },
+    {
+      "code": "button_primary_not_renderable",
+      "message": "Primary button is missing visible render props.",
+      "severity": "high",
+      "missing": [
+        "border_color"
+      ]
+    }
+  ]
+}

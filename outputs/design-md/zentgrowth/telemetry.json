@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "url": "https://www.zentgrowth.com/",
+  "provider": "openrouter",
+  "phases": {
+    "phase_1_fetch": 157,
+    "phase_2_collect": 127,
+    "phase_3_detect": 49,
+    "phase_4_markdown": 81,
+    "phase_5_prompt": 2,
+    "phase_6_llm": 72389,
+    "phase_7_log": 10,
+    "phase_8_preview": 8
+  },
+  "wall_clock_ms": 73227,
+  "reuse": {
+    "enabled": true,
+    "previous_run": null,
+    "hits": 0,
+    "trace": {
+      "fetch": "MISS",
+      "collect": "MISS",
+      "detect": "MISS",
+      "markdown": "MISS",
+      "llm": "MISS"
+    }
+  },
+  "llm": {
+    "model": "anthropic/claude-haiku-4-5",
+    "provider": "openrouter",
+    "reused": false,
+    "input_tokens": 9049,
+    "output_tokens": 8923,
+    "cache_read_tokens": null,
+    "cache_creation_tokens": null,
+    "turns_used": null,
+    "retries": 0,
+    "max_turns_hit": false,
+    "cost_estimate": {
+      "usd": 0.0537,
+      "source": "sdk-usage",
+      "model": "anthropic/claude-haiku-4-5",
+      "breakdown": {
+        "input_usd": 0.009,
+        "output_usd": 0.0446,
+        "cache_read_usd": 0,
+        "cache_write_usd": 0
+      }
+    }
+  }
+}

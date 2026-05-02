@@ -1,0 +1,19 @@
+{
+  "primary": "radial-gradient(circle at top right,var(--color-primary-light) 0%,var(--color-bg) 70%)",
+  "secondary": "linear-gradient(transparent,#000c)",
+  "total_unique": 3,
+  "top": [
+    {
+      "value": "radial-gradient(circle at top right,var(--color-primary-light) 0%,var(--color-bg) 70%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(transparent,#000c)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(to right,#fff0,#ffffff4d,#fff0)",
+      "count": 1
+    }
+  ]
+}
